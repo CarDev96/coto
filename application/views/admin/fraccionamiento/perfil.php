@@ -91,244 +91,73 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Meses</th>
-                                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">2019</th>
-                                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="0">2020</th>
+                                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="2">2019</th>
                                                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="0">
-                                                            <abbr title="Rotten Tomato Rating">2021</abbr>
+                                                            <abbr title="Rotten Tomato Rating">2020</abbr>
                                                         </th>
 
                                                     </tr>
                                                 </thead>
-                                                <?php if (!empty($info_perfil3)) : ?>
 
-                                                    <tbody>
-
-
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Enero</a></td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Febrero</a></td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Marzo</a></td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Abril</a></td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Mayo</a></td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Junio</a></td>
-
-
-                                                            <?php if (!empty($info_perfil3)) : ?>
-                                                                <?php for ($i = 0; $i <= 11; $i++) : ?>
-
-
-                                                                    <?php if ($info_perfil3[$i]->mes_suscrip == 6) : ?>
-
-                                                                        <td><span class="mdi mdi-check"></span></td>
-
-                                                                        <?php break; ?>
-
-                                                                    <?php endif; ?>
-
-                                                                    <td>x</td>
-                                                                    <?php break; ?>
-                                                                <?php endfor ?>
-
-                                                            <?php endif; ?>
-
-
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Julio</a></td>
-
-
-
-                                                            <?php if (!empty($info_perfil3)) : ?>
-                                                                <?php for ($i = 0; $i <= 11; $i++) : ?>
-
-
-                                                                    <?php if ($info_perfil3[$i]->mes_suscrip == 7) : ?>
-
-                                                                        <td><span class="mdi mdi-check"></span></td>
-
-                                                                        <?php break; ?>
-
-                                                                    <?php endif; ?>
-
-                                                                    <td>x</td>
-                                                                    <?php break; ?>
-                                                                <?php endfor ?>
-
-                                                            <?php endif; ?>
-
-
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Agosto</a></td>
-
-                                                            <?php if (!empty($info_perfil3)) : ?>
-                                                                <?php for ($i = 0; $i <= 11; $i++) : ?>
-
-
-                                                                    <?php if ($info_perfil3[$i]->mes_suscrip == 8) : ?>
-
-                                                                        <td><span class="mdi mdi-check"></span></td>
-
-                                                                        <?php break; ?>
-
-                                                                    <?php endif; ?>
-
-                                                                    <td>x</td>
-                                                                    <?php break; ?>
-                                                                <?php endfor ?>
-
-                                                            <?php endif; ?>
-
-
-
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Septiembre</a></td>
-                                                            <?php if (!empty($info_perfil3)) : ?>
-                                                                <?php for ($i = 0; $i <= 11; $i++) : ?>
-
-
-                                                                    <?php if ($info_perfil3[$i]->mes_suscrip == 9) : ?>
-
-                                                                        <td><span class="mdi mdi-check"></span></td>
-
-                                                                        <?php break; ?>
-
-                                                                    <?php endif; ?>
-
-                                                                    <td>x</td>
-                                                                    <?php break; ?>
-                                                                <?php endfor ?>
-
-                                                            <?php endif; ?>
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-
-
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Octubre</a></td>
-
-
-
-
-                                                            <?php if (!empty($info_perfil3)) : ?>
-                                                                <?php for ($i = 0; $i <= 11; $i++) : ?>
-
-                                                      
-
-                                                                    <?php if ($info_perfil3[$i]->mes_suscrip == 10) : ?>
-
-                                                                        <td><span class="mdi mdi-check"></span></td>
-
-                                                                        <?php break; ?>
-
-                                                                    <?php endif; ?>
-
-                                                                    <td>x</td>
-                                                                    <?php break; ?>
-                                                                 
-                                                                <?php endfor ?>
-
-                                                                                                                        
-
-                                                            <?php endif; ?>
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-
-
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Noviembre</a></td>
-
-
-
-                                                            <?php if (!empty($info_perfil3)) : ?>
-                                                                <?php while($i<=12) : ?>
-
-                                                                    <?php if ($info_perfil3[$i]->mes_suscrip ==11) : ?>
-
-
-                                                                        <td><span class="mdi mdi-check"></span></td>                                                                        
-
-                                                                        <?php break; ?>
-
-                                                                    
-
-
-
-                                                                    <?php endif; ?>
-
-                                                                    <?php $i++; ?>
-                                                                <?php endwhile ?>
-
-                                                                
-
-                                                                                                                        
-
-                                                            <?php endif; ?>
-
-
-
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td class="title"><a class="link" href="javascript:void(0)">Diciembre</a></td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-                                                            <td>x</td>
-
-                                                        </tr>
-
-                                                    <?php endif; ?>
+                                                <tbody>
+                                                
+                                                <?php
+                                                
+                                                $data = array(
+            
+                                                    'Enero',
+                                                    'Febrero',
+                                                    'Marzo',
+                                                    'Abril',
+                                                    'Mayo',
+                                                    'Junio',
+                                                    'Julio',
+                                                    'Agosto',
+                                                    'Septiempre',
+                                                    'Octubre',
+                                                    'Noviembre',
+                                                    'Diciembre',
+
+
+                                        
+                                        
+                                                    ); 
+                                        
+                                                
+                                                
+                                                ?>
+
+                                                <?php for($i=1; $i<=12;$i++):?>
+                                                
+                                                <?php $mes= 0;?>
+                                                <tr>
+                                                <?php foreach($info_perfil3 as $n):?> 
+
+                                                <?php if($n->mes_suscrip == $i):?>
+                        
+                                                <?php $mes = 1;?>
+
+                                            <?php endif; ?>
+                                                    
+                                                    
+                                                <?php endforeach; ?>
+
+                                                <?php if($mes==1): ?>
+                                                    <td><?php echo $data[$i-1]; ?></td>
+                                                    <td><span class="mdi mdi-check"></span></td>
+
+                                                    <?php else: ?>
+                                                    <td><?php echo $data[$i-1]; ?></td>                                                    
+                                                    <td>x</td>
+
+
+                                            <?php endif;?>
+                                                
+                                                </tr>
+                                                <?php endfor;?>
+                                                
                                                 </tbody>
+
                                             </table>
                                         </div>
                                     </div>
