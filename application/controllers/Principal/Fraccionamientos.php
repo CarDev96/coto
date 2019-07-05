@@ -38,6 +38,9 @@ class Fraccionamientos extends CI_Controller {
             'info_perfil' => $this->Fraccionamientos_model->getInfop($id),
             'info_perfil2' => $this->Fraccionamientos_model->getInfop2($id),            
             'info_perfil3' => $this->Fraccionamientos_model->getInfop3($id),              
+            'info_perfil4' => $this->Fraccionamientos_model->getInfop4($id),              
+            'info_perfil5' => $this->Fraccionamientos_model->getInfop5($id),              
+            'info_sump' => $this->Fraccionamientos_model->getsump($id),              
 
 
             ); 

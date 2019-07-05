@@ -142,10 +142,24 @@ var opcion = $(':selected', this).data('monto1');
 
 
 
+        if($(':selected', this).data('concep') == "Tags" || $(':selected', this).data('concep') == "Tag-Moto" || $(':selected', this).data('concep') == "Fondo Actual" || $(':selected', this).data('concep') == "Varios"){
+
+            $("#mdate2").prop('disabled', true);
+
+        }
+
+      
+
+            else{
+
+                $("#mdate2").prop('disabled', false);
+
+            }
 
 
 
  $("#tch2").val(opcion);
+ 
  
 
 

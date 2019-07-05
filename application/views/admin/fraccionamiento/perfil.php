@@ -6,7 +6,7 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Contact details</h3>
+                    <h3 class="text-themecolor">Perfil casas</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
@@ -75,9 +75,8 @@
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs profile-tab" role="tablist">
                                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Cuotas obligatorias</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Tags</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Fondo Actual</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#varios" role="tab">Varios</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Ingresos Varios</a> </li>
+
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content">
@@ -85,16 +84,14 @@
                                     <!-- Column -->
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title">Registro de pagos de cuotas obligatorias</h4>
+                                            <h4 class="card-title">Registro de pagos de cuotas obligatorias 2019</h4>
                                             <h6 class="card-subtitle">Registro de pagos por mes y año.</h6>
-                                            <table class="tablesaw table-striped table-hover table-bordered table" data-tablesaw-mode="columntoggle">
+                                            <table class="tablesaw table-striped table-hover table-bordered table">
                                                 <thead>
                                                     <tr>
                                                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Meses</th>
-                                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="2">2019</th>
-                                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="0">
-                                                            <abbr title="Rotten Tomato Rating">2020</abbr>
-                                                        </th>
+                                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="0">2019</th>
+                                                   
 
                                                     </tr>
                                                 </thead>
@@ -133,22 +130,32 @@
                                                 <tr>
                                                 <?php foreach($info_perfil3 as $n):?> 
 
-                                                <?php if($n->mes_suscrip == $i):?>
+                                                
+
+                                                <?php if($n->mes_suscrip == $i && $n->id_concepto_in == 1):?>
                         
                                                 <?php $mes = 1;?>
 
                                             <?php endif; ?>
+
+                                                <?php if($n->mes_suscrip == 1 && $n->id_concepto_in == 5):?>
+                        
+                                                <?php $mes = 1;?>
+
+                                                <?php endif; ?>                                            
                                                     
                                                     
                                                 <?php endforeach; ?>
 
-                                                <?php if($mes==1): ?>
+                                                <?php if($mes==1):?>
                                                     <td><?php echo $data[$i-1]; ?></td>
                                                     <td><span class="mdi mdi-check"></span></td>
+                                                                                                
 
                                                     <?php else: ?>
                                                     <td><?php echo $data[$i-1]; ?></td>                                                    
                                                     <td>x</td>
+                                                                                                      
 
 
                                             <?php endif;?>
@@ -159,6 +166,92 @@
                                                 </tbody>
 
                                             </table>
+
+                                            <h4 class="card-title">Registro de pagos de cuotas obligatorias 2020</h4>
+                                            <h6 class="card-subtitle">Registro de pagos por mes y año.</h6>
+                                            <table class="tablesaw table-striped table-hover table-bordered table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Meses</th>
+                                                        <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="0">2020</th>
+                                                   
+
+                                                    </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                
+                                                <?php
+                                                
+                                                $data = array(
+            
+                                                    'Enero',
+                                                    'Febrero',
+                                                    'Marzo',
+                                                    'Abril',
+                                                    'Mayo',
+                                                    'Junio',
+                                                    'Julio',
+                                                    'Agosto',
+                                                    'Septiempre',
+                                                    'Octubre',
+                                                    'Noviembre',
+                                                    'Diciembre',
+
+
+                                        
+                                        
+                                                    ); 
+                                        
+                                                
+                                                
+                                                ?>
+
+                                                <?php for($i=1; $i<=12;$i++):?>
+                                                
+                                                <?php $mes= 0;?>
+                                                <tr>
+                                                <?php foreach($info_perfil4 as $n):?> 
+
+                                                
+
+                                                <?php if($n->mes_suscrip == $i && $n->id_concepto_in == 1):?>
+                        
+                                                <?php $mes = 1;?>
+
+                                            <?php endif; ?>
+
+                                                <?php if($n->mes_suscrip == 1 && $n->id_concepto_in == 5):?>
+                        
+                                                <?php $mes = 1;?>
+
+                                                <?php endif; ?>                                            
+                                                    
+                                                    
+                                                <?php endforeach; ?>
+
+                                                <?php if($mes==1):?>
+                                                    <td><?php echo $data[$i-1]; ?></td>
+                                                    <td><span class="mdi mdi-check"></span></td>
+                                                                                                
+
+                                                    <?php else: ?>
+                                                    <td><?php echo $data[$i-1]; ?></td>                                                    
+                                                    <td>x</td>
+                                                                                                      
+
+
+                                            <?php endif;?>
+                                                
+                                                </tr>
+                                                <?php endfor;?>
+                                                
+                                                </tbody>
+
+                                            </table>                                            
+
+                                        <hr>
+
                                         </div>
                                     </div>
                                     <!-- Column -->
@@ -166,156 +259,86 @@
                                 <!--second tab-->
                                 <div class="tab-pane" id="profile" role="tabpanel">
                                     <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
-                                                <br>
-                                                <p class="text-muted">Johnathan Deo</p>
-                                            </div>
-                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
-                                                <br>
-                                                <p class="text-muted">(123) 456 7890</p>
-                                            </div>
-                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
-                                                <br>
-                                                <p class="text-muted">johnathan@admin.com</p>
-                                            </div>
-                                            <div class="col-md-3 col-xs-6"> <strong>Location</strong>
-                                                <br>
-                                                <p class="text-muted">London</p>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <p class="m-t-30">Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries </p>
-                                        <p>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                        <h4 class="font-medium m-t-30">Skill Set</h4>
-                                        <hr>
-                                        <h5 class="m-t-30">Wordpress <span class="pull-right">80%</span></h5>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                        </div>
-                                        <h5 class="m-t-30">HTML 5 <span class="pull-right">90%</span></h5>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width:90%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                        </div>
-                                        <h5 class="m-t-30">jQuery <span class="pull-right">50%</span></h5>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width:50%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                        </div>
-                                        <h5 class="m-t-30">Photoshop <span class="pull-right">70%</span></h5>
-                                        <div class="progress">
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:70%; height:6px;"> <span class="sr-only">50% Complete</span> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="settings" role="tabpanel">
-                                    <div class="card-body">
-                                        <form class="form-horizontal form-material">
-                                            <div class="form-group">
-                                                <label class="col-md-12">Full Name</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Email</label>
-                                                <div class="col-md-12">
-                                                    <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Password</label>
-                                                <div class="col-md-12">
-                                                    <input type="password" value="password" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Phone No</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Message</label>
-                                                <div class="col-md-12">
-                                                    <textarea rows="5" class="form-control form-control-line"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-12">Select Country</label>
-                                                <div class="col-sm-12">
-                                                    <select class="form-control form-control-line">
-                                                        <option>London</option>
-                                                        <option>India</option>
-                                                        <option>Usa</option>
-                                                        <option>Canada</option>
-                                                        <option>Thailand</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <button class="btn btn-success">Update Profile</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+                 
+                                    <h6 class="card-subtitle">Se muestra un listado de los ingresos registrados.</h6>
+                                <div class="table-responsive m-t-40">
+                                    <table id="zero_config" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha de ingreso</th>
+                                                <th>Tipo de ingreso</th>
+                                                <th>Descripcion</th>                                               
+                                                <th>Monto</th>                                                
+                                               
 
-                                <!-- -->
-                                <div class="tab-pane" id="varios" role="tabpanel">
-                                    <div class="card-body">
-                                        <form class="form-horizontal form-material">
-                                            <div class="form-group">
-                                                <label class="col-md-12">hola</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="example-email" class="col-md-12">Email</label>
-                                                <div class="col-md-12">
-                                                    <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Password</label>
-                                                <div class="col-md-12">
-                                                    <input type="password" value="password" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Phone No</label>
-                                                <div class="col-md-12">
-                                                    <input type="text" placeholder="123 456 7890" class="form-control form-control-line">
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-md-12">Message</label>
-                                                <div class="col-md-12">
-                                                    <textarea rows="5" class="form-control form-control-line"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="col-sm-12">Select Country</label>
-                                                <div class="col-sm-12">
-                                                    <select class="form-control form-control-line">
-                                                        <option>London</option>
-                                                        <option>India</option>
-                                                        <option>Usa</option>
-                                                        <option>Canada</option>
-                                                        <option>Thailand</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-12">
-                                                    <button class="btn btn-success">Update Profile</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                                            </tr>
+                                        </thead>
+
+                                        <tfoot>
+                                            <tr>
+                                                <th>Total ingreso por concepto</th>
+                                                <th></th>
+                                                
+                                                
+                                                <th></th>
+                                                <th>$<?php echo $info_sump->a; ?></th>
+                                            </tr>
+                                        </tfoot>                                        
+                                        <tbody>
+                                        <?php if(!empty($info_perfil5)):?>
+                                    <?php foreach($info_perfil5 as $info_perfil5):?>
+                                        <tr>
+                                          <td>
+                                            
+                           
+                                              
+                                          <?php echo $info_perfil5->fecha_ingreso;?>
+            
+                                            
+                                            
+                                          
+                                          
+                                          
+                                          </td>
+                                            <td><?php echo $info_perfil5->name;?></td>
+
+                                            <td><?php echo $info_perfil5->descripcion_ingreso;?></td>                                           
+
+                                            
+                                            
+                                            <td><?php echo $info_perfil5->ingreso;?></td>                                                
+
+                                         
+                                            
+                                            
+                                            
+                                          
+                                                                                 
+                                          
+                                         
+
+                                          
+                                          
+                                
+          
+                                            
+                      
+
+                                       
+       
+                                        </tr>
+                                    <?php endforeach;?>
+                                <?php endif;?>
+
+
+                              </tbody>
+                                    </table>
+                                </div>                                    
+
+
                                     </div>
                                 </div>
+                   
 
 
                             </div>

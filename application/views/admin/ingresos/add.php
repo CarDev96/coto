@@ -45,7 +45,7 @@
                                                     <label class="control-label text-right col-md-3">Selecciona la casa:</label>
                                                     <div class="col-md-3">
                                                     <select class="select2 form-control custom-select" name="id_casa" id="txtCasa" style="width: 100%; height:36px;">
-                                    <option>Casa Nº</option>
+                                    <option value="1">Casa Nº</option>
                                     <?php foreach($info_casas as $info_casas):?>
                                     
                                         <option value="<?php echo $info_casas->id_casa;?>" data-casa="<?php echo $info_casas->id_casa;?>" data-responsable="<?php echo $info_casas->responsable;?>" data-direccion="<?php echo $info_casas->direccion;?>" data-habitada="<?php echo $info_casas->habitada;?>" data-estatus="<?php echo $info_casas->estatus_pago;?>" >
@@ -137,7 +137,7 @@
                                     <option>-Tipo Ingreso-</option>
                                     <?php foreach($info_concepto as $info_concepto):?>
                                     
-                                        <option value="<?php echo $info_concepto->id_concep_in;?>" data-monto1="<?php echo $info_concepto->monto_f;?>">
+                                        <option value="<?php echo $info_concepto->id_concep_in;?>" data-monto1="<?php echo $info_concepto->monto_f;?>" data-concep="<?php echo $info_concepto->name;?>">
                                             <?php echo $info_concepto->name ?>
                                         </option>
 
