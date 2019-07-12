@@ -25,6 +25,11 @@
     left: calc(50% - 3.5px)
 }
 
+.bg-green {
+    background-color: #00897b!important;
+    border-top-right-radius: 3.3rem;
+}
+
 * {
     outline: none
 }

@@ -5,6 +5,12 @@ class Fraccionamientos extends CI_Controller {
        public function __construct(){
 		parent::__construct();
 
+		if(!$this->session->userdata("login")){
+
+			redirect(base_url());
+
+
+		}        
 		$this->load->model("Fraccionamientos_model");
   	
      
@@ -16,8 +22,7 @@ class Fraccionamientos extends CI_Controller {
      
                $data = array(
             
-            'info_casas' => $this->Fraccionamientos_model->getInfo()
-
+            'info_casas' => $this->Fraccionamientos_model->getInfo(),
 
             ); 
 
@@ -80,9 +85,31 @@ class Fraccionamientos extends CI_Controller {
 		
         $direccion = $this->input->post("calle");
         
-		$telefono = $this->input->post("telefono");        
+        $telefono = $this->input->post("telefono");        
+        
+        $correo_casa = $this->input->post("correo_casa");        
+        
+        $renta = $this->input->post("renta");        
+        
+        $dueno = $this->input->post("dueno");        
+        
+        $telefono_dueno = $this->input->post("telefono_dueno");        
 
-		$estatus = "Deudor";
+        $estatus = "Deudor";
+        
+        if(is_null($renta)){
+
+            $renta_f = "No";
+
+
+
+        }else{
+
+            $renta_f = $renta;
+
+
+
+        }
         
            
        $data = array(
@@ -97,7 +124,15 @@ class Fraccionamientos extends CI_Controller {
 			
             'estatus_pago' => $estatus,
             
-			'telefono' => $telefono,            
+            'telefono' => $telefono,            
+            
+            'email' => $correo_casa,            
+            
+            'dueno_casa' => $dueno,            
+            
+            'numero_dueno' => $telefono_dueno,            
+            
+			'renta' => $renta_f,            
  
            
            
@@ -112,7 +147,7 @@ class Fraccionamientos extends CI_Controller {
             
              //  $this->session->set_flashdata('Add', 'Invitacion Agregada Correctamente');
                   
-            redirect(base_url()."Principal/Fraccionamientos/add");
+            redirect(base_url()."Principal/Fraccionamientos");
         }
         else{
                   //   $this->session->set_flashdata('Add', 'Invitacion Agregada Correctamente');
@@ -121,5 +156,132 @@ class Fraccionamientos extends CI_Controller {
         }
                 
     }//fin 	
+
+	public function update(){
+
+        
+        $id_casa = $this->input->post("id_casa");
+
+        $propietario = $this->input->post("propietario");
+         
+        $numero_casa = $this->input->post("numero_casa");
+     
+		$habitada = $this->input->post("habitada");
+		
+        $direccion = $this->input->post("calle");
+        
+		$telefono = $this->input->post("telefono");        
+
+		$estatus = $this->input->post("estatus");        
+        
+        $correo_casa = $this->input->post("correo_casa");        
+        
+        $renta = $this->input->post("renta");        
+        
+        $dueno = $this->input->post("dueno");        
+        
+        $telefono_dueno = $this->input->post("telefono_dueno");        
+
+        $estatus = "Deudor";
+        
+        if(is_null($renta)){
+
+            $renta_f = "No";
+
+
+
+        }else{
+
+            $renta_f = $renta;
+
+
+
+        }
+             
+       $data = array(
+            
+            
+        
+            'responsable' => $propietario, 
+           
+            'habitada' => $habitada, 
+           
+			'direccion' => $direccion, 
+			
+            'estatus_pago' => $estatus,
+            
+            'telefono' => $telefono,  
+            
+            
+            'email' => $correo_casa,            
+            
+            'dueno_casa' => $dueno,            
+            
+            'numero_dueno' => $telefono_dueno,            
+            
+			'renta' => $renta_f,            
+ 
+           
+           
+                        
+ 
+           
+           
+            
+           
+                     
+                     
+                     ); 
+        
+      
+            if($this->Fraccionamientos_model->update($id_casa,$data) == true)
+                  
+                  
+                  redirect(base_url()."Principal/Fraccionamientos");
+                
+                else
+                          
+                    redirect(base_url()."Principal/Fraccionamientos");
+                    
+                
+          
+                
+    }//fin 	
+
+    public function view($id){
+        
+       
+        
+        $data = array(
+            
+
+            
+            'info_up' => $this->Fraccionamientos_model->getinfo_up($id),
+            
+        
+        
+        );
+            
+            
+        
+		$this->load->view("admin/fraccionamiento/view",$data);
+        
+        
+        
+    }//fin function view
+
+    public function eliminar(){
+    
+          
+        $id2 = $this->input->post('id',true);          
+         
+   $this->Fraccionamientos_model->delete($id2);
+
+   redirect(base_url()."Principal/Fraccionamientos");
+
+
+       
+   }//fin function Eliminar    
+        
 
 }

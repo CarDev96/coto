@@ -41,7 +41,7 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap">Catálogos</li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-building-o"></i><span class="hide-menu">Casas</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Casas</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>Principal/Fraccionamientos/add">Nuevo Registro </a></li>
                                 <li><a href="<?php echo base_url();?>Principal/Fraccionamientos">Lista</a></li>
@@ -49,15 +49,16 @@
                                 
                             </ul>
                         </li>
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fa fa-money"></i><span class="hide-menu">Ingresos</span></a>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Ingresos</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>Principal/Ingresos/add">Nuevo ingreso</a></li>
                                 <li> <a class="has-arrow" href="#" aria-expanded="false">Lista Ingresos</a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="<?php echo base_url();?>Principal/Ingresos">Cuotas Obligatorias</a></li>
-                                        <li><a href="#">Tags</a></li>
-                                        <li><a href="#">Fondo Actual</a></li>
-                                        <li><a href="#">Varios</a></li>
+                                        <li><a href="<?php echo base_url();?>Principal/Ingresos/cuotas">Cuotas Obligatorias</a></li>
+                                        <li><a href="<?php echo base_url();?>Principal/Ingresos/tags">Tags</a></li>
+                                        
+                                        <li><a href="<?php echo base_url();?>Principal/Ingresos/varios">Varios</a></li>
+                                        <li><a href="<?php echo base_url();?>Principal/Ingresos">Total</a></li>
                                     </ul>
                                 </li>
                                 
@@ -67,9 +68,29 @@
                             </ul>
                         </li>
 
-
-
-
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-arrow-down"></i><span class="hide-menu">Gastos</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url();?>Principal/Egresos/add">Nuevo </a></li>
+                                <li><a href="<?php echo base_url();?>Principal/Egresos">Lista Gastos </a></li>
+                             
+                                
+                                
+                                
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-devider"></li>
+                        <li class="nav-small-cap"><i class="mdi mdi-account-key">Administrador</i></li>                        
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Usuarios</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url();?>Administrador/Usuarios/add">Nuevo usuario </a></li>
+                                <li><a href="<?php echo base_url();?>Administrador/Usuarios">Lista usuarios </a></li>
+                             
+                                
+                                
+                                
+                            </ul>
+                        </li>
 
 
 

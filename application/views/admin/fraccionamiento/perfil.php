@@ -262,7 +262,7 @@
                  
                                     <h6 class="card-subtitle">Se muestra un listado de los ingresos registrados.</h6>
                                 <div class="table-responsive m-t-40">
-                                    <table id="zero_config" class="table table-bordered table-striped">
+                                <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>Fecha de ingreso</th>

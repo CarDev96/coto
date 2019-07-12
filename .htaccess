@@ -1,8 +1,8 @@
-Options +FollowSymlinks -Indexes
+Options +FollowSymLinks
+Options -Indexes
+DirectoryIndex index.html index.php
 RewriteEngine on
-
-DirectoryIndex index.php
-RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond $1 !^(index\.php|images|robots\.txt|js|uploads)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+RewriteRule ^(.*)$ /hipoteca/index.php/$1 [L,QSA]

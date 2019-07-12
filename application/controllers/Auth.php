@@ -21,7 +21,7 @@ class Auth extends CI_Controller {
 	
 	public function __construct(){
 		parent::__construct();
-		$this->load->model("User_model");
+		$this->load->model("Usuarios_model");
 	}
 	
 	
@@ -31,19 +31,22 @@ class Auth extends CI_Controller {
 
 		
 		
-
-
 		if($this->session->userdata("login")){
-			
-			redirect(base_url()."dashboard");
-			
-			
+
+			redirect(base_url()."Dashboard");
+
+
 		}
-		
 		else{
+
+		$this->load->view("layouts/header_log");
 		
-        $this->load->view('admin/login.php');
-}
+		$this->load->view('admin/login');
+		
+		$this->load->view("layouts/footer_log");		
+		
+	}
+
 		
 	}
 	
@@ -52,7 +55,7 @@ class Auth extends CI_Controller {
 		
 		$username = $this->input->post("correo");
 		$password = $this->input->post("contraseña");
-		$res = $this->User_model->login($username,$password);
+		$res = $this->Usuarios_model->login($username, sha1($password));
 
 		if (!$res) {
 			
@@ -62,9 +65,9 @@ class Auth extends CI_Controller {
 		}
 		else{
 			$data  = array(
-				'id_u' => $res->id_u, 
-				'correo' => $res->correo,
-				'rol' => $res->id_tipo_u,
+				'id_usuario' => $res->id_usuario, 
+				'username' => $res->username,
+				'rol' => $res->id_rol,
 				'login' => TRUE
 			);
 			

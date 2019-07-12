@@ -12,7 +12,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         
-                        <li class="breadcrumb-item active">Lista casas</li>
+                        <li class="breadcrumb-item active">Lista Cuotas</li>
                     </ol>
                 </div>
         
@@ -35,7 +35,7 @@
                                 
                                 <h6 class="card-subtitle">Se muestra un listado de los ingresos mensuales o anuales de cada casa.</h6>
                                 <div class="table-responsive m-t-40">
-                                    <table id="zero_config" class="table table-bordered table-striped">
+                                <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
                                                 <th>Número de casa</th>

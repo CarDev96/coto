@@ -36,7 +36,7 @@ class Ingresos_model extends CI_Model {
 
          $resultado2 = $this->db->query("insert into tb_suscrip(dia_suscrip,mes_suscrip,ano_suscrip,vencimiento_suscrip,id_casa,id_ingreso)values($dia,$mes,$anio,'$df',$id,$last_id)");                  
          
-        
+
         
 
          if($ingreso_int == 200){
@@ -44,6 +44,7 @@ class Ingresos_model extends CI_Model {
 
            
 
+            $this->db->set('vencimiento',$df);
             $this->db->set('estatus_pago',$estatusm);
 					
             $this->db->where('id_casa',$id);
@@ -51,8 +52,7 @@ class Ingresos_model extends CI_Model {
             $resultado = $this->db->update('tb_casas');
                 
 
-    
-
+      
     
         return $resultado;
 
@@ -61,21 +61,19 @@ class Ingresos_model extends CI_Model {
      
         }
 
-        else{
+        if($ingreso_int == 2200){
 
 
      
 
+            $this->db->set('vencimiento',$df);
             $this->db->set('estatus_pago',$estatusa);
 					
             $this->db->where('id_casa',$id);
 
             $resultado = $this->db->update('tb_casas');
-                
 
-    
-
-    
+        
         return $resultado;
             
         }
@@ -93,12 +91,60 @@ class Ingresos_model extends CI_Model {
          return $resultados->result();
         }    
 
+
+        public function getinfotag(){
+	 
+            $resultados = $this->db->query("select a.ingreso,a.descripcion_ingreso,a.id_casa,a.fecha_ingreso,c.responsable,d.name from tb_ingreso as a inner join tb_suscrip as b on a.id_ingreso  = b.id_ingreso inner join tb_concepto_in as d on a.id_concepto_in = d.id_concep_in inner join tb_casas as c on a.id_casa = c.id_casa where (a.id_concepto_in = 2 or a.id_concepto_in = 6);");
+             return $resultados->result();
+            }  
+
     public function getsum(){
 	 
         $resultados = $this->db->query("select sum(a.ingreso) as a from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in inner join tb_casas as c on a.id_casa = c.id_casa where a.id_concepto_in = 1 or a.id_concepto_in = 5;");
          return $resultados->row();
         }    
-	 	
+         
+        public function getsum_tag(){
+	 
+            $resultados = $this->db->query("select sum(a.ingreso) as a from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in inner join tb_casas as c on a.id_casa = c.id_casa where a.id_concepto_in = 2 or a.id_concepto_in = 6;");
+             return $resultados->row();
+            }  
+            
+            
+
+//---------------------------------------------------------
+
+
+public function getinfovarios(){
+	 
+    $resultados = $this->db->query("select a.ingreso,a.descripcion_ingreso,a.id_casa,a.fecha_ingreso,c.responsable,d.name from tb_ingreso as a inner join tb_suscrip as b on a.id_ingreso  = b.id_ingreso inner join tb_concepto_in as d on a.id_concepto_in = d.id_concep_in inner join tb_casas as c on a.id_casa = c.id_casa where (a.id_concepto_in = 4);");
+     return $resultados->result();
+    }  
+
+    public function getsum_varios(){
+ 
+        $resultados = $this->db->query("select sum(a.ingreso) as a from tb_ingreso as a inner join tb_suscrip as b on a.id_ingreso  = b.id_ingreso inner join tb_concepto_in as d on a.id_concepto_in = d.id_concep_in inner join tb_casas as c on a.id_casa = c.id_casa where (a.id_concepto_in = 4);");
+         return $resultados->row();
+        }  
+
+
+//---------------------------------------------------------
+
+
+public function getinfototal(){
+	 
+    $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in;");
+     return $resultados->result();
+    }  
+
+    public function getsumtotal(){
+ 
+        $resultados = $this->db->query("select sum(ingreso) as a from tb_ingreso;");
+         return $resultados->row();
+        }  
+
+
+
     public function getinfoConcep(){
 	 
         $resultados = $this->db->get("tb_concepto_in");
