@@ -6,13 +6,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Lista de Usuarios</h3>
+                    <h3 class="text-themecolor">Lista de Permisos</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         
-                        <li class="breadcrumb-item active">Total Usuarios</li>
+                        <li class="breadcrumb-item active">Total Permisos</li>
                     </ol>
                 </div>
         
@@ -33,17 +33,15 @@
                         <div class="card">
                             <div class="card-body">
                                 
-                                <h6 class="card-subtitle">Se muestra un listado de los usuarios del sistema.</h6>
+                                <h6 class="card-subtitle">Se muestra un listado de los permisos de usuarios del sistema.</h6>
                                 <div class="table-responsive m-t-40">
                                 <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
-                                            <th>Id usuario</th>
-                                                <th>Usuario</th>
-                                                <th>Contraseña</th>
-                                                <th>Tipo de usuario</th>
-                                                <th>Descripcion permisos</th>                                                   
-                                                                                               
+                                            <th>Id permiso</th>
+                                                <th>Menú</th>
+                                                <th>Tipo Permiso</th>
+               
                                                
 
                                             </tr>
@@ -51,12 +49,9 @@
 
                                         <tfoot>
                                         <tr>
-                                            <th>Id usuario</th>
-                                                <th>Usuario</th>
-                                                <th>Contraseña</th>
-                                                <th>Tipo de usuario</th>
-                                                <th>Descripcion permisos</th>                                                   
-                                                                                               
+                                        <th>Id permiso</th>
+                                                <th>Menú</th>
+                                                <th>Tipo Permiso</th>                                                                                               
                                                
 
                                             </tr>
@@ -81,30 +76,6 @@
                                             <td><?php echo $info_user->username;?></td>
 
                                             <td><?php echo $info_user->pass;?></td>                                           
-
-                                            <td><?php echo $info_user->name_rol;?></td>    
-                                            
-
-                                            <td><?php echo $info_user->descripcion_rol;?></td>                                                    
-
-                                               
-                                            
-                                            
-                                            
-                                          
-                                                                                 
-                                          
-                                         
-
-                                          
-                                          
-                                
-          
-                                            
-                      
-
-                                       
-       
                                         </tr>
                                     <?php endforeach;?>
                                 <?php endif;?>

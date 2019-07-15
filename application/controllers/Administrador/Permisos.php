@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuarios extends CI_Controller {
+class Permisos extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -22,7 +22,7 @@ class Usuarios extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("Usuarios_model");
-		$this->load->model("Ingresos_model");
+		$this->load->model("Permisos_model");
 	}
 	
 	
@@ -30,17 +30,15 @@ class Usuarios extends CI_Controller {
 	public function index()
 	{
 
-		
-      
-        $data = array(
+		$data = array(
 
-            'info_user' => $this->Usuarios_model->getinfo(),
-            
-        );
+			'info_permisos' => $this->Permisos_model->getPermisos()
+
+		);
         
         $this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/usuarios/list",$data);
+		$this->load->view("admin/permisos/list",$data);
 		$this->load->view("layouts/footer");
 
 		
@@ -51,13 +49,13 @@ class Usuarios extends CI_Controller {
       
         $data = array(
 
-            'info_casas' => $this->Ingresos_model->getinfo(),
+            'info_menu' => $this->Permisos_model->getmenu(),
             'info_rol' => $this->Usuarios_model->getrol(),
         );
         
         $this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/usuarios/add",$data);
+		$this->load->view("admin/permisos/add",$data);
 		$this->load->view("layouts/footer");
         
         
@@ -67,7 +65,7 @@ class Usuarios extends CI_Controller {
     {
 
 
-        $id_casa = $this->input->post("id_casa"); //id_casa
+        $id_rol = $this->input->post("id_rol"); //id_casa
 
         $username = $this->input->post("username"); //id_concepto_in
 
@@ -104,6 +102,5 @@ class Usuarios extends CI_Controller {
             redirect(base_url() . "Administrador/Usuarios/add");
         }
     } //fin 
-	
 	
 }

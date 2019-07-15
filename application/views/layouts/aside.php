@@ -85,12 +85,25 @@
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>Administrador/Usuarios/add">Nuevo usuario </a></li>
                                 <li><a href="<?php echo base_url();?>Administrador/Usuarios">Lista usuarios </a></li>
+
                              
                                 
                                 
                                 
                             </ul>
                         </li>
+
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-key-variant"></i><span class="hide-menu">Permisos</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url();?>Administrador/Permisos/add">Nuevo Permiso </a></li>
+                                <li><a href="<?php echo base_url();?>Administrador/Permisos">Permisos </a></li>
+                                
+                             
+                                
+                                
+                                
+                            </ul>
+                        </li>                        
 
 
 
