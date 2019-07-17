@@ -67,39 +67,76 @@ class Permisos extends CI_Controller {
 
         $id_rol = $this->input->post("id_rol"); //id_casa
 
-        $username = $this->input->post("username"); //id_concepto_in
+        $id_menu = $this->input->post("id_menu"); //id_concepto_in
 
-        $pass = $this->input->post("pass"); //ingreso
+		$leer = $this->input->post("leer"); //ingreso
+		
+		if(is_null($leer)){
 
-        $rol = $this->input->post("rol");
+			$n_leer = 0;
+		}else{
 
-        $estado = "1";
+			$n_leer = $leer;
+		}
 
- 
+		$agrega = $this->input->post("agrega"); //ingreso
+		
+		if(is_null($agrega)){
+
+			$n_agrega = 0;
+		}else{
+
+			$n_agrega = $agrega;
+		}
+
+
+		$edita = $this->input->post("edita"); //ingreso
+		
+		if(is_null($edita)){
+
+			$n_edita = 0;
+		}else{
+
+			$n_edita = $edita;
+		}		
+
+		$elimina = $this->input->post("elimina"); //ingreso
+		
+		if(is_null($elimina)){
+
+			$n_elimina = 0;
+		}else{
+
+			$n_elimina = $elimina;
+		}
+
+   
         $data = array(
 
-            'id_casa' => $id_casa,
+            'id_rol' => $id_rol,
 
-            'username' => $username,
+            'id_menu' => $id_menu,
 
-            'pass' => sha1($pass),
+            'lectura' => $n_leer,
 
-            'id_rol' => $rol,
+            'insercion' => $n_agrega,
 
-            'estado' => $estado,
+			'actualizar' => $n_edita,
+			
+            'borrar' => $n_elimina,
 
 
         );
 
 
-        if ($this->Usuarios_model->save($data)) {
+        if ($this->Permisos_model->save($data)) {
 
 
 
-            redirect(base_url() . "Administrador/Usuarios/add");
+            redirect(base_url() . "Administrador/Permisos/add");
         } else {
 
-            redirect(base_url() . "Administrador/Usuarios/add");
+            redirect(base_url() . "Administrador/Permisos/add");
         }
     } //fin 
 	

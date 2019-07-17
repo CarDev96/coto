@@ -76,7 +76,7 @@
                                             
                            
                                               
-                                          <?php echo $info_permisos->id_usuario;?>
+                                          <?php echo $info_permisos->id_permiso;?>
             
                                             
                                             
@@ -138,7 +138,7 @@
                                             <td>
 
 
-                                                <?php if($info_permisos->eliminar == 0):?>
+                                                <?php if($info_permisos->borrar == 0):?>
 
                                                 <span class="fa fa-times"></span>
 
@@ -158,7 +158,7 @@
                                                             <div class="btn-group">
 
 
-                                                                <a class="btn btn-warning btn-update btn-sm btn-small" data-toggle="modal" data-target="#verticalcenter" onclick="mostrarModal(<?php echo $info_casas->id_casa; ?>)"><i class="fa fa-edit"></i></a>
+                                                                <a class="btn btn-warning btn-update btn-sm btn-small" data-toggle="modal" data-target="#verticalcenter" onclick="mostrarModal(<?php echo $info_permisos->id_permiso; ?>)"><i class="fa fa-edit"></i></a>
 
                                                                 <a data-id="<?php echo $info_permisos->id_permiso; ?>" id="eliminar_casa" class="btn btn-danger btn-remove btn-sm btn-small swal-btn-warning"><i class="fa fa-remove"></i></a>
 

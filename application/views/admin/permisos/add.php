@@ -35,7 +35,7 @@
                                 <h4 class="m-b-0 text-white">Asignar nuevo permiso</h4>
                             </div>
                             <div class="card-body">
-                                <form class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>Administrador/Usuarios/nuevo">
+                                <form class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>Administrador/Permisos/nuevo">
                                     <div class="form-body">
                                      
                                         <hr class="m-t-0 m-b-40">
@@ -45,7 +45,7 @@
                                                     <label class="control-label text-right col-md-3">Selecciona el Rol:</label>
                                                     <div class="col-md-5">
                                                     <select class="select2 form-control custom-select" name="id_rol" id="txtCasa" style="width: 100%; height:36px;">
-                                    <option value="1">Roles</option>
+                                    <option value="1">-- Selecciona --</option>
                                     <?php foreach($info_rol as $info_rol):?>
                                     
                                         <option value="<?php echo $info_rol->id_rol;?>" >

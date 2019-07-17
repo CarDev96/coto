@@ -36,7 +36,9 @@
                             </div>
                             <div class="card-body">
                                 <form class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>Principal/Ingresos/nuevo">
-                                    <div class="form-body">
+                                
+
+                                <div class="form-body">
                                      
                                         <hr class="m-t-0 m-b-40">
                                         <div class="row">
@@ -146,7 +148,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-
+                                            <input type="hidden" name="name_pago" value="" id="name_pago">
+                                            
                                             <div class="col-md-6">
                                                 <div class="form-group row">
                                                     <label class="control-label text-right col-md-3">Fecha en que se paga:</label>

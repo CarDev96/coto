@@ -290,6 +290,7 @@
     $('#txtconcepto').change(function() {
 
         var opcion = $(':selected', this).data('monto1');
+        var opcion2 = $(':selected', this).data('concep');
 
 
 
@@ -306,6 +307,7 @@
 
 
         $("#tch2").val(opcion);
+        $("#name_pago").val(opcion2);
 
 
 
@@ -367,15 +369,25 @@
 
         });
 
-        // Translated
-        $('.dropify-fr').dropify({
-            messages: {
-                default: 'Glissez-déposez un fichier ici ou cliquez',
-                replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
-                remove: 'Supprimer',
-                error: 'Désolé, le fichier trop volumineux'
-            }
-        });
+        $('.dropify2').dropify({
+
+messages: {
+    default: 'Arrastre una imagen que servira como foto de perfil.',
+    replace: 'Arrastre una imagen para remplazar.',
+    remove: 'Eliminar',
+    error: 'Ups, algo ha sucedido.'
+},
+error: {
+    'fileSize': 'El archivo adjunto es demasiado grande ({{ value }} max).',
+    'minWidth': 'The image width is too small ({{ value }}}px min).',
+    'maxWidth': 'The image width is too big ({{ value }}}px max).',
+    'minHeight': 'The image height is too small ({{ value }}}px min).',
+    'maxHeight': 'The image height is too big ({{ value }}px max).',
+    'imageFormat': 'The image format is not allowed ({{ value }} only).'
+}
+
+});        
+     
 
         // Used events
         var drEvent = $('#input-file-events').dropify();
@@ -594,32 +606,58 @@
     });
 </script>
 
+<!---
 <script>
 
 $(function() {
     "use strict";
      
 
-    $(".tst3").click(function(){    
+    
              <?php if($this->session->userdata("login")): ?>  
-             $.toast({
-            heading: 'Welcome to Monster admin',
-            text: 'Use the predefined ones, or specify a custom position object.',
+           $.toast({
+            heading: 'Inicio de desion correcto',
+            text: 'Bienvnenido.',
             position: 'top-right',
             loaderBg:'#ff6849',
             icon: 'success',
-            hideAfter: 3500, 
+            hideAfter: 3500,
             stack: 6
+            
           });
         <?php endif; ?>  
-        }
-        
 });
      
     
 </script>
+----->
 
 
+<!---
+<script type="text/javascript">
+
+var base_url = "";
+
+Notification.requestPermission(function(result) {
+  if (result === 'denied') {
+    console.log('Permission wasn\'t granted. Allow a retry.');
+    return;
+  } else if (result === 'default') {
+    console.log('The permission request was dismissed.');
+    return;
+  }
+  if (result === "granted") {
+        var notification = new Notification("Hi there!",{
+
+            body: "Inicio de sesión correcto",
+            icon: base_url + "assets/images/favicon.png"
+
+        });
+      }
+});
+</script>
+
+--->
 
 </body>
 

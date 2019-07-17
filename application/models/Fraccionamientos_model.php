@@ -13,7 +13,7 @@ class Fraccionamientos_model extends CI_Model
   public function getInfo()
   {
 
-    $resultados = $this->db->get("tb_casas");
+    $resultados = $this->db->query("select * from tb_casas where id_casa <> 0;");
     return $resultados->result();
   }
 

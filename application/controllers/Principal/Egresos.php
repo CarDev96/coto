@@ -3,7 +3,9 @@
 class Egresos extends CI_Controller {
 	
        public function __construct(){
-		parent::__construct();
+        parent::__construct();
+        
+        $this->permisos = $this->backend_lib->control();        
 
 		$this->load->model("Ingresos_model");
 		$this->load->model("Egresos_model");
@@ -32,6 +34,12 @@ class Egresos extends CI_Controller {
     }//fin function index()
 
     public function add(){
+
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }        
         
         $data = array(
             
@@ -54,6 +62,12 @@ class Egresos extends CI_Controller {
 	} //fin function add()
 	
 	public function nuevo(){
+
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }        
 
         $config['upload_path'] = './assets/images/gastos';
         $config['allowed_types'] = 'gif|jpg|png';
@@ -126,6 +140,13 @@ class Egresos extends CI_Controller {
 
 
     function crearMiniatura($file_name){
+
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+                
         $config['image_library'] = 'gd2';
         $config['source_image'] = 'assets/images/gastos/'.$file_name;
         $config['create_thumb'] = TRUE;

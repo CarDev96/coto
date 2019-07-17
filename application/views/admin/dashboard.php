@@ -134,7 +134,7 @@
                                 <div class="row">
                                     <div class="col-6 align-self-center">
                                         <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup>
-                                        <?php 
+                                       $ <?php 
                                                             
                                                             $capital =  $sum_ingresos->a;
 
@@ -166,6 +166,45 @@
                                 </div>
                             </div>
                         </div>
+                        <?php if (!empty($info_aviso)) : ?>
+                        <div class="card card-inverse card-warning">
+                            <div class="card-body" style="overflow-y: auto;height: 200px;width: 100%;">
+                                <div class="d-flex">
+                                    <div class="m-r-20 align-self-center">
+                                        <h1 class="text-white"><i class="ti-pie-chart"></i></h1></div>
+                                    <div>
+                                        <h3 class="card-title">Avisos del dia</h3>
+                                        <h6 class="card-subtitle"><?php
+                                        
+                                        
+                                        $dia_ac = date("d-m-Y");
+
+                                        echo $dia_ac;                                        
+                                        
+                                        
+                                        ?></h6> </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-6 align-self-center">
+
+
+                                    <?php foreach ($info_aviso as $info_aviso) : ?>
+
+                                    <h3 class="font-light text-white"><?php echo $info_aviso->a ?></h3>
+                                    <hr>
+
+                                    <?php endforeach; ?>
+                                  
+
+                                    </div>
+                                    <div class="col-6 p-t-10 p-b-20 text-right align-self-center">
+                                        <div class="spark-count2" style="height:65px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                        <?php endif; ?>                                          
                       
                     </div>
                     <!-- Column -->

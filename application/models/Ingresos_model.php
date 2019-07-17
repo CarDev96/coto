@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Ingresos_model extends CI_Model {
 
 
-    public function save($data,$id,$ingreso_int,$newDate2){
+    public function save($data,$id,$ingreso_int,$newDate2,$nombre_in){
 
         $estatusm = "Pago Mensual";
 
@@ -39,7 +39,7 @@ class Ingresos_model extends CI_Model {
 
         
 
-         if($ingreso_int == 200){
+         if($ingreso_int == 200 && $nombre_in == "Cuota mensual"){
 
 
            

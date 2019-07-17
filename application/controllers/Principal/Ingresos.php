@@ -7,6 +7,8 @@ class Ingresos extends CI_Controller
     {
         parent::__construct();
 
+        $this->permisos = $this->backend_lib->control();        
+
         if (!$this->session->userdata("login")) {
 
             redirect(base_url());
@@ -91,6 +93,11 @@ class Ingresos extends CI_Controller
     public function add()
     {
 
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
         $data = array(
 
             'info_casas' => $this->Ingresos_model->getinfo(),
@@ -110,6 +117,13 @@ class Ingresos extends CI_Controller
     public function nuevo()
     {
 
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+
+        $nombre_in = $this->input->post("name_pago");
 
         $id_casa = $this->input->post("id_casa"); //id_casa
 
@@ -158,7 +172,7 @@ class Ingresos extends CI_Controller
         );
 
 
-        if ($this->Ingresos_model->save($data, $id_casa2, $ingreso_int, $newDate2)) {
+        if ($this->Ingresos_model->save($data, $id_casa2, $ingreso_int, $newDate2,$nombre_in)) {
 
 
 

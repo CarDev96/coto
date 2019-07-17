@@ -68,6 +68,8 @@ class Auth extends CI_Controller {
 				'id_usuario' => $res->id_usuario, 
 				'username' => $res->username,
 				'rol' => $res->id_rol,
+				'id_casa' => $res->id_casa,
+				'foto_perfil' => $res->foto_perfil,
 				'login' => TRUE
 			);
 			

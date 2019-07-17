@@ -28,7 +28,7 @@ class Permisos_model extends CI_Model {
     public function save($data){
 
   
-        $resultado = $this->db->insert("tb_usuarios",$data);
+        $resultado = $this->db->insert("tb_permisos",$data);
 
          return $resultado;
 

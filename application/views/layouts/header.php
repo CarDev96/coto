@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/dropify/dist/css/dropify.min.css">
 
     <link href="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
-
+    <link href="<?php echo base_url(); ?>assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
     <!-- morris CSS -->
     <link href="<?php echo base_url(); ?>assets/plugins/morrisjs/morris.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />

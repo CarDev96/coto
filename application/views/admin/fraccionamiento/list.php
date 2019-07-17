@@ -44,7 +44,9 @@
                                                 <th>Habitada</th>
                                                 <th>Estatus Pago</th>
                                                 <th>Ver perfil</th>
+                                                <?php if($permisos->insercion==1):?>
                                                 <th>Opciones</th>
+                                                <?php endif;?>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -113,7 +115,7 @@
 
                                                         </td>
 
-
+                                                        <?php if($permisos->insercion==1):?>
                                                         <td align="center">
 
 
@@ -124,7 +126,7 @@
 
                                                                 <a data-id="<?php echo $info_casas->id_casa; ?>" id="eliminar_casa" class="btn btn-danger btn-remove btn-sm btn-small swal-btn-warning"><i class="fa fa-remove"></i></a>
 
-                                                                
+
 
 
                                                             </div>
@@ -132,7 +134,7 @@
 
 
                                                         </td>
-
+                                                        <?php endif;?>
 
 
 
@@ -173,11 +175,11 @@
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                         </div>
                         <div class="modal-body" style="overflow-y: auto;height: 500px;width: 100%;" id="content">
-                        
+
 
 
                         </div>
-                        
+
                     </div>
                     <!-- /.modal-content -->
                 </div>

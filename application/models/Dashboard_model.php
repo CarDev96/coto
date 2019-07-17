@@ -23,6 +23,24 @@ class Dashboard_model extends CI_Model {
     }
     
 
+    public function avisos(){
+
+  
+        $resultado = $this->db->query("select mensaje_anuncio as a from tb_avisos where curdate() between fecha_aviso and fecha_retiro order by id_aviso desc;");
+
+		return $resultado->result();
+
+    }
+
+    public function user($id){
+
+  
+        $resultado = $this->db->query("select * from tb_usuarios where id_usuario = $id;");
+
+		return $resultado->row();
+
+    }    
+    
 //------------------------- GRAFICA    -----------------------------------------------------------------------
 
 

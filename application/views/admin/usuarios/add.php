@@ -112,6 +112,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label text-right col-md-3">Tipo de usuario:</label>
                                                     <div class="col-md-9">
+                                                    <?php if($this->session->userdata("rol") == 1):?>                                                                                  
                                                     <select class="select2 form-control custom-select" id="txtconcepto" name="rol" style="width: 100%; height:36px;">
                                     <option>-Tipo usuario-</option>
                                     <?php foreach($info_rol as $info_rol):?>
@@ -122,6 +123,18 @@
 
                                         <?php endforeach;?>
                                 </select>
+                                        <?php else:?>
+                                        <select class="select2 form-control custom-select" id="txtconcepto" name="rol" style="width: 100%; height:36px;">
+                                    <option>-Tipo usuario-</option>
+                                    <?php foreach($info_rol2 as $info_rol2):?>
+                                    
+                                        <option value="<?php echo $info_rol2->id_rol;?>" >
+                                            <?php echo $info_rol2->name_rol ?>
+                                        </option>
+
+                                        <?php endforeach;?>
+                                </select>                                        
+                                                    <?php endif;?>
                                                     </div>
                                                 </div>
                                             </div>
