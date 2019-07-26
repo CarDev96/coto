@@ -5,6 +5,8 @@ class Dashboard extends CI_Controller {
 	
        public function __construct(){
 		parent::__construct();
+
+        $this->avisos = $this->backend_lib->control();  		
 		
 		if(!$this->session->userdata("login")){
 
@@ -40,6 +42,8 @@ $this->load->model("Egresos_model");
 	{
 
 		$id_user = $this->session->userdata("id_usuario");
+
+		
 	     
       $data = array(
 
@@ -84,16 +88,20 @@ $this->load->model("Egresos_model");
 		'sum_diciembre' => $this->Dashboard_model->sumdiciembre(),
 		'sum_diciembre_gasto' => $this->Dashboard_model->sumdiciembregasto(),		
 
-		'info_aviso' => $this->Dashboard_model->avisos(),		
+		'info_aviso' => $this->Dashboard_model->avisos(),
 
-		'info_usuario' => $this->Dashboard_model->user($id_user)	
+		'info_aviso2' => $this->Dashboard_model->avisos2(),		
+
+		'info_usuario' => $this->Dashboard_model->user($id_user),
+		
+
 
 
 
 	  );
 		
 		$this->load->view("layouts/header");
-		$this->load->view("layouts/aside",$data);
+		$this->load->view("layouts/aside");
 		$this->load->view("admin/dashboard",$data);
 		$this->load->view("layouts/footer");
 

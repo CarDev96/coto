@@ -127,7 +127,7 @@
     </div>
 
     <div class="form-actions pull-right">
-        <a class="btn btn-success" onclick="actualizar(<?php echo $info_up->id_casa; ?>)"> <i class="fa fa-save"></i> Guardar cambios</a>
+        <a class="btn btn-success" onclick="actualizar(<?php echo $info_up->id_casa;?>)"> <i class="fa fa-save"></i> Guardar cambios</a>
         <button button type="button" class="btn btn-info waves-effect" id="btnactualizar" data-dismiss="modal"></i> Cerrar</button>
 
     </div>

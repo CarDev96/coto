@@ -76,6 +76,7 @@
                             <ul class="nav nav-tabs profile-tab" role="tablist">
                                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Cuotas obligatorias</a> </li>
                                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Ingresos Varios</a> </li>
+                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#abono" role="tab">Abonos</a> </li>
 
                             </ul>
                             <!-- Tab panes -->
@@ -91,78 +92,78 @@
                                                     <tr>
                                                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Meses</th>
                                                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="0">2019</th>
-                                                   
+
 
                                                     </tr>
                                                 </thead>
 
                                                 <tbody>
-                                                
-                                                <?php
-                                                
-                                                $data = array(
-            
-                                                    'Enero',
-                                                    'Febrero',
-                                                    'Marzo',
-                                                    'Abril',
-                                                    'Mayo',
-                                                    'Junio',
-                                                    'Julio',
-                                                    'Agosto',
-                                                    'Septiempre',
-                                                    'Octubre',
-                                                    'Noviembre',
-                                                    'Diciembre',
+
+                                                    <?php
+
+                                                    $data = array(
+
+                                                        'Enero',
+                                                        'Febrero',
+                                                        'Marzo',
+                                                        'Abril',
+                                                        'Mayo',
+                                                        'Junio',
+                                                        'Julio',
+                                                        'Agosto',
+                                                        'Septiempre',
+                                                        'Octubre',
+                                                        'Noviembre',
+                                                        'Diciembre',
 
 
-                                        
-                                        
-                                                    ); 
-                                        
-                                                
-                                                
-                                                ?>
-
-                                                <?php for($i=1; $i<=12;$i++):?>
-                                                
-                                                <?php $mes= 0;?>
-                                                <tr>
-                                                <?php foreach($info_perfil3 as $n):?> 
-
-                                                
-
-                                                <?php if($n->mes_suscrip == $i && $n->id_concepto_in == 1):?>
-                        
-                                                <?php $mes = 1;?>
-
-                                            <?php endif; ?>
-
-                                                <?php if($n->mes_suscrip == 1 && $n->id_concepto_in == 5):?>
-                        
-                                                <?php $mes = 1;?>
-
-                                                <?php endif; ?>                                            
-                                                    
-                                                    
-                                                <?php endforeach; ?>
-
-                                                <?php if($mes==1):?>
-                                                    <td><?php echo $data[$i-1]; ?></td>
-                                                    <td><span class="mdi mdi-check"></span></td>
-                                                                                                
-
-                                                    <?php else: ?>
-                                                    <td><?php echo $data[$i-1]; ?></td>                                                    
-                                                    <td>x</td>
-                                                                                                      
 
 
-                                            <?php endif;?>
-                                                
-                                                </tr>
-                                                <?php endfor;?>
-                                                
+                                                    );
+
+
+
+                                                    ?>
+
+                                                    <?php for ($i = 1; $i <= 12; $i++) : ?>
+
+                                                        <?php $mes = 0; ?>
+                                                        <tr>
+                                                            <?php foreach ($info_perfil3 as $n) : ?>
+
+
+
+                                                                <?php if ($n->mes_suscrip == $i && $n->id_concepto_in == 1) : ?>
+
+                                                                    <?php $mes = 1; ?>
+
+                                                                <?php endif; ?>
+
+                                                                <?php if ($n->mes_suscrip == 1 && $n->id_concepto_in == 5) : ?>
+
+                                                                    <?php $mes = 1; ?>
+
+                                                                <?php endif; ?>
+
+
+                                                            <?php endforeach; ?>
+
+                                                            <?php if ($mes == 1) : ?>
+                                                                <td><?php echo $data[$i - 1]; ?></td>
+                                                                <td><span class="mdi mdi-check"></span></td>
+
+
+                                                            <?php else : ?>
+                                                                <td><?php echo $data[$i - 1]; ?></td>
+                                                                <td>x</td>
+
+
+
+                                                            <?php endif; ?>
+
+                                                        </tr>
+                                                    <?php endfor; ?>
+
                                                 </tbody>
 
                                             </table>
@@ -174,83 +175,83 @@
                                                     <tr>
                                                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Meses</th>
                                                         <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="0">2020</th>
-                                                   
+
 
                                                     </tr>
                                                 </thead>
 
                                                 <tbody>
-                                                
-                                                <?php
-                                                
-                                                $data = array(
-            
-                                                    'Enero',
-                                                    'Febrero',
-                                                    'Marzo',
-                                                    'Abril',
-                                                    'Mayo',
-                                                    'Junio',
-                                                    'Julio',
-                                                    'Agosto',
-                                                    'Septiempre',
-                                                    'Octubre',
-                                                    'Noviembre',
-                                                    'Diciembre',
+
+                                                    <?php
+
+                                                    $data = array(
+
+                                                        'Enero',
+                                                        'Febrero',
+                                                        'Marzo',
+                                                        'Abril',
+                                                        'Mayo',
+                                                        'Junio',
+                                                        'Julio',
+                                                        'Agosto',
+                                                        'Septiempre',
+                                                        'Octubre',
+                                                        'Noviembre',
+                                                        'Diciembre',
 
 
-                                        
-                                        
-                                                    ); 
-                                        
-                                                
-                                                
-                                                ?>
-
-                                                <?php for($i=1; $i<=12;$i++):?>
-                                                
-                                                <?php $mes= 0;?>
-                                                <tr>
-                                                <?php foreach($info_perfil4 as $n):?> 
-
-                                                
-
-                                                <?php if($n->mes_suscrip == $i && $n->id_concepto_in == 1):?>
-                        
-                                                <?php $mes = 1;?>
-
-                                            <?php endif; ?>
-
-                                                <?php if($n->mes_suscrip == 1 && $n->id_concepto_in == 5):?>
-                        
-                                                <?php $mes = 1;?>
-
-                                                <?php endif; ?>                                            
-                                                    
-                                                    
-                                                <?php endforeach; ?>
-
-                                                <?php if($mes==1):?>
-                                                    <td><?php echo $data[$i-1]; ?></td>
-                                                    <td><span class="mdi mdi-check"></span></td>
-                                                                                                
-
-                                                    <?php else: ?>
-                                                    <td><?php echo $data[$i-1]; ?></td>                                                    
-                                                    <td>x</td>
-                                                                                                      
 
 
-                                            <?php endif;?>
-                                                
-                                                </tr>
-                                                <?php endfor;?>
-                                                
+                                                    );
+
+
+
+                                                    ?>
+
+                                                    <?php for ($i = 1; $i <= 12; $i++) : ?>
+
+                                                        <?php $mes = 0; ?>
+                                                        <tr>
+                                                            <?php foreach ($info_perfil4 as $n) : ?>
+
+
+
+                                                                <?php if ($n->mes_suscrip == $i && $n->id_concepto_in == 1) : ?>
+
+                                                                    <?php $mes = 1; ?>
+
+                                                                <?php endif; ?>
+
+                                                                <?php if ($n->mes_suscrip == 1 && $n->id_concepto_in == 5) : ?>
+
+                                                                    <?php $mes = 1; ?>
+
+                                                                <?php endif; ?>
+
+
+                                                            <?php endforeach; ?>
+
+                                                            <?php if ($mes == 1) : ?>
+                                                                <td><?php echo $data[$i - 1]; ?></td>
+                                                                <td><span class="mdi mdi-check"></span></td>
+
+
+                                                            <?php else : ?>
+                                                                <td><?php echo $data[$i - 1]; ?></td>
+                                                                <td>x</td>
+
+
+
+                                                            <?php endif; ?>
+
+                                                        </tr>
+                                                    <?php endfor; ?>
+
                                                 </tbody>
 
-                                            </table>                                            
+                                            </table>
 
-                                        <hr>
+                                            <hr>
 
                                         </div>
                                     </div>
@@ -259,86 +260,168 @@
                                 <!--second tab-->
                                 <div class="tab-pane" id="profile" role="tabpanel">
                                     <div class="card-body">
-                 
-                                    <h6 class="card-subtitle">Se muestra un listado de los ingresos registrados.</h6>
-                                <div class="table-responsive m-t-40">
-                                <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
-                                        <thead>
-                                            <tr>
-                                                <th>Fecha de ingreso</th>
-                                                <th>Tipo de ingreso</th>
-                                                <th>Descripcion</th>                                               
-                                                <th>Monto</th>                                                
-                                               
 
-                                            </tr>
-                                        </thead>
-
-                                        <tfoot>
-                                            <tr>
-                                                <th>Total ingreso por concepto</th>
-                                                <th></th>
-                                                
-                                                
-                                                <th></th>
-                                                <th>$<?php echo $info_sump->a; ?></th>
-                                            </tr>
-                                        </tfoot>                                        
-                                        <tbody>
-                                        <?php if(!empty($info_perfil5)):?>
-                                    <?php foreach($info_perfil5 as $info_perfil5):?>
-                                        <tr>
-                                          <td>
-                                            
-                           
-                                              
-                                          <?php echo $info_perfil5->fecha_ingreso;?>
-            
-                                            
-                                            
-                                          
-                                          
-                                          
-                                          </td>
-                                            <td><?php echo $info_perfil5->name;?></td>
-
-                                            <td><?php echo $info_perfil5->descripcion_ingreso;?></td>                                           
-
-                                            
-                                            
-                                            <td><?php echo $info_perfil5->ingreso;?></td>                                                
-
-                                         
-                                            
-                                            
-                                            
-                                          
-                                                                                 
-                                          
-                                         
-
-                                          
-                                          
-                                
-          
-                                            
-                      
-
-                                       
-       
-                                        </tr>
-                                    <?php endforeach;?>
-                                <?php endif;?>
+                                        <h6 class="card-subtitle">Se muestra un listado de los ingresos registrados.</h6>
+                                        <div class="table-responsive m-t-40">
+                                            <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fecha de ingreso</th>
+                                                        <th>Tipo de ingreso</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Monto</th>
 
 
-                              </tbody>
-                                    </table>
-                                </div>                                    
+                                                    </tr>
+                                                </thead>
+
+                                                <tfoot>
+                                                    <tr>
+                                                        <th>Total ingreso por concepto</th>
+                                                        <th></th>
+
+
+                                                        <th></th>
+                                                        <th>$<?php echo $info_sump->a; ?></th>
+                                                    </tr>
+                                                </tfoot>
+                                                <tbody>
+                                                    <?php if (!empty($info_perfil5)) : ?>
+                                                        <?php foreach ($info_perfil5 as $info_perfil5) : ?>
+                                                            <tr>
+                                                                <td>
+
+
+
+                                                                    <?php echo $info_perfil5->fecha_ingreso; ?>
+
+
+
+
+
+
+                                                                </td>
+                                                                <td><?php echo $info_perfil5->name; ?></td>
+
+                                                                <td><?php echo $info_perfil5->descripcion_ingreso; ?></td>
+
+
+
+                                                                <td><?php echo $info_perfil5->ingreso; ?></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
 
 
                                     </div>
                                 </div>
-                   
+
+                                <div class="tab-pane" id="abono" role="tabpanel">
+                                    <div class="card-body">
+
+                                        <h6 class="card-subtitle">Se muestra un listado de los abonos registrados.</h6>
+                                        <div class="table-responsive m-t-40">
+                                            <table id="zero_config2" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Fecha de ingreso</th>
+                                                        <th>Tipo de ingreso</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Fecha correspondiente</th>
+                                                        <th>Estatus</th>
+
+                                                        <th>Monto</th>
+                                                        <th>Liquidar</th>
+
+
+                                                    </tr>
+                                                </thead>
+
+
+                                                <tbody>
+                                                    <?php if (!empty($info_perfil6)) : ?>
+                                                        <?php foreach ($info_perfil6 as $info_perfil6) : ?>
+                                                            <tr>
+                                                                <td>
+
+
+
+                                                                    <?php echo $info_perfil6->fecha_ingreso; ?>
+
+
+
+
+
+
+                                                                </td>
+                                                                <td><?php echo $info_perfil6->name; ?></td>
+
+                                                                <td><?php echo $info_perfil6->descripcion_ingreso; ?></td>
+
+                                                                <td><?php echo $info_perfil6->fecha_correspondiente; ?></td>
+
+                                                                <td><?php echo $info_perfil6->estatus_p; ?></td>
+
+
+
+                                                                <td><?php echo $info_perfil6->ingreso; ?></td>
+
+                                                                <td><a class="btn btn-warning btn-update btn-sm btn-small" data-toggle="modal" data-target="#verticalcenter" onclick="liquidar(<?php echo $info_perfil6->id_abono; ?>)"><i class="fa fa-edit"></i></a></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    <?php endif; ?>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+
+                                    </div>
+                                </div>
 
 
                             </div>
@@ -357,8 +440,27 @@
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
+            <!-- sample modal content -->
+            <div id="verticalcenter" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-green">
+                            <h4 class="modal-title" id="vcenter">Liquidar mensualidad</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body" style="overflow-y: auto;height: 358px;width: 100%;" id="content">
 
-            <!-- ============================================================== -->
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->

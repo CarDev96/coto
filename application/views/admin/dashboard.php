@@ -186,12 +186,12 @@
                                 </div>
                                 
                                 <div class="row">
-                                    <div class="col-6 align-self-center">
+                                    <div class="col-8 align-self-center">
 
 
                                     <?php foreach ($info_aviso as $info_aviso) : ?>
 
-                                    <h3 class="font-light text-white"><?php echo $info_aviso->a ?></h3>
+                                    <h3 class="font-light text-white"><?php echo $info_aviso->mensaje_anuncio ?></h3>
                                     <hr>
 
                                     <?php endforeach; ?>

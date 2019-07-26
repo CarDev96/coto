@@ -15,9 +15,7 @@
                         <li class="breadcrumb-item active">Perfil</li>
                     </ol>
                 </div>
-                <div>
-                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-                </div>
+             
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -75,8 +73,11 @@
 
                                 <div class="tab-pane active" id="home" role="tabpanel">
                                     <div class="card-body">
+                                    <?php if($info_usuario->pass == "1841363b0b95a95f04d73c722d7003df048049bf"): ?>                                        
                                         <form class="form-horizontal form-material" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>Administrador/Usuarios/actualizar_p" autocomplete="off">
-
+                                        <?php else:?>
+                                        <form class="form-horizontal form-material" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>Administrador/Usuarios/actualizar_p2" autocomplete="off">
+                                        <?php endif; ?>                                        
                                     <input type="hidden" name="id_usuario" value="<?php echo $info_usuario->id_usuario?>">                                       
                                     <input type="hidden" name="id_casa" value="<?php echo $info_usuario->id_casa?>">                                       
 
@@ -94,9 +95,19 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-12">Password</label>
+
+                                                <?php if($info_usuario->pass == "1841363b0b95a95f04d73c722d7003df048049bf"): ?>
                                                 <div class="col-md-12">
                                                     <input type="password" value="cotopriv12" name="pass" class="form-control form-control-line">
                                                 </div>
+
+                                                <?php else:?>
+
+                                                <div class="col-md-12">
+                                                    <input type="password" value="<?php echo $info_usuario->pass?>" name="pass2" class="form-control form-control-line" readonly>
+                                                </div>
+
+                                                <?php endif; ?>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-md-12">Foto de perfil</label>

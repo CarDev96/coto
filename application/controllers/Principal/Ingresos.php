@@ -87,7 +87,26 @@ class Ingresos extends CI_Controller
         $this->load->view("layouts/aside");
         $this->load->view("admin/ingresos/list_varios", $data);
         $this->load->view("layouts/footer");
-    } //fin function tags()    
+    } //fin function tags() 
+    
+    
+    public function recibo($id)
+    {
+
+
+            $data = array(
+
+                'info_recibo' => $this->Ingresos_model->getrecibo($id),
+
+
+            );
+  
+
+        $this->load->view("layouts/header");
+        $this->load->view("layouts/aside");
+        $this->load->view("admin/ingresos/recibo",$data);
+        $this->load->view("layouts/footer");
+    } //fin function tags()     
 
 
     public function add()

@@ -52,7 +52,10 @@ class Fraccionamientos extends CI_Controller {
             'info_perfil3' => $this->Fraccionamientos_model->getInfop3($id),              
             'info_perfil4' => $this->Fraccionamientos_model->getInfop4($id),              
             'info_perfil5' => $this->Fraccionamientos_model->getInfop5($id),              
+            'info_perfil6' => $this->Fraccionamientos_model->getInfop6($id),              
             'info_sump' => $this->Fraccionamientos_model->getsump($id),              
+            'info_sump2' => $this->Fraccionamientos_model->getsump2($id),              
+              
 
 
             ); 
@@ -267,6 +270,60 @@ class Fraccionamientos extends CI_Controller {
                 
     }//fin 	
 
+	public function liq(){
+
+               
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+
+        $id_casa = $this->input->post("id_casa");
+
+        $id_abono = $this->input->post("id_abono");
+
+        $id_ingreso = $this->input->post("id_ingreso");
+
+        $liquidacion = $this->input->post("liquidacion");
+
+        $monto_mes = $this->input->post("monto_mes");
+         
+        $fecha_correspondiente = $this->input->post("fecha_correspondiente");
+     
+		$liquidacion = $this->input->post("liquidacion");
+    
+
+        $estatus = "Liquidado";
+
+        $ingreso_int = intVal($monto_mes);
+
+             
+       $data = array(
+            
+            
+        
+            'monto_liquidacion' => $liquidacion, 
+           
+            'estatus_p' => $estatus, 
+
+                     ); 
+        
+      
+            if($this->Fraccionamientos_model->liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion,$ingreso_int,$id_ingreso) == true)
+                  
+                  
+                  redirect(base_url()."Principal/Fraccionamientos");
+                
+                else
+                          
+                    redirect(base_url()."Principal/Fraccionamientos");
+                    
+                
+          
+                
+    }//fin 	    
+
     public function view($id){
         
               
@@ -293,6 +350,36 @@ class Fraccionamientos extends CI_Controller {
         
         
     }//fin function view
+
+
+
+    public function view_a($id){
+        
+              
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+        
+        $data = array(
+            
+
+            
+            'info_monto' => $this->Fraccionamientos_model->get_monto(),
+            'info_a' => $this->Fraccionamientos_model->get_a($id),
+            
+        
+        
+        );
+            
+            
+        
+		$this->load->view("admin/fraccionamiento/view_abono",$data);
+        
+        
+        
+    }//fin function view    
 
     public function eliminar(){
     

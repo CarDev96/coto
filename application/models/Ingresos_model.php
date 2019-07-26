@@ -5,16 +5,21 @@ class Ingresos_model extends CI_Model {
 
 
     public function save($data,$id,$ingreso_int,$newDate2,$nombre_in){
-
+        
+        setlocale(LC_TIME,"es_ES");
         $estatusm = "Pago Mensual";
 
         $estatusa = "Pago Anual"; 
+
+        $estatus_abono = "Abono"; 
 
          $this->db->insert("tb_ingreso",$data);
 
          $last_id=$this->db->insert_id(); 
 
          $date=date_create("$newDate2");
+
+         $date2=date_create("$newDate2");
 
          $anio = date("Y", strtotime($newDate2));
 
@@ -33,10 +38,19 @@ class Ingresos_model extends CI_Model {
 
         }
          $df = date_format($date,"Y-m-d");
+         
+         $df2 = date_format($date2,"Y-m-d");
+
+         $mes_nom = date("F",strtotime($df));
 
          $resultado2 = $this->db->query("insert into tb_suscrip(dia_suscrip,mes_suscrip,ano_suscrip,vencimiento_suscrip,id_casa,id_ingreso)values($dia,$mes,$anio,'$df',$id,$last_id)");                  
          
+        if($nombre_in == "Abono mensual"){
 
+            $resultado3 = $this->db->query("insert into tb_abonos(monto_abono,mes_correspondiente,id_ingreso,estatus_p,fecha_correspondiente) values($ingreso_int,'$mes_nom',$last_id,'$estatus_abono','$df2');");                  
+     
+
+        }
         
 
          if($ingreso_int == 200 && $nombre_in == "Cuota mensual"){
@@ -109,6 +123,12 @@ class Ingresos_model extends CI_Model {
             $resultados = $this->db->query("select sum(a.ingreso) as a from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in inner join tb_casas as c on a.id_casa = c.id_casa where a.id_concepto_in = 2 or a.id_concepto_in = 6;");
              return $resultados->row();
             }  
+
+            public function getrecibo($id){
+	 
+                $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in inner join tb_suscrip as c on a.id_ingreso = c.id_ingreso inner join tb_casas as d on a.id_casa = d.id_casa where a.id_ingreso=$id;");
+                 return $resultados->row();
+                }              
             
             
 

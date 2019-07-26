@@ -11,11 +11,11 @@
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        
+
                         <li class="breadcrumb-item active">Ingresos Total</li>
                     </ol>
                 </div>
-        
+
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -32,18 +32,19 @@
 
                         <div class="card">
                             <div class="card-body">
-                                
+
                                 <h6 class="card-subtitle">Se muestra un listado de los ingresos.</h6>
                                 <div class="table-responsive m-t-40">
-                                <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+                                    <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
-                                            <th>Id ingreso</th>
+                                                <th>Id ingreso</th>
                                                 <th>Tipo de ingreso</th>
                                                 <th>Descripción de ingreso</th>
-                                                <th>Fecha de pago</th>                                                   
-                                                <th>Monto</th>                                                  
-                                               
+                                                <th>Fecha de pago</th>
+                                                <th>Imprimir recibo</th>
+                                                <th>Monto</th>
+
 
                                             </tr>
                                         </thead>
@@ -54,59 +55,77 @@
                                                 <th></th>
                                                 <th></th>
                                                 <th></th>
-                                                
-                                                <th>$<?php echo $info_sum_total->a;?></th>
+                                                <th></th>
+
+                                                <th>$<?php echo $info_sum_total->a; ?></th>
                                             </tr>
-                                        </tfoot>                                        
+                                        </tfoot>
                                         <tbody>
-                                        <?php if(!empty($info_total)):?>
-                                    <?php foreach($info_total as $info_total):?>
-                                        <tr>
-                                          <td>
-                                            
-                           
-                                              
-                                          <?php echo $info_total->id_ingreso;?>
-            
-                                            
-                                            
-                                          
-                                          
-                                          
-                                          </td>
-                                            <td><?php echo $info_total->name;?></td>
-
-                                            <td><?php echo $info_total->descripcion_ingreso;?></td>                                           
-
-                                            <td><?php echo $info_total->fecha_ingreso;?></td>    
-                                            
-
-                                            <td>$<?php echo $info_total->ingreso;?></td>                                                    
-
-                                               
-                                            
-                                            
-                                            
-                                          
-                                                                                 
-                                          
-                                         
-
-                                          
-                                          
-                                
-          
-                                            
-                      
-
-                                       
-       
-                                        </tr>
-                                    <?php endforeach;?>
-                                <?php endif;?>
+                                            <?php if (!empty($info_total)) : ?>
+                                                <?php foreach ($info_total as $info_total) : ?>
+                                                    <tr>
+                                                        <td>
 
 
-                              </tbody>
+
+                                                            <?php echo $info_total->id_ingreso; ?>
+
+
+
+
+
+
+                                                        </td>
+                                                        <td><?php echo $info_total->name; ?></td>
+
+                                                        <td><?php echo $info_total->descripcion_ingreso; ?></td>
+
+                                                        <td><?php echo $info_total->fecha_ingreso; ?></td>
+
+
+                                                        <td align="center">
+
+
+                                                            <div class="btn-group">
+
+
+                                                                <a href="<?php echo base_url(); ?>Principal/Ingresos/recibo/<?php echo $info_total->id_ingreso; ?>" class="btn btn-primary btn-circle btn-small"><i class="fa fa-eye"></i></a>
+
+
+
+
+                                                            </div>
+
+
+
+                                                        </td>
+
+                                                        <td>$<?php echo $info_total->ingreso; ?></td>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php endif; ?>
+
+
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -117,14 +136,14 @@
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
                 <!-- ============================================================== -->
- 
+
                 <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
- 
+
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->

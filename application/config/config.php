@@ -83,7 +83,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language'] = 'spanish';
 
 /*
 |--------------------------------------------------------------------------
@@ -143,7 +143,7 @@ $config['subclass_prefix'] = 'MY_';
 | Note: This will NOT disable or override the CodeIgniter-specific
 |	autoloading (application/config/autoload.php)
 */
-$config['composer_autoload'] = FALSE;
+$config['composer_autoload'] = __DIR__.'/../../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------

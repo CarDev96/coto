@@ -103,7 +103,21 @@
                                 
                                 
                             </ul>
-                        </li>                        
+                        </li>  
+                        
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-ticket-account"></i><span class="hide-menu">Visitas</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                            <?php if($this->session->userdata("rol") <> 4):?>                                                                
+                                <li><a href="<?php echo base_url();?>Principal/Visitas/add">Nueva </a></li>
+                                <?php endif;?>                                  
+                                <li><a href="<?php echo base_url();?>Principal/Visitas">Lista Visitas </a></li>
+                             
+                                
+                                
+                                
+                            </ul>
+                        </li>                          
+
                         <?php if($this->session->userdata("rol") == 1 || $this->session->userdata("rol") == 2):?>    
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap"><i class="mdi mdi-account-key">Administrador</i></li>                        

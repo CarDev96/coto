@@ -71,7 +71,7 @@
                                         <div class="row">
                                         <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Fecha en que publica:</label>
+                                                    <label class="control-label text-right col-md-3">Fecha en que retira:</label>
                                                     <div class="col-md-9">
 
                                                         <input type="text" class="form-control" name="fecha_retiro" placeholder="" id="mdate2">

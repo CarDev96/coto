@@ -56,13 +56,39 @@
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url(); ?>js/datatables-net/datatables.min.js"></script>
 
+<script src="<?php echo base_url(); ?>assets/plugins/inputmask/dist/jquery.inputmask.bundle.js"></script>
+    <script src="<?php echo base_url(); ?>js/mask.init.js"></script>
+    
+    <script src="<?php echo base_url(); ?>js/jquery.PrintArea.js" type="text/JavaScript"></script>
 
-<script src="https://cdn.datatables.net/fixedheader/3.1.5/js/dataTables.fixedHeader.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js" crossorigin="anonymous"></script>
 
+<script src="<?php echo base_url(); ?>js/dataTables.buttons.js" ></script>
+<script src="<?php echo base_url(); ?>js/buttons.flash.js" ></script>
+<script src="<?php echo base_url(); ?>js/jszip.js" ></script>
+<script src="<?php echo base_url(); ?>js/pdfmake.js" ></script>
+<script src="<?php echo base_url(); ?>js/vfs_fonts.js" ></script>
+<script src="<?php echo base_url(); ?>js/buttons.html5.js" ></script>
+<script src="<?php echo base_url(); ?>js/buttons.print.js" ></script>
 
 <!-- -->
+
+<script>
+    $(document).ready(function() {
+        $("#print").click(function() {
+            var mode = 'iframe'; //popup
+            var close = mode == "popup";
+            var options = {
+                mode: mode,
+                popClose: close
+            };
+            $("div.printableArea").printArea(options);
+        });
+    });
+    </script>
+
+
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
 
@@ -164,6 +190,34 @@
 <!------------------------------------>
 
 
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+    function liquidar(id) {
+        if (id != null) {
+            $.ajax({
+
+                url: base_url + "Principal/Fraccionamientos/view_a/" + id,
+                type: "POST",
+                data: {
+                    'id_abono': id
+                },
+                success: function(respuesta) {
+                    $("#verticalcenter .modal-body").html(respuesta);
+                    
+
+                 
+
+
+
+                }
+            });
+        }
+    }
+</script>
+<!------------------------------------>
+
+
 <!-- --->
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
@@ -200,9 +254,81 @@
 </script>
 <!------------------------------------>
 
+
+<!-- --->
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+
+
+    function liquid() {
+
+        var dataString = $("#form_liq").serialize();
+
+
+
+        $.ajax({
+
+            url: base_url + "Principal/Fraccionamientos/liq",
+            type: "POST",
+            data: dataString,
+            success: function(respuesta) {
+
+                swal({
+                        title: "Liquidad!",
+                        text: "Mensualidad liquidada correctamente.",
+                        type: "success"
+                    },
+                    function() {
+                        location.reload();
+                    }
+                );
+
+            }
+        });
+
+    }
+</script>
+<!------------------------------------>
+
+
 <script>
     $(document).ready(function() {
         var table = $('#zero_config').DataTable({
+            responsive: true,
+            dom: 'Bfrtip',
+            buttons: [
+            'csv', 'excel', 'pdf', 'print'
+        ],            
+            language: {
+                "decimal": "",
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                "infoEmpty": "Mostrando 0 to 0 of 0 Entradas",
+                "infoFiltered": "(Filtrado de _MAX_ total entradas)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Entradas",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscar:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            }
+        });
+
+        
+
+
+    });
+
+    $(document).ready(function() {
+        var table = $('#zero_config2').DataTable({
             responsive: true,
             language: {
                 "decimal": "",
@@ -226,10 +352,10 @@
             }
         });
 
-        new $.fn.dataTable.FixedHeader(table);
+        
 
 
-    });
+    });    
 </script>
 
 <script>
@@ -606,59 +732,34 @@ error: {
     });
 </script>
 
-<!---
-<script>
-
-$(function() {
-    "use strict";
-     
-
-    
-             <?php if($this->session->userdata("login")): ?>  
-           $.toast({
-            heading: 'Inicio de desion correcto',
-            text: 'Bienvnenido.',
-            position: 'top-right',
-            loaderBg:'#ff6849',
-            icon: 'success',
-            hideAfter: 3500,
-            stack: 6
-            
-          });
-        <?php endif; ?>  
-});
-     
-    
-</script>
------>
 
 
-<!---
-<script type="text/javascript">
-
-var base_url = "";
-
-Notification.requestPermission(function(result) {
-  if (result === 'denied') {
-    console.log('Permission wasn\'t granted. Allow a retry.');
-    return;
-  } else if (result === 'default') {
-    console.log('The permission request was dismissed.');
-    return;
-  }
-  if (result === "granted") {
-        var notification = new Notification("Hi there!",{
-
-            body: "Inicio de sesión correcto",
-            icon: base_url + "assets/images/favicon.png"
-
-        });
-      }
-});
-</script>
-
---->
 
 </body>
+
+
+<script>
+function randomString(length, chars) {
+    var result = '';
+    for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+    return result;
+}
+
+$('#txt_visita').change(function() {
+
+
+var random = randomString(8,'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
+$("#codigo_a").val(random);
+
+
+
+
+
+});
+
+
+
+</script>
 
 </html>
