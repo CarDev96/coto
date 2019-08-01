@@ -14,7 +14,7 @@ class Usuarios_model extends CI_Model {
    
     public function getrol(){
 	 
-        $resultados = $this->db->get("tb_roles");
+        $resultados = $this->db->query("select * from tb_roles where id_rol <> 5");
         return $resultados->result();
     }    
     
