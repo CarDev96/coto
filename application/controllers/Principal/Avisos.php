@@ -22,7 +22,13 @@ class Avisos extends CI_Controller {
 	public function __construct(){
         parent::__construct();
         
-        $this->permisos = $this->backend_lib->control();        
+        $this->permisos = $this->backend_lib->control();   
+		if(!$this->session->userdata("login")){
+
+			redirect(base_url());
+
+
+		}                 
 		$this->load->model("Avisos_model");
 		
 	}
@@ -34,7 +40,8 @@ class Avisos extends CI_Controller {
 
         $data = array(
 
-            'info_avisos' => $this->Avisos_model->getinfo()
+            'info_avisos' => $this->Avisos_model->getinfo(),
+            'permisos' => $this->permisos, 		            
 
 
         );
@@ -165,18 +172,21 @@ class Avisos extends CI_Controller {
         }
     } //fin 
 
-    public function eliminar($id){
+    public function eliminar(){
 
         if(! $this->permisos->insercion){ 
             
             redirect(base_url()); return; 
         
-        }        
-    
-        $this->Avisos_model->delete($id);
-    redirect(base_url()."Principal/Avisos");
-    
-            
+        }
+        
+        $id2 = $this->input->post('id',true);          
+         
+   $this->Avisos_model->delete($id2);
+
+   redirect(base_url()."Principal/Avisos");
+
+
         }//fin function Eliminar    
 
 

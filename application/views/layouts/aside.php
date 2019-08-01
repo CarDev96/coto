@@ -25,7 +25,13 @@
                         <a href="<?php echo base_url(); ?>Auth/logout" class="" data-toggle="tooltip" title="Cerrar sesión"><i class="mdi mdi-power"></i></a>
                         <div class="dropdown-menu animated flipInY">
                             <!-- text-->
+                            <?php if($this->session->userdata("rol")==5): ?>
+
+                            <a href="<?php echo base_url();?>Administrador/Usuarios/perfil_guardia/<?php echo $this->session->userdata("id_guardia") ?>" class="dropdown-item"><i class="ti-user"></i>Perfil</a>                            
+                            <?php else:?>
                             <a href="<?php echo base_url();?>Administrador/Usuarios/perfil/<?php echo $this->session->userdata("id_casa") ?>" class="dropdown-item"><i class="ti-user"></i>Perfil</a>
+
+                            <?php endif;?>
                             <!-- text-->
 
                             <!-- text-->
@@ -48,6 +54,7 @@
                     <ul id="sidebarnav">
                         <li class="nav-devider"></li>
                         <li class="nav-small-cap">Catálogos</li>
+                        <?php if($this->session->userdata("rol") <> 5):?>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-home"></i><span class="hide-menu">Casas</span></a>
                             <ul aria-expanded="false" class="collapse">
                             <?php if($this->session->userdata("rol") <> 4):?>
@@ -58,6 +65,10 @@
                                 
                             </ul>
                         </li>
+
+                        <?php endif;?>  
+                        
+                        <?php if($this->session->userdata("rol") <> 5):?>                        
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-currency-usd"></i><span class="hide-menu">Ingresos</span></a>
                             <ul aria-expanded="false" class="collapse">
                             <?php if($this->session->userdata("rol") <> 4):?>                                
@@ -65,7 +76,7 @@
                                 <?php endif;?>                                
                                 <li> <a class="has-arrow" href="#" aria-expanded="false">Lista Ingresos</a>
                                     <ul aria-expanded="false" class="collapse">
-                                        <li><a href="<?php echo base_url();?>Principal/Ingresos/cuotas">Cuotas Obligatorias</a></li>
+                                        <li><a href="<?php echo base_url();?>Principal/Ingresos/cuotas">Cuotas</a></li>
                                         <li><a href="<?php echo base_url();?>Principal/Ingresos/tags">Tags</a></li>
                                         
                                         <li><a href="<?php echo base_url();?>Principal/Ingresos/varios">Varios</a></li>
@@ -79,6 +90,9 @@
                             </ul>
                         </li>
 
+                        <?php endif;?>                          
+
+                        <?php if($this->session->userdata("rol") <> 5):?>                        
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-arrow-down"></i><span class="hide-menu">Gastos</span></a>
                             <ul aria-expanded="false" class="collapse">
                             <?php if($this->session->userdata("rol") <> 4):?>                                                                
@@ -92,6 +106,8 @@
                             </ul>
                         </li>
                         
+                        <?php endif;?>
+                        <?php if($this->session->userdata("rol") <> 5):?>                                                                              
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-message"></i><span class="hide-menu">Avisos</span></a>
                             <ul aria-expanded="false" class="collapse">
                             <?php if($this->session->userdata("rol") <> 4):?>                                                                
@@ -104,14 +120,19 @@
                                 
                             </ul>
                         </li>  
-                        
+                        <?php endif;?>
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-ticket-account"></i><span class="hide-menu">Visitas</span></a>
                             <ul aria-expanded="false" class="collapse">
-                            <?php if($this->session->userdata("rol") <> 4):?>                                                                
+                            <?php if($this->session->userdata("rol") <> 5):?>                                              
                                 <li><a href="<?php echo base_url();?>Principal/Visitas/add">Nueva </a></li>
-                                <?php endif;?>                                  
-                                <li><a href="<?php echo base_url();?>Principal/Visitas">Lista Visitas </a></li>
-                             
+                                <?php endif;?>                                       
+                                
+                                <?php if($this->session->userdata("rol") == 5):?>                                        
+                                <li><a href="<?php echo base_url();?>Principal/Visitas/guardia">Lista Visitas </a></li>
+                                <?php else: ?>
+                                <li><a href="<?php echo base_url();?>Principal/Visitas/historial/<?php echo $this->session->userdata("id_casa")?>">Lista Visitas </a></li>                                
+                                
+                                <?php endif;?>                                              
                                 
                                 
                                 
@@ -123,8 +144,28 @@
                         <li class="nav-small-cap"><i class="mdi mdi-account-key">Administrador</i></li>                        
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Usuarios</span></a>
                             <ul aria-expanded="false" class="collapse">
-                                <li><a href="<?php echo base_url();?>Administrador/Usuarios/add">Nuevo usuario </a></li>
-                                <li><a href="<?php echo base_url();?>Administrador/Usuarios">Lista usuarios </a></li>
+                                <li><a class="has-arrow" href="#" aria-expanded="false">Nuevo</a>
+                            
+                                <ul aria-expanded="false" class="collapse">
+                                        <li><a href="<?php echo base_url();?>Administrador/Usuarios/add">Usuario residente</a></li>
+                                        <li><a href="<?php echo base_url();?>Administrador/Usuarios/add_s">Usuario externo</a></li>
+                                        
+
+                                    </ul>
+                            
+                                </li>
+                                <li><a class="has-arrow" href="#" aria-expanded="false">Lista</a>
+                            
+                            
+                                <ul aria-expanded="false" class="collapse">
+                                        <li><a href="<?php echo base_url();?>Administrador/Usuarios">Usuario residente</a></li>
+                                        <li><a href="<?php echo base_url();?>Administrador/Usuarios/seguridad">Usuario externo</a></li>
+                                        
+
+                                    </ul>
+                            
+                                
+                                </li>
 
                              
                                 
@@ -148,7 +189,19 @@
                         <?php endif;?> 
 
 
-
+                        <?php if($this->session->userdata("rol") == 1):?>                          
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-handsdown"></i><span class="hide-menu">Personal de Seguridad</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="<?php echo base_url();?>Principal/Personal/add">Nuevo Guardia </a></li>
+                                <li><a href="<?php echo base_url();?>Principal/Personal">Lista </a></li>
+                                
+                             
+                                
+                                
+                                
+                            </ul>
+                        </li>                        
+                        <?php endif;?> 
 
 
 

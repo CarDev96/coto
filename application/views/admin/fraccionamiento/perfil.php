@@ -355,8 +355,9 @@
                                                         <th>Estatus</th>
 
                                                         <th>Monto</th>
+                                                        <?php if($permisos->insercion==1):?>                                                        
                                                         <th>Liquidar</th>
-
+                                                        <?php endif;?>
 
                                                     </tr>
                                                 </thead>
@@ -390,8 +391,13 @@
 
                                                                 <td><?php echo $info_perfil6->ingreso; ?></td>
 
-                                                                <td><a class="btn btn-warning btn-update btn-sm btn-small" data-toggle="modal" data-target="#verticalcenter" onclick="liquidar(<?php echo $info_perfil6->id_abono; ?>)"><i class="fa fa-edit"></i></a></td>
-
+                                                                <?php if($permisos->insercion==1):?>                                                                
+                                                                <td>
+                                                                    
+                                                                <a class="btn btn-warning btn-update btn-sm btn-small" data-toggle="modal" data-target="#verticalcenter" onclick="liquidar(<?php echo $info_perfil6->id_abono; ?>)"><i class="fa fa-edit"></i></a>
+                                                            
+                                                                </td>
+                                                                <?php endif;?>
 
 
 

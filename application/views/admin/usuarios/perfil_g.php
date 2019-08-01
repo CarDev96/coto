@@ -43,8 +43,8 @@
                                 <img src="<?php echo base_url(); ?>assets/images/perfil/<?php echo $info_usuario->foto_perfil ?>" class="img-circle" width="140" />                                
 
                                 <?php endif; ?>
-                                    <h4 class="card-title m-t-10"><?php echo $info_perfil->responsable ?></h4>
-                                    <h6 class="card-subtitle"><?php echo $info_perfil->email ?></h6>
+                                    <h4 class="card-title m-t-10"><?php echo $info_perfil->nombre_g ?></h4>
+                                    <h6 class="card-subtitle"><?php echo $info_perfil->email_g ?></h6>
                                
                                 </center>
                             </div>
@@ -67,17 +67,17 @@
                                 <div class="tab-pane active" id="home" role="tabpanel">
                                     <div class="card-body">
                                     <?php if($info_usuario->pass == "1841363b0b95a95f04d73c722d7003df048049bf"): ?>                                        
-                                        <form class="form-horizontal form-material" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>Administrador/Usuarios/actualizar_p" autocomplete="off">
+                                        <form class="form-horizontal form-material" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>Administrador/Usuarios/actualizar_p3" autocomplete="off">
                                         <?php else:?>
-                                        <form class="form-horizontal form-material" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>Administrador/Usuarios/actualizar_p2" autocomplete="off">
+                                        <form class="form-horizontal form-material" method="post" enctype="multipart/form-data" action="<?php echo base_url(); ?>Administrador/Usuarios/actualizar_p4" autocomplete="off">
                                         <?php endif; ?>                                        
                                     <input type="hidden" name="id_usuario" value="<?php echo $info_usuario->id_usuario?>">                                       
-                                    <input type="hidden" name="id_casa" value="<?php echo $info_usuario->id_casa?>">                                       
+                                    <input type="hidden" name="id_guardia" value="<?php echo $info_usuario->id_guardia?>">                                       
 
                                             <div class="form-group">
                                                 <label class="col-md-12">Nombre completo</label>
                                                 <div class="col-md-12">
-                                                    <input type="text" placeholder="" value="<?php echo $info_perfil->responsable ?>" class="form-control form-control-line" disabled>
+                                                    <input type="text" placeholder="" value="<?php echo $info_perfil->nombre_g ?>" class="form-control form-control-line" disabled>
                                                 </div>
                                             </div>
                                             <div class="form-group">

@@ -20,6 +20,7 @@ class Egresos extends CI_Controller {
         $data = array(
             
             'info_gastos' => $this->Egresos_model->getinfo(),
+            'sum_e' => $this->Egresos_model->getegreso(),
              
 
 
@@ -78,11 +79,9 @@ class Egresos extends CI_Controller {
         $this->load->library('upload',$config);
         
                 if (!$this->upload->do_upload("recibo")) {
-            $data2['error'] = $this->upload->display_errors();
-	      $this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/gastos/add",$data2);
-		$this->load->view("layouts/footer");
+            
+            $this->session->set_flashdata( 'error_msg', $this->upload->display_errors() );            
+            redirect(base_url()."Principal/Egresos/add");
         } else {
                     
                     

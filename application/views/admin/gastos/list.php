@@ -55,7 +55,7 @@
                                                 <th></th>
                                                 <th></th>
                                                 
-                                                <th>$<?php echo 'hola';?></th>
+                                                <th>$<?php echo $sum_e->b;?></th>
                                             </tr>
                                         </tfoot>                                        
                                         <tbody>

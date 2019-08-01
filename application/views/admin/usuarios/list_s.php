@@ -6,13 +6,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Lista de Permisos</h3>
+                    <h3 class="text-themecolor">Lista de usuarios externos</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         
-                        <li class="breadcrumb-item active">Permisos</li>
+                        <li class="breadcrumb-item active">Total usuarios externos</li>
                     </ol>
                 </div>
         
@@ -33,19 +33,16 @@
                         <div class="card">
                             <div class="card-body">
                                 
-                                <h6 class="card-subtitle">Se muestra un listado de los permisos del sistema.</h6>
+                                <h6 class="card-subtitle">Se muestra un listado de los usuarios externos del sistema.</h6>
                                 <div class="table-responsive m-t-40">
                                 <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
-                                            <th>Id permiso</th>
-                                                <th>Menú</th>
-                                                <th>Rol</th>
-                                                <th>Leer</th>
-                                                <th>Insertar</th>                                                   
-                                                <th>Actualizar</th>                                                   
-                                                <th>Eliminar</th>                                                   
-                                                 
+                                            <th>Id usuario</th>
+                                                <th>Usuario</th>
+                                                <th>Contraseña</th>
+                                                <th>Tipo de usuario</th>
+                                                <th>Descripcion permisos</th>                                                   
                                                                                                
                                                
 
@@ -54,14 +51,11 @@
 
                                         <tfoot>
                                         <tr>
-                                                <th>Id permiso</th>
-                                                <th>Menú</th>
-                                                <th>Rol</th>
-                                                <th>Leer</th>
-                                                <th>Insertar</th>                                                   
-                                                <th>Actualizar</th>                                                   
-                                                <th>Eliminar</th>                                                   
-  
+                                            <th>Id usuario</th>
+                                                <th>Usuario</th>
+                                                <th>Contraseña</th>
+                                                <th>Tipo de usuario</th>
+                                                <th>Descripcion permisos</th>                                                   
                                                                                                
                                                
 
@@ -69,14 +63,14 @@
 
                                         </tfoot>                                        
                                         <tbody>
-                                        <?php if(!empty($info_permisos)):?>
-                                    <?php foreach($info_permisos as $info_permisos):?>
+                                        <?php if(!empty($info_user2)):?>
+                                    <?php foreach($info_user2 as $info_user):?>
                                         <tr>
                                           <td>
                                             
                            
                                               
-                                          <?php echo $info_permisos->id_permiso;?>
+                                          <?php echo $info_user->id_usuario;?>
             
                                             
                                             
@@ -84,74 +78,14 @@
                                           
                                           
                                           </td>
-                                            <td><?php echo $info_permisos->nombre_menu;?></td>
+                                            <td><?php echo $info_user->username;?></td>
 
-                                            <td><?php echo $info_permisos->name_rol;?></td>                                           
+                                            <td><?php echo $info_user->pass;?></td>                                           
 
-                                            <td>
-
-
-                                                <?php if($info_permisos->lectura == 0):?>
-
-                                                <span class="fa fa-times"></span>
-
-                                                <?php else:?>
-
-                                                <span class="fa fa-check"></span>                                                
-
-                                                <?php endif;?>
-                                            
-                                            
-                                            </td>    
+                                            <td><?php echo $info_user->name_rol;?></td>    
                                             
 
-                                            <td>
-
-
-                                                <?php if($info_permisos->insercion == 0):?>
-
-                                                <span class="fa fa-times"></span>
-
-                                                <?php else:?>
-
-                                                <span class="fa fa-check"></span>                                                
-
-                                                <?php endif;?>
-                                            
-                                            
-                                            </td>                                                    
-                                            <td>
-
-
-                                                <?php if($info_permisos->actualizar == 0):?>
-
-                                                <span class="fa fa-times"></span>
-
-                                                <?php else:?>
-
-                                                <span class="fa fa-check"></span>                                                
-
-                                                <?php endif;?>
-                                            
-                                            
-                                            </td>     
-                                            <td>
-
-
-                                                <?php if($info_permisos->borrar == 0):?>
-
-                                                <span class="fa fa-times"></span>
-
-                                                <?php else:?>
-
-                                                <span class="fa fa-check"></span>                                                
-
-                                                <?php endif;?>
-                                            
-                                            
-                                            </td>        
-
-                                             
+                                            <td><?php echo $info_user->descripcion_rol;?></td>                                                    
 
                                                
                                             

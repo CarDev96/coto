@@ -59,6 +59,24 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Tipo de acceso:</label>
+                                                    <div class="col-md-5">
+                                                    <select class="select2 form-control custom-select" name="id_tipo_vi" id="id_tipo_vi" style="width: 100%; height:36px;">
+                                    <option value="1">-- Selecciona --</option>
+                                    <?php foreach($info_tipo_vi as $info_tipo_vi):?>
+                                    
+                                        <option value="<?php echo $info_tipo_vi->id_tipo_vi;?>">
+                                            <?php echo $info_tipo_vi->name_tipo_vi;?>
+                                        </option>
+
+                                        <?php endforeach;?>
+                                </select>
+                                                    </div>
+                                                </div>
+                                            </div>                                            
                                        
                                         </div>
                                       
@@ -101,7 +119,7 @@
                                                 <div class="form-group row">
                                                     <label class="control-label text-right col-md-4">Acompañantes:</label>
                                                     <div class="col-md-6">
-                                                    <input type="text" class="form-control" name="max_persona" id="habitada" value="" >
+                                                    <input id="tch2" type="text" value="0" name="max_persona" class=" form-control" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline"> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,7 +133,7 @@
                                                     <label class="control-label text-right col-md-4">Días disponible:</label>
                                                     <div class="col-md-6">
 
-                                                        <input type="text" class="form-control" name="dias_d" placeholder="" id="dias_d">
+                                                    <input id="tch2" type="text" value="0" name="dias_d" class=" form-control" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline"> 
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,7 +149,57 @@
                                             </div>                                            
                                     
                                         </div>
-                                        <!--/row-->                                        
+                                        <!--/row-->   
+                                        <hr>
+                                        <div class="row">
+                                        <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-4">Marca vehículo:</label>
+                                                    <div class="col-md-6">
+
+                                                    <select class="select2 form-control custom-select" name="marca_v" id="id_tipo_vi" style="width: 100%; height:36px;">
+                                    <option value="1">-- Selecciona --</option>
+                                    <?php foreach($info_marca as $info_marca):?>
+                                    
+                                        <option value="<?php echo $info_marca->marca_vehiculo;?>">
+                                            <?php echo $info_marca->marca_vehiculo;?>
+                                        </option>
+
+                                        <?php endforeach;?>
+                                </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->   
+
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-4">Color vehículo:</label>
+                                                    <div class="col-md-6">
+                                                    <input type="text" class="colorpicker form-control" name="color_v" value="#7ab2fa" />
+                                                    </div>
+                                                </div>
+                                            </div>                                            
+                                    
+                                        </div>
+                                        <!--/row-->       
+                                        
+                                        <div class="row">
+                                        <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-4">Número de placas:</label>
+                                                    <div class="col-md-6">
+
+                                                        <input type="text" class="form-control" name="placas_v" placeholder="" id="placas_v">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->   
+
+                                                                             
+                                    
+                                        </div>
+                                        <!--/row-->                                               
 
                                                    
                                                                              

@@ -32,7 +32,7 @@
                     <div class="col-lg-12">
                         <div class="card card-outline-info">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white">Registrar nuevo gasto</h4>
+                                <h4 class="m-b-0 text-white"> Registrar nuevo gasto</h4>
                             </div>
                             <div class="card-body">
                                 <form class="form-horizontal" role="form" method="post" action="<?php echo base_url(); ?>Principal/Egresos/nuevo" enctype="multipart/form-data">
@@ -210,3 +210,5 @@
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
+
+     

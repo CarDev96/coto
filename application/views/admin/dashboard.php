@@ -74,11 +74,7 @@
                                     <h2 class="m-b-0"><i class="fa fa-arrow-down text-warning"></i></h2>
                                     <h3 class="">$<?php echo $sum_egresos->b ?></h3>
                                     <h6 class="card-subtitle">Total de gastos</h6></div>
-                                <div class="col-12">
-                                    <div class="progress">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 26%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
+                            
                             </div>
                         </div>
                     </div>
@@ -114,7 +110,23 @@
                     </div>
                     <!-- Column -->
                     <div class="col-lg-4 col-xlg-3">
-                        <div class="card card-inverse card-info">
+
+                    <?php 
+                    
+                    $capital =  $sum_ingresos->a;
+                    
+                    
+
+                        $gastos = $sum_egresos->b;
+
+                        $total = $capital - $gastos;
+
+
+                    
+
+                    if($total<0): 
+                    ?>
+                        <div class="card card-inverse card-danger">
                             <div class="card-body">
                                 <div class="d-flex">
                                     <div class="m-r-20 align-self-center">
@@ -166,6 +178,62 @@
                                 </div>
                             </div>
                         </div>
+                    <?php else: ?>
+                    <div class="card card-inverse card-success">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <div class="m-r-20 align-self-center">
+                                        <h1 class="text-white"><i class="ti-light-bulb"></i></h1></div>
+                                    <div>
+                                        <h3 class="card-title">Saldo en capital</h3>
+                                        <h6 class="card-subtitle">Actualizado al día : <?php 
+                                        
+                                        $dia_ac = date("d-m-Y");
+
+                                        echo $dia_ac;
+                                        
+                                        
+                                        
+                                        ?></h6> </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6 align-self-center">
+                                        <h2 class="font-light text-white"><sup><small><i class="ti-arrow-up"></i></small></sup>
+                                       $ <?php 
+                                                            
+                                                            $capital =  $sum_ingresos->a;
+
+                                                            if(!empty($sum_egresos)){
+
+                                                                $gastos = $sum_egresos->b;
+
+                                                                $total = $capital - $gastos;
+
+                                                                echo $total;
+                                                            }
+
+                                                            else{
+
+                                                                echo $capital;
+
+                                                            }
+
+                                                            
+                                                            
+                                                            
+                                                            ?>
+                                        
+                                        </h2>
+                                    </div>
+                                    <div class="col-6 p-t-10 p-b-20 text-right">
+                                        <div class="spark-count" style="height:65px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                    
+                    <?php endif; ?>
+                        
+
                         <?php if (!empty($info_aviso)) : ?>
                         <div class="card card-inverse card-warning">
                             <div class="card-body" style="overflow-y: auto;height: 200px;width: 100%;">

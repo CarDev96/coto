@@ -23,6 +23,7 @@ class Usuarios extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Usuarios_model");
 		$this->load->model("Ingresos_model");
+		$this->load->model("Personal_model");
 	}
 	
 	
@@ -44,7 +45,26 @@ class Usuarios extends CI_Controller {
 		$this->load->view("layouts/footer");
 
 		
-	}
+    }
+    
+	public function seguridad()
+	{
+
+		
+      
+        $data = array(
+
+            'info_user2' => $this->Usuarios_model->getinfo2(),
+            
+        );
+        
+        $this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/usuarios/list_s",$data);
+		$this->load->view("layouts/footer");
+
+		
+	}    
 	
     public function add(){
         
@@ -64,6 +84,24 @@ class Usuarios extends CI_Controller {
         
     } //fin function add()
 
+    public function add_s(){
+        
+      
+        $data = array(
+
+            'info_guardias' => $this->Personal_model->getinfo(),
+            'info_rol' => $this->Usuarios_model->getrol(),
+            'info_rol2' => $this->Usuarios_model->getrol2(),
+        );
+        
+        $this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/usuarios/add_s",$data);
+		$this->load->view("layouts/footer");
+        
+        
+    } //fin function add()    
+
     public function perfil($id){
         
       $data = array(
@@ -81,7 +119,26 @@ class Usuarios extends CI_Controller {
 		$this->load->view("layouts/footer");
         
         
-    } //fin function add()    
+    } //fin function add() 
+    
+    public function perfil_guardia($id){
+        
+        $data = array(
+  
+          'info_perfil' => $this->Usuarios_model->getperf2($id),
+          'info_usuario' => $this->Usuarios_model->getinfou2($id),
+  
+  
+        );
+       
+          
+          $this->load->view("layouts/header");
+          $this->load->view("layouts/aside");
+          $this->load->view("admin/usuarios/perfil_g",$data);
+          $this->load->view("layouts/footer");
+          
+          
+      } //fin function add()     
     
     public function nuevo()
     {
@@ -124,6 +181,50 @@ class Usuarios extends CI_Controller {
             redirect(base_url() . "Administrador/Usuarios/add");
         }
     } //fin 
+
+    public function nuevo_s()
+    {
+
+
+        $id_guardia = $this->input->post("id_guardia"); //id_casa
+
+        $username = $this->input->post("username"); //id_casa
+
+        
+
+        $pass = $this->input->post("pass"); //ingreso
+
+        $rol = 5;
+
+        $estado = "1";
+
+ 
+        $data = array(
+
+            'id_guardia' => $id_guardia,
+
+            'username' => $username,
+
+            'pass' => sha1($pass),
+
+            'id_rol' => $rol,
+
+            'estado' => $estado,
+
+
+        );
+
+
+        if ($this->Usuarios_model->save($data)) {
+
+
+
+            redirect(base_url() . "Administrador/Usuarios/add_s");
+        } else {
+
+            redirect(base_url() . "Administrador/Usuarios/add_s");
+        }
+    } //fin     
     
     
     public function actualizar_p()
@@ -292,6 +393,176 @@ class Usuarios extends CI_Controller {
         }
     } //fin  
         
+
+
+
+
+    public function actualizar_p3()
+    {
+
+
+        $id_usuario = $this->input->post("id_usuario"); //id_casa
+
+        $id_guardia = $this->input->post("id_guardia"); //id_casa
+
+        $username = $this->input->post("username"); //id_concepto_in
+
+        $pass = $this->input->post("pass"); //ingreso
+
+        if (empty($_FILES['foto_perfil']['name'])){
+      
+            $datos_recuperados = $this->Usuarios_model->CapturarArchivo($id_usuario);
+            $imagen = $datos_recuperados->foto_perfil;//recupero el nombre de la imagen
+            
+            
+        }//Compruebo si el array $_files no tiene ningun valor en  su elemento name       
+
+        else{
+        
+            $config = [
+                
+            "upload_path" => "./assets/images/perfil",
+            "allowed_types" => "gif|jpg|png",
+            "max_size" => "2048"
+                
+                
+            ];
+            
+            $this->load->library("upload",$config);
+            
+            if ($this->upload->do_upload("foto_perfil")) {
+                
+                $registro = $this->Usuarios_model->CapturarArchivo($id_usuario);
+                
+                
+                
+                unlink("./assets/images/perfil/".$registro->foto_perfil);
+                unlink("./assets/images/perfil/thumbs/".$registro->foto_perfil);
+                
+                $data3 = array("upload_data" => $this->upload->data());
+                $this->crearMiniatura($data3['upload_data']['file_name']);
+                
+                $imagen = $data3['upload_data']['file_name'];
+                
+            }else{
+                
+                echo $this->upload->display_errors();
+                
+            } 
+                
+            }          
+ 
+        $data = array(
+
+            
+
+            'username' => $username,
+
+            'pass' => sha1($pass),
+
+            'foto_perfil' => $imagen            
+
+            
+
+
+        );
+
+
+        if ($this->Usuarios_model->update_p($data,$id_usuario)) {
+
+
+
+            redirect(base_url() . "Administrador/Usuarios/perfil_guardia/$id_guardia");
+        } else {
+
+            redirect(base_url() . "Administrador/Usuarios/perfil_guardia/$id_guardia");
+        }
+    } //fin  
+
+
+
+    public function actualizar_p4()
+    {
+
+
+        $id_usuario = $this->input->post("id_usuario"); //id_casa
+
+        $id_guardia = $this->input->post("id_guardia"); //id_casa
+
+        $username = $this->input->post("username"); //id_concepto_in
+
+        $pass2 = $this->input->post("pass2"); //ingreso
+
+        if (empty($_FILES['foto_perfil']['name'])){
+      
+            $datos_recuperados = $this->Usuarios_model->CapturarArchivo($id_usuario);
+            $imagen = $datos_recuperados->foto_perfil;//recupero el nombre de la imagen
+            
+            
+        }//Compruebo si el array $_files no tiene ningun valor en  su elemento name       
+
+        else{
+        
+            $config = [
+                
+            "upload_path" => "./assets/images/perfil",
+            "allowed_types" => "gif|jpg|png",
+            "max_size" => "2048"
+                
+                
+            ];
+            
+            $this->load->library("upload",$config);
+            
+            if ($this->upload->do_upload("foto_perfil")) {
+                
+                $registro = $this->Usuarios_model->CapturarArchivo($id_usuario);
+                
+                
+                
+                unlink("./assets/images/perfil/".$registro->foto_perfil);
+                unlink("./assets/images/perfil/thumbs/".$registro->foto_perfil);
+                
+                $data3 = array("upload_data" => $this->upload->data());
+                $this->crearMiniatura($data3['upload_data']['file_name']);
+                
+                $imagen = $data3['upload_data']['file_name'];
+                
+            }else{
+                
+                echo $this->upload->display_errors();
+                
+            } 
+                
+            }          
+ 
+        $data = array(
+
+            
+
+            'username' => $username,
+
+            'pass' => $pass2,
+
+            'foto_perfil' => $imagen            
+
+            
+
+
+        );
+
+
+        if ($this->Usuarios_model->update_p($data,$id_usuario)) {
+
+
+
+            redirect(base_url() . "Administrador/Usuarios/perfil_guardia/$id_guardia");
+        } else {
+
+            redirect(base_url() . "Administrador/Usuarios/perfil_guardia/$id_guardia");
+        }
+    } //fin  
+         
     
     function crearMiniatura($file_name){
 

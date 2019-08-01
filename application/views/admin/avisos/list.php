@@ -41,9 +41,9 @@
                                                 <th>#</th>
                                                 <th>Mensaje</th>
                                                 <th>Fecha de anuncio</th>
-
+                                                <?php if($permisos->insercion==1):?>
                                                 <th>Opciones</th>
-
+                                                <?php endif;?>
 
                                             </tr>
                                         </thead>
@@ -61,7 +61,7 @@
                                                         <td><?php echo $info_avisos->fecha_aviso; ?></td>
 
 
-
+                                                        <?php if($permisos->insercion==1):?>
                                                         <td>
 
 
@@ -71,7 +71,8 @@
 
 
                                                             <a href="<?php echo base_url();?>Principal/Avisos/actualizar/<?php echo $info_avisos->id_aviso; ?>" class="btn btn-warning btn-update btn-sm btn-small"><i class="fa fa-edit"></i></a>
-                                                            <a href="<?php echo base_url();?>Principal/Avisos/eliminar/<?php echo $info_avisos->id_aviso; ?>" class="btn btn-danger btn-update btn-sm btn-small"><i class="fa fa-remove"></i></a>
+                                                            
+                                                            <a data-id="<?php echo $info_avisos->id_aviso; ?>" id="eliminar_aviso" class="btn btn-danger btn-remove btn-sm btn-small swal-btn-warning"><i class="fa fa-remove"></i></a>                                                            
 
 
 
@@ -82,7 +83,7 @@
 
                                                         </td>
 
-
+                                                        <?php endif;?>
 
 
 

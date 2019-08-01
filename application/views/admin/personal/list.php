@@ -6,13 +6,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Lista de Permisos</h3>
+                    <h3 class="text-themecolor">Lista de Personal</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         
-                        <li class="breadcrumb-item active">Permisos</li>
+                        <li class="breadcrumb-item active">Total Personal</li>
                     </ol>
                 </div>
         
@@ -33,19 +33,17 @@
                         <div class="card">
                             <div class="card-body">
                                 
-                                <h6 class="card-subtitle">Se muestra un listado de los permisos del sistema.</h6>
+                                <h6 class="card-subtitle">Se muestra un listado del personal de seguridad.</h6>
                                 <div class="table-responsive m-t-40">
                                 <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
-                                            <th>Id permiso</th>
-                                                <th>Menú</th>
-                                                <th>Rol</th>
-                                                <th>Leer</th>
-                                                <th>Insertar</th>                                                   
-                                                <th>Actualizar</th>                                                   
-                                                <th>Eliminar</th>                                                   
-                                                 
+                                            <th>#</th>
+                                                <th>Nombre</th>
+                                                <th>Telefono</th>
+                                                <th>Turno</th>
+                                                <th>Domicilio</th>                                                   
+                                                <th>Correo</th>                                                   
                                                                                                
                                                
 
@@ -54,14 +52,12 @@
 
                                         <tfoot>
                                         <tr>
-                                                <th>Id permiso</th>
-                                                <th>Menú</th>
-                                                <th>Rol</th>
-                                                <th>Leer</th>
-                                                <th>Insertar</th>                                                   
-                                                <th>Actualizar</th>                                                   
-                                                <th>Eliminar</th>                                                   
-  
+                                        <th>#</th>
+                                                <th>Nombre</th>
+                                                <th>Telefono</th>
+                                                <th>Turno</th>
+                                                <th>Domicilio</th>                                                   
+                                                <th>Correo</th>                                                      
                                                                                                
                                                
 
@@ -69,14 +65,14 @@
 
                                         </tfoot>                                        
                                         <tbody>
-                                        <?php if(!empty($info_permisos)):?>
-                                    <?php foreach($info_permisos as $info_permisos):?>
+                                        <?php if(!empty($info_personal)):?>
+                                    <?php foreach($info_personal as $info_personal):?>
                                         <tr>
                                           <td>
                                             
                            
                                               
-                                          <?php echo $info_permisos->id_permiso;?>
+                                          <?php echo $info_personal->id_guardia;?>
             
                                             
                                             
@@ -84,74 +80,16 @@
                                           
                                           
                                           </td>
-                                            <td><?php echo $info_permisos->nombre_menu;?></td>
+                                            <td><?php echo $info_personal->nombre_g;?></td>
 
-                                            <td><?php echo $info_permisos->name_rol;?></td>                                           
+                                            <td><?php echo $info_personal->telefono_g;?></td>                                           
 
-                                            <td>
-
-
-                                                <?php if($info_permisos->lectura == 0):?>
-
-                                                <span class="fa fa-times"></span>
-
-                                                <?php else:?>
-
-                                                <span class="fa fa-check"></span>                                                
-
-                                                <?php endif;?>
-                                            
-                                            
-                                            </td>    
+                                            <td><?php echo $info_personal->turno_g;?></td>    
                                             
 
-                                            <td>
+                                            <td><?php echo $info_personal->domicilio_g;?></td>                                                    
 
-
-                                                <?php if($info_permisos->insercion == 0):?>
-
-                                                <span class="fa fa-times"></span>
-
-                                                <?php else:?>
-
-                                                <span class="fa fa-check"></span>                                                
-
-                                                <?php endif;?>
-                                            
-                                            
-                                            </td>                                                    
-                                            <td>
-
-
-                                                <?php if($info_permisos->actualizar == 0):?>
-
-                                                <span class="fa fa-times"></span>
-
-                                                <?php else:?>
-
-                                                <span class="fa fa-check"></span>                                                
-
-                                                <?php endif;?>
-                                            
-                                            
-                                            </td>     
-                                            <td>
-
-
-                                                <?php if($info_permisos->borrar == 0):?>
-
-                                                <span class="fa fa-times"></span>
-
-                                                <?php else:?>
-
-                                                <span class="fa fa-check"></span>                                                
-
-                                                <?php endif;?>
-                                            
-                                            
-                                            </td>        
-
-                                             
+                                            <td><?php echo $info_personal->email_g;?></td>                                                    
 
                                                
                                             

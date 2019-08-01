@@ -35,7 +35,7 @@
                                 
                                 <h6 class="card-subtitle">Se muestra un listado de las visitas.</h6>
                                 <div class="table-responsive m-t-40">
-                                <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+                                <table id="zero_config" class="table table-striped table-bordered no-wrap" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
                                             <th>Código QR</th>
@@ -43,6 +43,10 @@
                                                 <th>Fecha de visita</th>
                                                 <th>Acompañantes</th>                                                   
                                                 <th>Tipo de visita</th>                                                  
+                                                <th>Tipo de acceso</th>                                                  
+                                                <th>Color vehículo</th>                                                  
+                                                <th>Marca vehículo</th>                                                  
+                                                <th>Placas vehículo</th>                                                  
                                                 <th>Teléfono</th>                                                  
                                                
 
@@ -74,6 +78,15 @@
                                             
 
                                             <td><?php echo $info_visita->name_v;?></td>                                                    
+
+                                            <td><?php echo $info_visita->name_tipo_vi;?></td>
+
+                                            <td><span style="background: <?php echo $info_visita->color_auto ?>;"><?php echo $info_visita->color_auto ?></span></td>
+
+                                            <td><?php echo $info_visita->marca_auto;?></td>
+
+                                            <td><?php echo $info_visita->placas_auto;?></td>
+                                            
 
                                             <td><a href="<?=base_url()?>Principal/visitas/enviarwhats/<?php echo $info_visita->telefono_v;?>a<?php echo $info_visita->codigo_a ?>" target="_blank" ><?php echo $info_visita->telefono_v;?></a></td>                                                    
 

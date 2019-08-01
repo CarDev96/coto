@@ -22,6 +22,7 @@
 <!-- ============================================================== -->
 <!-- This page plugins -->
 <!-- ============================================================== -->
+
 <script src="<?php echo base_url(); ?>assets/plugins/moment/min/moment-with-locales.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
@@ -47,7 +48,7 @@
 <script src="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.min.js"></script>
 
 <!-- Style switcher -->
-<script src="<?php echo base_url();?>assets/plugins/toast-master/js/jquery.toast.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/toast-master/js/jquery.toast.js"></script>
 <!-- ============================================================== -->
 <script src="<?php echo base_url(); ?>assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js" type="text/javascript"></script>
@@ -57,22 +58,44 @@
 <script src="<?php echo base_url(); ?>js/datatables-net/datatables.min.js"></script>
 
 <script src="<?php echo base_url(); ?>assets/plugins/inputmask/dist/jquery.inputmask.bundle.js"></script>
-    <script src="<?php echo base_url(); ?>js/mask.init.js"></script>
-    
-    <script src="<?php echo base_url(); ?>js/jquery.PrintArea.js" type="text/JavaScript"></script>
+<script src="<?php echo base_url(); ?>js/mask.init.js"></script>
+
+<script src="<?php echo base_url(); ?>js/jquery.PrintArea.js" type="text/JavaScript"></script>
 
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap.min.js" crossorigin="anonymous"></script>
 
-<script src="<?php echo base_url(); ?>js/dataTables.buttons.js" ></script>
-<script src="<?php echo base_url(); ?>js/buttons.flash.js" ></script>
-<script src="<?php echo base_url(); ?>js/jszip.js" ></script>
-<script src="<?php echo base_url(); ?>js/pdfmake.js" ></script>
-<script src="<?php echo base_url(); ?>js/vfs_fonts.js" ></script>
-<script src="<?php echo base_url(); ?>js/buttons.html5.js" ></script>
-<script src="<?php echo base_url(); ?>js/buttons.print.js" ></script>
+<script src="<?php echo base_url(); ?>js/dataTables.buttons.js"></script>
+<script src="<?php echo base_url(); ?>js/buttons.flash.js"></script>
+<script src="<?php echo base_url(); ?>js/jszip.js"></script>
+<script src="<?php echo base_url(); ?>js/pdfmake.js"></script>
+<script src="<?php echo base_url(); ?>js/vfs_fonts.js"></script>
+<script src="<?php echo base_url(); ?>js/buttons.html5.js"></script>
+<script src="<?php echo base_url(); ?>js/buttons.print.js"></script>
 
+<script src="<?php echo base_url(); ?>assets/plugins/moment/moment.js"></script>
+    
+    <!-- Clock Plugin JavaScript -->
+    
+    <!-- Color Picker Plugin JavaScript -->
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
+    <!-- Date Picker Plugin JavaScript -->
+    <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- Date range Plugin JavaScript -->
+    <script src="<?php echo base_url(); ?>assets/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="<?php echo base_url();?>assets/plugins/toast-master/js/jquery.toast.js"></script>
 <!-- -->
+
+<script>
+    // Colorpicker
+    $(".colorpicker").asColorPicker();
+    $(".complex-colorpicker").asColorPicker({
+        mode: 'complex'
+    });
+</script>
 
 <script>
     $(document).ready(function() {
@@ -86,7 +109,7 @@
             $("div.printableArea").printArea(options);
         });
     });
-    </script>
+</script>
 
 
 <script type="text/javascript">
@@ -130,8 +153,8 @@
 
                                 $('#datos_dueno2').hide();
 
-                                $('#propi').val() = " ";                                
-                                $('#tel').val() = " ";                                
+                                $('#propi').val() = " ";
+                                $('#tel').val() = " ";
 
                             }
 
@@ -204,9 +227,9 @@
                 },
                 success: function(respuesta) {
                     $("#verticalcenter .modal-body").html(respuesta);
-                    
 
-                 
+
+
 
 
 
@@ -298,8 +321,8 @@
             responsive: true,
             dom: 'Bfrtip',
             buttons: [
-            'csv', 'excel', 'pdf', 'print'
-        ],            
+                'csv', 'excel', 'pdf', 'print'
+            ],
             language: {
                 "decimal": "",
                 "emptyTable": "No hay información",
@@ -322,7 +345,7 @@
             }
         });
 
-        
+
 
 
     });
@@ -352,10 +375,10 @@
             }
         });
 
-        
 
 
-    });    
+
+    });
 </script>
 
 <script>
@@ -413,6 +436,22 @@
 
     });
 
+    $('#txtguardia').change(function() {
+
+var opcion = $(':selected', this).data('email');
+
+
+
+
+$("#n_casa").val(opcion);
+
+
+
+
+
+
+});    
+
     $('#txtconcepto').change(function() {
 
         var opcion = $(':selected', this).data('monto1');
@@ -460,6 +499,32 @@
 <script type="text/javascript">
     jQuery(document).ready(function() {
         // touchspin
+        $("input[name='dias_d']").TouchSpin({
+            min: 0,
+            max: 1000000000,
+            stepinterval: 50,
+            maxboostedstep: 10000000
+
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        // touchspin
+        $("input[name='max_persona']").TouchSpin({
+            min: 0,
+            max: 1000000000,
+            stepinterval: 50,
+            maxboostedstep: 10000000
+
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        // touchspin
         $("input[name='cantidad_gasto']").TouchSpin({
             min: 0,
             max: 1000000000,
@@ -497,23 +562,23 @@
 
         $('.dropify2').dropify({
 
-messages: {
-    default: 'Arrastre una imagen que servira como foto de perfil.',
-    replace: 'Arrastre una imagen para remplazar.',
-    remove: 'Eliminar',
-    error: 'Ups, algo ha sucedido.'
-},
-error: {
-    'fileSize': 'El archivo adjunto es demasiado grande ({{ value }} max).',
-    'minWidth': 'The image width is too small ({{ value }}}px min).',
-    'maxWidth': 'The image width is too big ({{ value }}}px max).',
-    'minHeight': 'The image height is too small ({{ value }}}px min).',
-    'maxHeight': 'The image height is too big ({{ value }}px max).',
-    'imageFormat': 'The image format is not allowed ({{ value }} only).'
-}
+            messages: {
+                default: 'Arrastre una imagen que servira como foto de perfil.',
+                replace: 'Arrastre una imagen para remplazar.',
+                remove: 'Eliminar',
+                error: 'Ups, algo ha sucedido.'
+            },
+            error: {
+                'fileSize': 'El archivo adjunto es demasiado grande ({{ value }} max).',
+                'minWidth': 'The image width is too small ({{ value }}}px min).',
+                'maxWidth': 'The image width is too big ({{ value }}}px max).',
+                'minHeight': 'The image height is too small ({{ value }}}px min).',
+                'maxHeight': 'The image height is too big ({{ value }}px max).',
+                'imageFormat': 'The image format is not allowed ({{ value }} only).'
+            }
 
-});        
-     
+        });
+
 
         // Used events
         var drEvent = $('#input-file-events').dropify();
@@ -639,7 +704,7 @@ error: {
     });
 </script>
 
-
+<!------------------------------------------>
 <script>
     (function() {
 
@@ -688,6 +753,60 @@ error: {
         })
     })();
 </script>
+
+<!---------------------------------------------->
+
+<!------------------------------------------>
+<script>
+    (function() {
+
+
+        var base_url = "<?php echo base_url(); ?>";
+
+        $('tr td #eliminar_aviso').click(function(ev) {
+
+            ev.preventDefault();
+
+            var $tr = $(this).closest('tr');
+
+            
+            var fecha = $tr.find('td:nth-child(3)').text();
+            var id = $(this).attr('data-id');
+            var self = this;
+
+            swal({
+                    title: '¿Realmente quieres eliminar el registro del aviso con fecha de: ' + fecha + '?',
+                    text: "No Podrás Revertir Esto",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: 'Si, Eliminarlo',
+                    closeOnConfirm: false
+                },
+                function(isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            type: "POST",
+                            url: base_url + "Principal/Avisos/eliminar",
+                            data: {
+                                'id': id
+                            },
+                            success: function() {
+                                $(self).parents('tr').remove();
+                                swal("¡Hecho!", "Registro Eliminado.", "success");
+                            }
+                        });
+                    } else {
+                        swal("Cancelado", ":)", "error");
+                    }
+                })
+
+
+        })
+    })();
+</script>
+
+<!---------------------------------------------->
 
 
 <script>
@@ -739,27 +858,48 @@ error: {
 
 
 <script>
-function randomString(length, chars) {
-    var result = '';
-    for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
-    return result;
-}
+    function randomString(length, chars) {
+        var result = '';
+        for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+        return result;
+    }
 
-$('#txt_visita').change(function() {
-
-
-var random = randomString(8,'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-
-$("#codigo_a").val(random);
+    $('#txt_visita').change(function() {
 
 
+        var random = randomString(8, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+
+        $("#codigo_a").val(random);
 
 
 
-});
 
 
-
+    });
 </script>
+
+
+<script>
+
+$(function() {
+    "use strict";
+     
+
+    
+             <?php if ( $this->session->flashdata( 'error_msg' ) ): ?>  
+           $.toast({
+            heading: 'Error',
+            text: '<?php  echo $this->session->flashdata('error_msg'); ?>',
+            position: 'top-right',
+            loaderBg:'#ff6849',
+            icon: 'error',
+            hideAfter: 3500
+            
+          });
+        <?php endif; ?>  
+});
+     
+    
+</script>   
 
 </html>

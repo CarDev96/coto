@@ -24,7 +24,12 @@ class Visitas extends CI_Controller {
 
 		$this->permisos = $this->backend_lib->control();        
 		
-		
+		if(!$this->session->userdata("login")){
+
+			redirect(base_url());
+
+
+		}       		
 				
         $this->load->library('Ciqrcode');
         $this->load->library('WhatsmsApi');
@@ -40,7 +45,8 @@ class Visitas extends CI_Controller {
 
         $data = array(
 
-            'info_visita' => $this->Visitas_model->getinfo2()
+			
+            'permisos' => $this->permisos, 			
 
 
         );
@@ -53,12 +59,71 @@ class Visitas extends CI_Controller {
 
 		
 	}
+
+	public function historial($id)
+	{
+
+        $data = array(
+
+			'info_visita' => $this->Visitas_model->getinfo2($id),
+            'permisos' => $this->permisos, 			
+
+
+        );
+
+	
+        $this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/visitas/list",$data);
+		$this->load->view("layouts/footer");
+
+		
+	}
+
+
+	public function confirmar($id)
+	{
+
+        
+
+			$this->Visitas_model->asistencia($id);
+			
+
+
+        
+
+		redirect(base_url() . "Principal/Visitas/guardia");
+
+		
+	}	
+	
+	public function guardia()
+	{
+
+        $data = array(
+
+			'info_visita3' => $this->Visitas_model->getinfo6(),
+            'permisos' => $this->permisos, 			
+
+
+        );
+
+	
+        $this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/visitas/list_g",$data);
+		$this->load->view("layouts/footer");
+
+		
+	}	
 	
     public function add(){
         
         $data = array(
 
-            'info_visita' => $this->Visitas_model->getinfo()
+            'info_visita' => $this->Visitas_model->getinfo(),
+            'info_tipo_vi' => $this->Visitas_model->getinfo5(),
+            'info_marca' => $this->Visitas_model->getmarca(),
 
 
         );
@@ -91,6 +156,14 @@ class Visitas extends CI_Controller {
 		$dias_d = $this->input->post("dias_d"); //ingreso
 
 		$codigo_a = $this->input->post("codigo_a"); //ingreso
+
+		$id_tipo_vi = $this->input->post("id_tipo_vi"); //ingreso
+
+		$marca_v = $this->input->post("marca_v"); //ingreso
+
+		$color_v = $this->input->post("color_v"); //ingreso
+
+		$placas_v = $this->input->post("placas_v"); //ingreso
 
 		$dd = explode("(",$telefono_v);
     
@@ -127,7 +200,15 @@ class Visitas extends CI_Controller {
 			
             'fecha_vencimiento' => $finalizacion,
 			
-			'codigo_a' => $codigo_a
+			'codigo_a' => $codigo_a,
+
+			'id_tipo_vi' => $id_tipo_vi,
+
+			'marca_auto' => $marca_v,
+
+			'color_auto' => $color_v,
+
+			'placas_auto' => $placas_v,
 
 		
 
@@ -138,13 +219,13 @@ class Visitas extends CI_Controller {
         if ($this->Visitas_model->save($data)) {
 
 
-            redirect(base_url() . "Principal/Visitas");
+            redirect(base_url() . "Principal/Visitas/add");
 
 			
 		}
 		else{
 
-			redirect(base_url() . "Principal/Visitas");
+			redirect(base_url() . "Principal/Visitas/add");
 		}
 
     } //fin 	
@@ -176,6 +257,20 @@ class Visitas extends CI_Controller {
 	
 	
     
+
+
+}
+
+public function enviarwhats2($telefono){
+
+	  
+
+	$Mensaje = "Tu invitado ha accedido correctamente al coto.";
+	
+	redirect("https://api.whatsapp.com/send?phone=$telefono&text=$Mensaje");
+
+
+
 
 
 }

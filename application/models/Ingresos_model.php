@@ -95,7 +95,7 @@ class Ingresos_model extends CI_Model {
 	 	
     public function getinfo(){
 	 
-        $resultados = $this->db->get("tb_casas");
+        $resultados = $this->db->query("select * from tb_casas where id_casa <> 0 && id_casa <> 10000;");
         return $resultados->result();
 	}
 
@@ -169,5 +169,13 @@ public function getinfototal(){
 	 
         $resultados = $this->db->get("tb_concepto_in");
         return $resultados->result();
-       }	
+       }
+       
+       public function getfr($anio,$mes,$id_casa)
+       {
+     
+         $resultados = $this->db->query("select id_casa from tb_suscrip where id_casa = $id_casa and (mes_suscrip = '$mes' and ano_suscrip = '$anio');");
+     
+         return $resultados->row();
+       }       
 }

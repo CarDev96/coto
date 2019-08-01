@@ -24,11 +24,23 @@ class Usuarios_model extends CI_Model {
         return $resultados->row();
     }        
 
+    public function getperf2($id){
+        $this->db->where("id_guardia",$id);
+        $resultados = $this->db->get("tb_guardias");
+        return $resultados->row();
+    }        
+
     public function getinfou($id){
         $this->db->where("id_casa",$id);
         $resultados = $this->db->get("tb_usuarios");
         return $resultados->row();
     } 
+
+    public function getinfou2($id){
+        $this->db->where("id_guardia",$id);
+        $resultados = $this->db->get("tb_usuarios");
+        return $resultados->row();
+    }     
 
     public function getrol2(){
 	 
@@ -38,9 +50,15 @@ class Usuarios_model extends CI_Model {
 
     public function getinfo(){
 	 
-        $resultados = $this->db->query("select a.*,b.responsable,c.name_rol,c.descripcion_rol from tb_usuarios as a inner join tb_casas as b on a.id_casa = b.id_casa inner join tb_roles as c on a.id_rol = c.id_rol;");
+        $resultados = $this->db->query("select a.*,b.responsable,c.name_rol,c.descripcion_rol from tb_usuarios as a inner join tb_casas as b on a.id_casa = b.id_casa inner join tb_roles as c on a.id_rol = c.id_rol where a.id_rol <> 5;");
         return $resultados->result();
     }    
+
+    public function getinfo2(){
+	 
+        $resultados = $this->db->query("select * from tb_usuarios as a inner join tb_guardias as b on a.id_guardia = b.id_guardia inner join tb_roles as c on a.id_rol = c.id_rol where a.id_rol = 5;");
+        return $resultados->result();
+    }        
     
 
 

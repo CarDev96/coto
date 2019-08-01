@@ -6,13 +6,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Lista de Ingresos</h3>
+                    <h3 class="text-themecolor">Lista de visitas</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 
-                        <li class="breadcrumb-item active">Ingresos Total</li>
+                        <li class="breadcrumb-item active">Visitas</li>
                     </ol>
                 </div>
 
@@ -33,46 +33,37 @@
                         <div class="card">
                             <div class="card-body">
 
-                                <h6 class="card-subtitle">Se muestra un listado de los ingresos.</h6>
+                                <h6 class="card-subtitle">Se muestra un listado de las visitas.</h6>
                                 <div class="table-responsive m-t-40">
-                                    <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
+                                    <table id="zero_config" class="table table-striped table-bordered no-wrap" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Id ingreso</th>
-                                                <th>Tipo de ingreso</th>
-                                                <th>Descripción de ingreso</th>
-                                                <th>Fecha de pago</th>
-                                                <?php if($permisos->insercion==1):?>                                                
-                                                <th>Imprimir recibo</th>
-                                                <?php endif;?>                                                
-                                                <th>Monto</th>
+                                                <th>Código QR</th>
+                                                <th>Nombre visitante</th>
+                                                <th>Fecha de visita</th>
+                                                <th>Marca vehículo</th>
+                                                <th>Placas vehículo</th>
+                                                <th>Tipo de acceso</th>
+                                                <th>Color vehículo</th>
+                                                <th>Acompañantes</th>
+                                                <th>Tipo de visita</th>
+                                                <th>Notificar a residente</th>
+                                                <th>Confirmar asistencia</th>
 
 
                                             </tr>
                                         </thead>
 
-                                        <tfoot>
-                                            <tr>
-                                                <th>Total ingreso</th>
-                                                <th></th>
-                                                <th></th>
 
-                                                <th></th>
-                                                <?php if($permisos->insercion==1):?>                                                                                                                                                
-                                                <th></th>
-                                                <?php endif;?>
-                                                <th>$<?php echo $info_sum_total->a; ?></th>
-                                            </tr>
-                                        </tfoot>
                                         <tbody>
-                                            <?php if (!empty($info_total)) : ?>
-                                                <?php foreach ($info_total as $info_total) : ?>
+                                            <?php if (!empty($info_visita3)) : ?>
+                                                <?php foreach ($info_visita3 as $info_visita) : ?>
                                                     <tr>
                                                         <td>
 
 
+                                                            <a href="<?= base_url() ?>assets/images/QR/qr_<?php echo $info_visita->codigo_a; ?>" class="example-image-link" data-lightbox="example-1"><img src="<?= base_url() ?>assets/images/QR/qr_<?php echo $info_visita->codigo_a; ?>" class="img-fluid" style=" width: 50px; height: 50px;"> </a>
 
-                                                            <?php echo $info_total->id_ingreso; ?>
 
 
 
@@ -80,20 +71,33 @@
 
 
                                                         </td>
-                                                        <td><?php echo $info_total->name; ?></td>
+                                                        <td><?php echo $info_visita->nombre_visitante; ?></td>
 
-                                                        <td><?php echo $info_total->descripcion_ingreso; ?></td>
+                                                        <td><?php echo $info_visita->fecha_visita; ?></td>
 
-                                                        <td><?php echo $info_total->fecha_ingreso; ?></td>
+                                                        <td><?php echo $info_visita->marca_auto; ?></td>
 
-                                                        <?php if($permisos->insercion==1):?>
+
+                                                        <td><?php echo $info_visita->placas_auto; ?></td>
+
+                                                        <td><?php echo $info_visita->name_tipo_vi; ?></td>
+
+                                                        <td><span style="background: <?php echo $info_visita->color_auto ?>;"><?php echo $info_visita->color_auto ?></span></td>
+
+                                                        <td><?php echo $info_visita->max_persona; ?></td>
+
+                                                        <td><?php echo $info_visita->name_v; ?></td>
+
+
+                                                        <td><a href="<?= base_url() ?>Principal/visitas/enviarwhats2/<?php echo $info_visita->telefono; ?>" target="_blank"><?php echo $info_visita->telefono; ?></a></td>
+
                                                         <td align="center">
 
 
                                                             <div class="btn-group">
 
 
-                                                                <a href="<?php echo base_url(); ?>Principal/Ingresos/recibo/<?php echo $info_total->id_ingreso; ?>" class="btn btn-primary btn-circle btn-small"><i class="fa fa-eye"></i></a>
+                                                                <a href="<?php echo base_url(); ?>Principal/Visitas/confirmar/<?php echo $info_visita->id_visita; ?>" class="btn btn-primary btn-circle btn-small"><i class="fa fa-check"></i></a>
 
 
 
@@ -103,25 +107,6 @@
 
 
                                                         </td>
-                                                        <?php endif;?>
-                                                        <td>$<?php echo $info_total->ingreso; ?></td>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                                                     </tr>

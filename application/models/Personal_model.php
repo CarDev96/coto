@@ -1,19 +1,19 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Fraccionamientos_model extends CI_Model
+class Personal_model extends CI_Model
 {
 
 
   public function save($data)
   {
-    return $this->db->insert("tb_casas", $data);
+    return $this->db->insert("tb_guardias", $data);
   }
 
   public function getInfo()
   {
 
-    $resultados = $this->db->query("select * from tb_casas where id_casa <> 0 && id_casa <> 10000;");
+    $resultados = $this->db->query("select * from tb_guardias;");
     return $resultados->result();
   }
 
@@ -105,8 +105,6 @@ class Fraccionamientos_model extends CI_Model
   }
 
   //----------------- view ----------  
-
-
 
 
   public function getinfo_up($id){

@@ -24,6 +24,7 @@ class Ingresos extends CI_Controller
 
             'info_total' => $this->Ingresos_model->getinfototal(),
             'info_sum_total' => $this->Ingresos_model->getsumtotal(),
+            'permisos' => $this->permisos,             
 
 
         );
@@ -163,6 +164,22 @@ class Ingresos extends CI_Controller
         $newDate = date("Y-m-d", strtotime($fechaf));
 
         $newDate2 = date("Y-m-d", strtotime($fecha_inicio_pago));
+
+        
+        
+        $anio = date("Y", strtotime($fecha_inicio_pago));
+
+        $mes = date("m", strtotime($fecha_inicio_pago));   
+        
+      
+        
+        
+        if($this->Ingresos_model->getfr($anio,$mes,$id_casa)){
+            
+            $this->session->set_flashdata( 'error_msg', 'No se puede realizar un pago al mismo mes' );            
+            redirect(base_url()."Principal/Ingresos/add");
+
+        }
 
         $id_casa2 = $id_casa;
 

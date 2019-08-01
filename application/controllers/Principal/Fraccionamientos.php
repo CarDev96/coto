@@ -44,6 +44,8 @@ class Fraccionamientos extends CI_Controller {
 
 	public function perfil($id)
 	{
+
+        
      
         $data = array(
             
@@ -54,7 +56,8 @@ class Fraccionamientos extends CI_Controller {
             'info_perfil5' => $this->Fraccionamientos_model->getInfop5($id),              
             'info_perfil6' => $this->Fraccionamientos_model->getInfop6($id),              
             'info_sump' => $this->Fraccionamientos_model->getsump($id),              
-            'info_sump2' => $this->Fraccionamientos_model->getsump2($id),              
+            'info_sump2' => $this->Fraccionamientos_model->getsump2($id),  
+            'permisos' => $this->permisos,                         
               
 
 
@@ -101,7 +104,15 @@ class Fraccionamientos extends CI_Controller {
 		
         $direccion = $this->input->post("calle");
         
-        $telefono = $this->input->post("telefono");        
+        $telefono = $this->input->post("telefono"); 
+        
+		$dd = explode("(",$telefono);
+    
+		$dd2 = explode(")",$dd[1]);    
+			
+		$dd3 = explode("-",$dd2[1]);   
+		
+		$telefono2 = $dd[0].$dd2[0].$dd3[0].$dd3[1];        
         
         $correo_casa = $this->input->post("correo_casa");        
         
@@ -109,7 +120,15 @@ class Fraccionamientos extends CI_Controller {
         
         $dueno = $this->input->post("dueno");        
         
-        $telefono_dueno = $this->input->post("telefono_dueno");        
+        $telefono_dueno = $this->input->post("telefono_dueno");    
+        
+        $dd4 = explode("(",$telefono_dueno);
+    
+		$dd5 = explode(")",$dd4[1]);    
+			
+		$dd6 = explode("-",$dd5[1]);   
+		
+		$telefono_dueno2 = $dd4[0].$dd5[0].$dd6[0].$dd6[1];
 
         $estatus = "Deudor";
         
@@ -140,13 +159,13 @@ class Fraccionamientos extends CI_Controller {
 			
             'estatus_pago' => $estatus,
             
-            'telefono' => $telefono,            
+            'telefono' => $telefono2,            
             
             'email' => $correo_casa,            
             
             'dueno_casa' => $dueno,            
             
-            'numero_dueno' => $telefono_dueno,            
+            'numero_dueno' => $telefono_dueno2,            
             
 			'renta' => $renta_f,            
  

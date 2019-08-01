@@ -12,7 +12,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 
-                        <li class="breadcrumb-item active">Nuevo Usuario</li>
+                        <li class="breadcrumb-item active">Nuevo usuario externo</li>
                     </ol>
                 </div>
 
@@ -32,24 +32,24 @@
                     <div class="col-lg-12">
                     <div class="card card-outline-info">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white">Registrar nuevo usuario</h4>
+                                <h4 class="m-b-0 text-white">Registrar nuevo usuario externo</h4>
                             </div>
                             <div class="card-body">
-                                <form class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>Administrador/Usuarios/nuevo">
+                                <form class="form-horizontal" role="form" method="post" action="<?php echo base_url();?>Administrador/Usuarios/nuevo_s">
                                     <div class="form-body">
                                      
                                         <hr class="m-t-0 m-b-40">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Selecciona la casa:</label>
-                                                    <div class="col-md-3">
-                                                    <select class="select2 form-control custom-select" name="id_casa" id="txtCasa" style="width: 100%; height:36px;">
-                                    <option value="10000">Casa Nº</option>
-                                    <?php foreach($info_casas as $info_casas):?>
+                                                    <label class="control-label text-right col-md-3">Selecciona el guardia:</label>
+                                                    <div class="col-md-5">
+                                                    <select class="select2 form-control custom-select" name="id_guardia" id="txtguardia" style="width: 100%; height:36px;">
+                                    <option>--Selecciona--</option>
+                                    <?php foreach($info_guardias as $info_guardias):?>
                                     
-                                        <option value="<?php echo $info_casas->id_casa;?>" data-casa="<?php echo $info_casas->email;?>" data-responsable="<?php echo $info_casas->responsable;?>" data-direccion="<?php echo $info_casas->direccion;?>" data-habitada="<?php echo $info_casas->habitada;?>" data-estatus="<?php echo $info_casas->estatus_pago;?>" >
-                                            <?php echo $info_casas->id_casa ?>
+                                        <option value="<?php echo $info_guardias->id_guardia;?>" data-email="<?php echo $info_guardias->email_g;?>"  >
+                                            <?php echo $info_guardias->nombre_g ?>
                                         </option>
 
                                         <?php endforeach;?>
@@ -72,16 +72,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--/span-->
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Propietario:</label>
-                                                    <div class="col-md-9">
-                                                    <input type="text" class="form-control" name="propietario" id="propietario" value="" disabled>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!--/span-->
+               
                                         </div>
                                         <!--/row-->
                                         <div class="row">
@@ -105,42 +96,9 @@
 
 
                                         <!--/row-->
-                                        <h3 class="box-title">Asignar permisos</h3>
+                                        
                                         <hr class="m-t-0 m-b-40">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Tipo de usuario:</label>
-                                                    <div class="col-md-9">
-                                                    <?php if($this->session->userdata("rol") == 1):?>                                                                                  
-                                                    <select class="select2 form-control custom-select" id="txtconcepto" name="rol" style="width: 100%; height:36px;">
-                                    <option>-Tipo usuario-</option>
-                                    <?php foreach($info_rol as $info_rol):?>
-                                    
-                                        <option value="<?php echo $info_rol->id_rol;?>" >
-                                            <?php echo $info_rol->name_rol ?>
-                                        </option>
-
-                                        <?php endforeach;?>
-                                </select>
-                                        <?php else:?>
-                                        <select class="select2 form-control custom-select" id="txtconcepto" name="rol" style="width: 100%; height:36px;">
-                                    <option>-Tipo usuario-</option>
-                                    <?php foreach($info_rol2 as $info_rol2):?>
-                                    
-                                        <option value="<?php echo $info_rol2->id_rol;?>" >
-                                            <?php echo $info_rol2->name_rol ?>
-                                        </option>
-
-                                        <?php endforeach;?>
-                                </select>                                        
-                                                    <?php endif;?>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                          
-
-                                        </div>
+       
               
  
                                     </div>

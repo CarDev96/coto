@@ -33,6 +33,8 @@ class Auth extends CI_Controller {
 		
 		if($this->session->userdata("login")){
 
+			
+
 			redirect(base_url()."Dashboard");
 
 
@@ -70,6 +72,7 @@ class Auth extends CI_Controller {
 				'rol' => $res->id_rol,
 				'id_casa' => $res->id_casa,
 				'foto_perfil' => $res->foto_perfil,
+				'id_guardia' => $res->id_guardia,
 				'login' => TRUE
 			);
 			
@@ -77,9 +80,17 @@ class Auth extends CI_Controller {
 
 
 			
-		
+			if($this->session->userdata("rol") == 5){
 
-			redirect(base_url()."Dashboard");
+				redirect(base_url()."Principal/Visitas/guardia");
+	
+				}else{
+	
+					redirect(base_url()."Dashboard");
+	
+				}
+
+			
 			
 		}
 	}
