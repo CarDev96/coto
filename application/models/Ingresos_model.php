@@ -45,7 +45,7 @@ class Ingresos_model extends CI_Model {
 
          $resultado2 = $this->db->query("insert into tb_suscrip(dia_suscrip,mes_suscrip,ano_suscrip,vencimiento_suscrip,id_casa,id_ingreso)values($dia,$mes,$anio,'$df',$id,$last_id)");                  
          
-        if($nombre_in == "Abono mensual"){
+        if($nombre_in == "Abono"){
 
             $resultado3 = $this->db->query("insert into tb_abonos(monto_abono,mes_correspondiente,id_ingreso,estatus_p,fecha_correspondiente) values($ingreso_int,'$mes_nom',$last_id,'$estatus_abono','$df2');");                  
      
@@ -97,7 +97,13 @@ class Ingresos_model extends CI_Model {
 	 
         $resultados = $this->db->query("select * from tb_casas where id_casa <> 0 && id_casa <> 10000;");
         return $resultados->result();
-	}
+    }
+    
+    public function getabono(){
+	 
+        $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_abonos as b on a.id_ingreso = b.id_ingreso inner join tb_concepto_in as c on a.id_concepto_in = c.id_concep_in;");
+        return $resultados->result();
+	}    
 
     public function getinfocuota(){
 	 
@@ -126,7 +132,7 @@ class Ingresos_model extends CI_Model {
 
             public function getrecibo($id){
 	 
-                $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in inner join tb_suscrip as c on a.id_ingreso = c.id_ingreso inner join tb_casas as d on a.id_casa = d.id_casa where a.id_ingreso=$id;");
+                $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in inner join tb_casas as d on a.id_casa = d.id_casa where a.id_ingreso=$id;");
                  return $resultados->row();
                 }              
             
@@ -174,8 +180,46 @@ public function getinfototal(){
        public function getfr($anio,$mes,$id_casa)
        {
      
-         $resultados = $this->db->query("select id_casa from tb_suscrip where id_casa = $id_casa and (mes_suscrip = '$mes' and ano_suscrip = '$anio');");
+         $resultados = $this->db->query("select a.id_casa from tb_suscrip as a inner join tb_ingreso as b on a.id_ingreso = b.id_ingreso where a.id_casa = $id_casa and (mes_suscrip = '$mes' and ano_suscrip = '$anio') and b.id_concepto_in =1;");
      
          return $resultados->row();
-       }       
+       } 
+       
+       public function getanio($anio,$id_casa)
+       {
+     
+         $resultados = $this->db->query("select a.id_casa from tb_suscrip as a inner join tb_ingreso as b on a.id_ingreso = b.id_ingreso where a.id_casa = $id_casa and (a.ano_suscrip = '$anio' and b.id_concepto_in=5);");
+     
+         return $resultados->row();
+       }   
+       
+       public function get_absum($id)
+       {
+     
+         $resultados = $this->db->query("select * from tb_abonos where id_abono= $id");
+     
+         return $resultados->row();
+       }   
+              
+       
+       public function abon($data,$id_casa,$id_abono,$aboni,$sum,$fecha_correspondiente){
+        
+        
+      
+         $date2=date_create("$fecha_correspondiente");
+      
+         $dia_ac = date("Y-m-d");
+      
+         $resultado = $this->db->query("insert into tb_ingreso(ingreso,id_concepto_in,id_casa,fecha_ingreso,fecha_inicio)values($aboni,7,$id_casa,'$dia_ac','$fecha_correspondiente');");                     
+         
+        $this->db->where("id_abono",$id_abono);
+        return $this->db->update("tb_abonos",$data);
+          
+    
+      
+        
+      
+      
+      }       
+
 }

@@ -30,7 +30,9 @@
                 <div class="row">
                     <div class="col-md-12">
                     <div class="text-right">
-                                        
+                    <a href="<?php echo base_url();?>Principal/Ingresos"class="btn btn-danger btn-remove btn-sm btn-small swal-btn-warning"><i class="fa fa-hand-o-left"></i></a>                                  
+                    <a href="<?php echo base_url();?>Principal/Ingresos/add"class="btn btn-danger btn-remove btn-sm btn-small swal-btn-info">Realizar otro pago</i></a>                                                      
+                    
                                         <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i>Imprimir</span> </button>
                                     </div>                        
                         <div class="card card-body printableArea">
@@ -58,9 +60,12 @@
                                             <p class="m-t-30"><b>Fecha de pago :</b> <i class="fa fa-calendar"></i> <?php $fechaf = $info_recibo->fecha_ingreso;
                                                                                                                     $newDate = date("d-m-Y", strtotime($fechaf));
                                                                                                                     echo $newDate; ?></p>
+
+                                            <?php if($info_recibo->fecha_inicio <>'1970-01-01'):?>                                                                                                                    
                                             <p><b>Fecha de inicio de pago :</b> <i class="fa fa-calendar"></i> <?php $fechaf = $info_recibo->fecha_inicio;
                                                                                                                 $newDate = date("d-m-Y", strtotime($fechaf));
                                                                                                                 echo $newDate; ?></p>
+                                                    <?php endif;?>                                                                                                                   
                                         </address>
                                     </div>
                                 </div>
@@ -72,8 +77,12 @@
                                                     <th class="text-center">Casa #</th>
                                                     <th class="text-center">Concepto</th>
                                                     <th class="text-center">Descripción</th>
+                                                    <?php if($info_recibo->fecha_inicio <>'1970-01-01'):?>
+                                                    
+                                                    
+                                                    
                                                     <th class="text-center">Fecha correspondiente</th>
-                                                    <th class="text-center">Fecha Vencimiento</th>
+                                                    <?php endif;?>                                                    
                                                     
                                                     <th class="text-center">Monto</th>
                                                 </tr>
@@ -83,12 +92,12 @@
                                                 <td class="text-center"><?php echo $info_recibo->id_casa; ?></td>
                                                 <td class="text-center"><?php echo $info_recibo->name; ?></td>
                                                 <td class="text-center"><?php echo $info_recibo->descripcion_ingreso; ?></td>
+                                                <?php if($info_recibo->fecha_inicio <> '1970-01-01'):?>                                                
                                                 <td class="text-center"><?php $fechaf = $info_recibo->fecha_inicio;
                                                                                                                 $newDate = date("d-m-Y", strtotime($fechaf));
                                                                                                                 echo $newDate; ?></td>
-                                                <td class="text-center"><?php $fechaf = $info_recibo->vencimiento_suscrip;
-                                                                                                                $newDate = date("d-m-Y", strtotime($fechaf));
-                                                                                                                echo $newDate; ?></td>                                                                                                                
+                                                    <?php endif;?>                                                                                                                
+                                                                                                               
                                                 <td class="text-center"><?php echo $info_recibo->ingreso; ?></td>
 
 

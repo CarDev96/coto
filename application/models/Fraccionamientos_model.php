@@ -151,24 +151,24 @@ public function liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion
 
    $dia = date("d",strtotime($fecha_correspondiente));         
 
-
+   $dia_ac = date("Y-m-d");
    
    
 
    if($ingreso_int == 200){
 
-    date_add($date2,date_interval_create_from_date_string("1 MONTH"));
+    date_add($fecha_correspondiente,date_interval_create_from_date_string("1 MONTH"));
    }
    else{
 
-   date_add($date2,date_interval_create_from_date_string("1 YEAR"));            
+   date_add($fecha_correspondiente,date_interval_create_from_date_string("1 YEAR"));            
 
 
    }
 
-   $df2 = date_format($date2,"Y-m-d");
+   $df2 = date_format($fecha_correspondiente,"Y-m-d");
 
-   $resultado = $this->db->query("insert into tb_ingreso(ingreso,id_concepto_in,id_casa,fecha_inicio)values($liquidacion,1,$id_casa,'$date2')");                     
+   $resultado = $this->db->query("insert into tb_ingreso(ingreso,id_concepto_in,id_casa,fecha_ingreso,fecha_inicio)values($liquidacion,8,$id_casa,'$dia_ac','$fecha_correspondiente')");                     
    
    $last_id=$this->db->insert_id(); 
 

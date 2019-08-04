@@ -83,6 +83,7 @@
                                         <li><a href="<?php echo base_url();?>Principal/Ingresos">Total</a></li>
                                     </ul>
                                 </li>
+                                <li><a href="<?php echo base_url();?>Principal/Ingresos/abonos">Abonos</a></li>                                
                                 
                                 
                                 
@@ -202,6 +203,20 @@
                             </ul>
                         </li>                        
                         <?php endif;?> 
+
+                        <?php if($this->session->userdata("rol") == 1):?>                          
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Ajuste de Pagos</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                
+                                <li><a href="<?php echo base_url();?>Principal/Cuotas">Lista </a></li>
+                                
+                             
+                                
+                                
+                                
+                            </ul>
+                        </li>                        
+                        <?php endif;?>                         
 
 
 

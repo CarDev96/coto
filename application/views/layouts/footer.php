@@ -240,6 +240,97 @@
 </script>
 <!------------------------------------>
 
+<!------------------------------------>
+
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+    function liquidar2(id) {
+        if (id != null) {
+            $.ajax({
+
+                url: base_url + "Principal/Ingresos/view_a/" + id,
+                type: "POST",
+                data: {
+                    'id_abono': id
+                },
+                success: function(respuesta) {
+                    $("#verticalcenter .modal-body").html(respuesta);
+
+
+
+
+
+
+                }
+            });
+        }
+    }
+</script>
+<!------------------------------------>
+
+<!------------------------------------>
+
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+    function abonar(id) {
+        if (id != null) {
+            $.ajax({
+
+                url: base_url + "Principal/Ingresos/view_a2/" + id,
+                type: "POST",
+                data: {
+                    'id_abono': id
+                },
+                success: function(respuesta) {
+                    $("#abono .modal-body").html(respuesta);
+
+
+
+
+
+
+                }
+            });
+        }
+    }
+</script>
+<!------------------------------------>
+
+
+<!------------------------------------>
+
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+    function concepto(id) {
+        if (id != null) {
+            $.ajax({
+
+                url: base_url + "Principal/Cuotas/view_concepto/" + id,
+                type: "POST",
+                data: {
+                    'id_concep_in': id
+                },
+                success: function(respuesta) {
+                    $("#concepto .modal-body").html(respuesta);
+
+
+
+
+
+
+                }
+            });
+        }
+    }
+</script>
+<!------------------------------------>
+
 
 <!-- --->
 <script type="text/javascript">
@@ -298,7 +389,41 @@
             success: function(respuesta) {
 
                 swal({
-                        title: "Liquidad!",
+                        title: "Liquidado!",
+                        text: "Mensualidad liquidada correctamente.",
+                        type: "success"
+                    },
+                    function() {
+                        location.reload();
+                    }
+                );
+
+            }
+        });
+
+    }
+</script>
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+
+
+    function abon() {
+
+        var dataString = $("#form_abon").serialize();
+
+
+
+        $.ajax({
+
+            url: base_url + "Principal/Ingresos/abona",
+            type: "POST",
+            data: dataString,
+            success: function(respuesta) {
+
+                swal({
+                        title: "Liquidado!",
                         text: "Mensualidad liquidada correctamente.",
                         type: "success"
                     },
@@ -313,6 +438,8 @@
     }
 </script>
 <!------------------------------------>
+
+
 
 
 <script>
@@ -495,6 +622,8 @@ $("#n_casa").val(opcion);
         });
     });
 </script>
+
+
 
 <script type="text/javascript">
     jQuery(document).ready(function() {

@@ -14,6 +14,7 @@ class Ingresos extends CI_Controller
             redirect(base_url());
         }
         $this->load->model("Ingresos_model");
+        $this->load->model("Fraccionamientos_model");        
     }
 
 
@@ -35,6 +36,25 @@ class Ingresos extends CI_Controller
         $this->load->view("admin/ingresos/list", $data);
         $this->load->view("layouts/footer");
     } //fin function index()
+
+    public function abonos()
+    {
+
+        $data = array(
+
+            'info_abonos' => $this->Ingresos_model->getabono(),
+            
+            'permisos' => $this->permisos,             
+
+
+        );
+
+
+        $this->load->view("layouts/header");
+        $this->load->view("layouts/aside");
+        $this->load->view("admin/ingresos/list_ab", $data);
+        $this->load->view("layouts/footer");
+    } //fin function index()    
 
     public function cuotas()
     {
@@ -181,6 +201,13 @@ class Ingresos extends CI_Controller
 
         }
 
+        if($this->Ingresos_model->getanio($anio,$id_casa)){
+            
+            $this->session->set_flashdata( 'error_msg', 'No se puede realizar un pago mensual a una suscripción anual' );            
+            redirect(base_url()."Principal/Ingresos/add");
+
+        }        
+
         $id_casa2 = $id_casa;
 
         $ingreso_int = intVal($ingreso);
@@ -218,5 +245,138 @@ class Ingresos extends CI_Controller
             redirect(base_url() . "Principal/Fraccionamientos");
         }
     } //fin 	
+
+
+
+
+
+
+    public function view_a($id){
+        
+              
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+        
+        $data = array(
+            
+
+            
+            'info_monto' => $this->Fraccionamientos_model->get_monto(),
+            'info_a' => $this->Fraccionamientos_model->get_a($id),
+            
+        
+        
+        );
+            
+            
+        
+		$this->load->view("admin/ingresos/view_abono",$data);
+        
+        
+        
+    }//fin function view  
+    
+
+
+   
+    
+    
+    public function view_a2($id){
+        
+              
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+        
+        $data = array(
+            
+
+            
+            'info_monto' => $this->Fraccionamientos_model->get_monto(),
+            'info_a' => $this->Fraccionamientos_model->get_a($id),
+            
+        
+        
+        );
+            
+            
+        
+		$this->load->view("admin/ingresos/view_abono2",$data);
+        
+        
+        
+    }//fin function view   
+    
+	public function abona(){
+
+               
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+
+        $id_casa = $this->input->post("id_casa");
+
+        $id_abono = $this->input->post("id_abono");
+        
+		$aboni = $this->input->post("aboni");        
+
+        $monto_mes = $this->input->post("monto_mes");
+         
+        $fecha_correspondiente = $this->input->post("fecha_correspondiente");
+     
+        $ingreso_int = intVal($monto_mes);
+               
+
+        $sum = $ingreso_int + $aboni;
+
+        
+            
+
+            
+            $info_absum = $this->Ingresos_model->get_absum($id_abono);
+            
+            
+        
+        
+           
+
+        $abon_ant = intVal($info_absum->monto_abono);  
+        
+        $abono_ant_fin = $abon_ant + $aboni;
+
+        if($abono_ant_fin > 200){
+
+            $this->session->set_flashdata( 'error_msg', 'No se puede exceder el monto abonado al monto de la cuota mensual' );            
+            redirect(base_url()."Principal/Ingresos/abonos");
+
+        }
+
+        $data = array(
+
+
+            "monto_abono" => $sum  
+
+        );
+      
+            if($this->Ingresos_model->abon($data,$id_casa,$id_abono,$aboni,$sum,$fecha_correspondiente) == true)
+                  
+                  
+                  redirect(base_url()."Principal/Ingresos/abonos");
+                
+                else
+                          
+                    redirect(base_url()."Principal/Ingresos/abonos");
+                    
+                
+          
+                
+    }//fin     
 
 }
