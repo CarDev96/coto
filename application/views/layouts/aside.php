@@ -190,7 +190,7 @@
                         <?php endif;?> 
 
 
-                        <?php if($this->session->userdata("rol") == 1):?>                          
+                        <?php if($this->session->userdata("rol") == 1 || $this->session->userdata("rol") == 2):?>                          
                         <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-human-handsdown"></i><span class="hide-menu">Personal de Seguridad</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="<?php echo base_url();?>Principal/Personal/add">Nuevo Guardia </a></li>
@@ -204,11 +204,12 @@
                         </li>                        
                         <?php endif;?> 
 
-                        <?php if($this->session->userdata("rol") == 1):?>                          
-                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Ajuste de Pagos</span></a>
+                        <?php if($this->session->userdata("rol") == 1 || $this->session->userdata("rol") == 2): ?>                          
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Ajustes</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 
-                                <li><a href="<?php echo base_url();?>Principal/Cuotas">Lista </a></li>
+                                <li><a href="<?php echo base_url();?>Principal/Cuotas">Conceptos de pagos </a></li>
+                                <li><a href="<?php echo base_url();?>Administrador/Usuarios/edit">Tipos de usuarios </a></li>
                                 
                              
                                 
@@ -216,7 +217,37 @@
                                 
                             </ul>
                         </li>                        
-                        <?php endif;?>                         
+						<?php endif;?>    
+						
+                        <?php if($this->session->userdata("rol") == 1 || $this->session->userdata("rol") == 2): ?>                          
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-delete-forever"></i><span class="hide-menu">Datos Eliminados</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                
+								<li><a href="<?php echo base_url();?>Principal/Deleted">Ingresos </a></li>
+                                <li><a href="<?php echo base_url();?>Principal/Deleted/gastos">Gastos </a></li>								
+                                
+                             
+                                
+                                
+                                
+                            </ul>
+                        </li>                        
+						<?php endif;?>  
+						
+                        <?php if($this->session->userdata("rol") == 1 || $this->session->userdata("rol") == 2): ?>                          
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-bank"></i><span class="hide-menu">Estado de cuenta</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                
+								<li><a href="<?php echo base_url();?>Administrador/Finanzas">Lista </a></li>
+                                
+                                
+                             
+                                
+                                
+                                
+                            </ul>
+                        </li>                        
+                        <?php endif;?>  						
 
 
 

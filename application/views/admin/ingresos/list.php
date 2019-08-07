@@ -46,7 +46,9 @@
                                                 <th>Imprimir recibo</th>
                                                 <?php endif;?>                                                
                                                 <th>Monto</th>
-
+                                                <?php if($permisos->insercion==1):?>                                                
+                                                <th>Eliminar</th>
+                                                <?php endif;?>  
 
                                             </tr>
                                         </thead>
@@ -62,6 +64,9 @@
                                                 <th></th>
                                                 <?php endif;?>
                                                 <th>$<?php echo $info_sum_total->a; ?></th>
+                                                <?php if($permisos->insercion==1):?>                                                
+                                                <th></th>
+                                                <?php endif;?>                                                  
                                             </tr>
                                         </tfoot>
                                         <tbody>
@@ -106,6 +111,25 @@
                                                         <?php endif;?>
                                                         <td>$<?php echo $info_total->ingreso; ?></td>
 
+                                                        <?php if($permisos->insercion==1):?>
+                                                        <td align="center">
+
+
+                                                            <div class="btn-group">
+
+
+                                                            <a  id="eliminar_ingreso" class="btn btn-danger btn-remove btn-sm btn-small swal-btn-warning" data-toggle="modal" data-target="#elim" onclick="eliminar(<?php echo $info_total->id_ingreso; ?>)"><i class="fa fa-remove"></i></a>
+
+
+
+
+                                                            </div>
+
+
+
+                                                        </td>
+                                                        <?php endif;?>                                                        
+
 
 
 
@@ -147,7 +171,23 @@
             <!-- End Container fluid  -->
             <!-- ============================================================== -->
             <!-- ============================================================== -->
+            <div id="elim" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="vcenter" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-green">
+                            <h4 class="modal-title" id="vcenter">¿Está seguro?</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        </div>
+                        <div class="modal-body" style="height: 190px;width: 100%;" id="content">
 
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->   
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->

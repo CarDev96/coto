@@ -300,6 +300,66 @@
 </script>
 <!------------------------------------>
 
+<!------------------------------------>
+
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+    function eliminar(id) {
+        if (id != null) {
+            $.ajax({
+
+                url: base_url + "Principal/Ingresos/eliminar/" + id,
+                type: "POST",
+                data: {
+                    'id_ingreso': id
+                },
+                success: function(respuesta) {
+                    $("#elim .modal-body").html(respuesta);
+
+
+
+
+
+
+                }
+            });
+        }
+    }
+</script>
+<!------------------------------------>
+
+<!------------------------------------>
+
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+    function eliminar2(id) {
+        if (id != null) {
+            $.ajax({
+
+                url: base_url + "Principal/Egresos/eliminar/" + id,
+                type: "POST",
+                data: {
+                    'id_egreso': id
+                },
+                success: function(respuesta) {
+                    $("#elim .modal-body").html(respuesta);
+
+
+
+
+
+
+                }
+            });
+        }
+    }
+</script>
+<!------------------------------------>
+
 
 <!------------------------------------>
 
@@ -318,6 +378,36 @@
                 },
                 success: function(respuesta) {
                     $("#concepto .modal-body").html(respuesta);
+
+
+
+
+
+
+                }
+            });
+        }
+    }
+</script>
+<!------------------------------------>
+
+<!------------------------------------>
+
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+    function rol(id) {
+        if (id != null) {
+            $.ajax({
+
+                url: base_url + "Administrador/Usuarios/view_rol/" + id,
+                type: "POST",
+                data: {
+                    'id_rol': id
+                },
+                success: function(respuesta) {
+                    $("#rol .modal-body").html(respuesta);
 
 
 
@@ -547,6 +637,7 @@
         var opcion3 = $(':selected', this).data('direccion');
         var opcion4 = $(':selected', this).data('habitada');
         var opcion5 = $(':selected', this).data('estatus');
+        var opcion6 = $(':selected', this).data('descuento');
 
 
 
@@ -556,6 +647,7 @@
         $("#direccion").val(opcion3);
         $("#habitada").val(opcion4);
         $("#pago").val(opcion5);
+        $("#desc_ap").val(opcion6);
 
 
 
@@ -609,6 +701,20 @@ $("#n_casa").val(opcion);
 
     });
 </script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        // touchspin
+        $("input[name='desc_adicional']").TouchSpin({
+            min: 0,
+            max: 1000000000,
+            stepinterval: 50,
+            maxboostedstep: 10000000,
+            prefix: '$'
+        });
+    });
+</script>
+
 
 <script type="text/javascript">
     jQuery(document).ready(function() {

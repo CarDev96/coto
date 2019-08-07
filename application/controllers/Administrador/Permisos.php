@@ -21,6 +21,8 @@ class Permisos extends CI_Controller {
 	
 	public function __construct(){
 		parent::__construct();
+
+		$this->permisos = $this->backend_lib->control();		
 		$this->load->model("Usuarios_model");
 		$this->load->model("Permisos_model");
 	}
@@ -29,6 +31,11 @@ class Permisos extends CI_Controller {
 	
 	public function index()
 	{
+		if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
 
 		$data = array(
 
@@ -46,7 +53,13 @@ class Permisos extends CI_Controller {
 	
     public function add(){
         
-      
+	  
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+		}
+				
         $data = array(
 
             'info_menu' => $this->Permisos_model->getmenu(),

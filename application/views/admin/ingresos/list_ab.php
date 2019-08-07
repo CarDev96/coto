@@ -44,10 +44,14 @@
                                                 
                                                 <th align="center">Estatus</th>
                                                 
-                                                <?php if($permisos->insercion==1):?>                                                
+                                                <?php if($permisos->insercion==1):?> 
+
+                                                                              
                                                 <th align="center">Registrar otro abono</th>
                                                 <th align="center">Liquidar</th>
-                                                <?php endif;?>                                                
+                                              
+
+                                                <?php endif; ?>                                                
                                                 
 
 
@@ -80,9 +84,11 @@
 
                                                         <?php if($permisos->insercion==1):?>
 
+
+                                                        
                                                         <td align="center">
 
-
+                                                        <?php if($info_total->estatus_p == "Abono" ):?>
                                                             <div class="btn-group">
 
 
@@ -93,13 +99,13 @@
 
                                                             </div>
 
-
+                                                            <?php endif;?>
 
                                                         </td>
 
                                                         <td align="center">
 
-
+                                                        <?php if($info_total->estatus_p == "Abono" ):?>
                                                             <div class="btn-group">
 
 
@@ -111,8 +117,10 @@
                                                             </div>
 
 
-
+                                                            <?php endif;?>
                                                         </td>                                                        
+
+
                                                         <?php endif;?>
                                                         
 

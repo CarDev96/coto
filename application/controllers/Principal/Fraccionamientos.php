@@ -121,6 +121,10 @@ class Fraccionamientos extends CI_Controller {
         $dueno = $this->input->post("dueno");        
         
         $telefono_dueno = $this->input->post("telefono_dueno");    
+
+        $descuento_casa = $this->input->post("tch2");    
+
+        $descripcion_desc = $this->input->post("descripcion_desc");    
         
         $dd4 = explode("(",$telefono_dueno);
     
@@ -167,7 +171,11 @@ class Fraccionamientos extends CI_Controller {
             
             'numero_dueno' => $telefono_dueno2,            
             
-			'renta' => $renta_f,            
+            'renta' => $renta_f,            
+            
+            'descuento_casa' => $descuento_casa,            
+            
+			'descripcion_desc' => $descripcion_desc,            
  
            
            

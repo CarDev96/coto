@@ -76,7 +76,7 @@
                             <ul class="nav nav-tabs profile-tab" role="tablist">
                                 <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Cuotas obligatorias</a> </li>
                                 <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Ingresos Varios</a> </li>
-                                <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#abono" role="tab">Abonos</a> </li>
+
 
                             </ul>
                             <!-- Tab panes -->
@@ -340,95 +340,7 @@
                                     </div>
                                 </div>
 
-                                <div class="tab-pane" id="abono" role="tabpanel">
-                                    <div class="card-body">
-
-                                        <h6 class="card-subtitle">Se muestra un listado de los abonos registrados.</h6>
-                                        <div class="table-responsive m-t-40">
-                                            <table id="zero_config2" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Fecha de ingreso</th>
-                                                        <th>Tipo de ingreso</th>
-                                                        <th>Descripcion</th>
-                                                        <th>Fecha correspondiente</th>
-                                                        <th>Estatus</th>
-
-                                                        <th>Monto</th>
-                                                        <?php if($permisos->insercion==1):?>                                                        
-                                                        <th>Liquidar</th>
-                                                        <?php endif;?>
-
-                                                    </tr>
-                                                </thead>
-
-
-                                                <tbody>
-                                                    <?php if (!empty($info_perfil6)) : ?>
-                                                        <?php foreach ($info_perfil6 as $info_perfil6) : ?>
-                                                            <tr>
-                                                                <td>
-
-
-
-                                                                    <?php echo $info_perfil6->fecha_ingreso; ?>
-
-
-
-
-
-
-                                                                </td>
-                                                                <td><?php echo $info_perfil6->name; ?></td>
-
-                                                                <td><?php echo $info_perfil6->descripcion_ingreso; ?></td>
-
-                                                                <td><?php echo $info_perfil6->fecha_correspondiente; ?></td>
-
-                                                                <td><?php echo $info_perfil6->estatus_p; ?></td>
-
-
-
-                                                                <td><?php echo $info_perfil6->ingreso; ?></td>
-
-                                                                <?php if($permisos->insercion==1):?>                                                                
-                                                                <td>
-                                                                    
-                                                                <a class="btn btn-warning btn-update btn-sm btn-small" data-toggle="modal" data-target="#verticalcenter" onclick="liquidar(<?php echo $info_perfil6->id_abono; ?>)"><i class="fa fa-edit"></i></a>
-                                                            
-                                                                </td>
-                                                                <?php endif;?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                            </tr>
-                                                        <?php endforeach; ?>
-                                                    <?php endif; ?>
-
-
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
+                                
 
                             </div>
                         </div>

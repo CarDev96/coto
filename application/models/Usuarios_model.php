@@ -16,7 +16,13 @@ class Usuarios_model extends CI_Model {
 	 
         $resultados = $this->db->query("select * from tb_roles where id_rol <> 5");
         return $resultados->result();
-    }    
+	}    
+	
+    public function getrol22($id){
+	 
+        $resultados = $this->db->query("select * from tb_roles where id_rol =$id");
+        return $resultados->row();
+    }    	
     
     public function getperf($id){
         $this->db->where("id_casa",$id);
@@ -85,7 +91,22 @@ class Usuarios_model extends CI_Model {
     }
 
      
-    }     
+	}  
+	
+    public function update($data,$id){
+
+  
+		$this->db->where('id_rol', $id);
+		$this->db->update('tb_roles', $data); 
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}
+		else{
+			return false;
+    }
+
+     
+    }  	
     
 //-------------------------------------------- Foto ----------------------
 

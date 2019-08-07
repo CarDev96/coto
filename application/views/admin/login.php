@@ -28,7 +28,7 @@
 
       </div> <!-- end login -->
       <div class="logo">
-      <img src="<?=base_url()?>assets/images/logo-light-text.png" style=" width: auto; height: auto;" >
+      <p style = "margin-top: 34px;font-size:smaller;" >HouseLife</p>
           
           <div class="clearfix"></div>
       </div>

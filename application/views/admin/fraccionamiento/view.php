@@ -31,7 +31,7 @@
     <div class="col-md-6">
             <div class="form-group">
                 <label class="control-label">Correo Electrónico</label>
-                <input type="email" id="lastName" name="correo_casa"class="form-control" placeholder="" value="<?php echo $info_up->id_casa; ?>">
+                <input type="email" id="lastName" name="correo_casa"class="form-control" placeholder="" value="<?php echo $info_up->email; ?>">
                 <small class="form-control-feedback"> ejem@gmail.com </small> </div>
         </div>
         <!--/span-->

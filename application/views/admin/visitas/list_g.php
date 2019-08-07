@@ -62,7 +62,7 @@
                                                         <td>
 
 
-                                                            <a href="<?= base_url() ?>assets/images/QR/qr_<?php echo $info_visita->codigo_a; ?>" class="example-image-link" data-lightbox="example-1"><img src="<?= base_url() ?>assets/images/QR/qr_<?php echo $info_visita->codigo_a; ?>" class="img-fluid" style=" width: 50px; height: 50px;"> </a>
+                                                            <a href="<?= base_url() ?>assets/images/QR/qr_<?php echo $info_visita->codigo_a; ?>.png" class="example-image-link" data-lightbox="example-1"><img src="<?= base_url() ?>assets/images/QR/qr_<?php echo $info_visita->codigo_a; ?>.png" class="img-fluid" style=" width: 50px; height: 50px;"> </a>
 
 
 

@@ -50,7 +50,7 @@
                                     <option value="1">Casa Nº</option>
                                     <?php foreach($info_casas as $info_casas):?>
                                     
-                                        <option value="<?php echo $info_casas->id_casa;?>" data-casa="<?php echo $info_casas->id_casa;?>" data-responsable="<?php echo $info_casas->responsable;?>" data-direccion="<?php echo $info_casas->direccion;?>" data-habitada="<?php echo $info_casas->habitada;?>" data-estatus="<?php echo $info_casas->estatus_pago;?>" >
+                                        <option value="<?php echo $info_casas->id_casa;?>" data-casa="<?php echo $info_casas->id_casa;?>" data-responsable="<?php echo $info_casas->responsable;?>" data-direccion="<?php echo $info_casas->direccion;?>" data-habitada="<?php echo $info_casas->habitada;?>" data-estatus="<?php echo $info_casas->estatus_pago;?>" data-descuento="<?php echo $info_casas->descuento_casa;?>" >
                                             <?php echo $info_casas->id_casa ?>
                                         </option>
 
@@ -120,6 +120,16 @@
                                                 </div>
                                             </div>
                                             <!--/span-->
+
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Descuento aplicado:</label>
+                                                    <div class="col-md-9">
+                                                    <input type="text" class="form-control" name="desc_ap" id="desc_ap" value="" readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->                                            
                                         </div>
                                         <!--/row-->                                        
                                                                              
@@ -202,6 +212,16 @@
                                                 </div>
                                             </div>
                                             <!--/span-->
+                                            <div class="col-md-6">
+                                                <div class="form-group row">
+                                                    <label class="control-label text-right col-md-3">Descuento adicional:</label>
+                                                    <div class="col-md-9">
+
+                                                    <input id="desc_adicional" type="text" value="0" name="desc_adicional" class=" form-control" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline"> 
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--/span-->                                            
                                  
                                         </div>
                                     </div>

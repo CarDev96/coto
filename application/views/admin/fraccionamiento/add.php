@@ -118,16 +118,35 @@
 
 
 
-                                        <h3 class="box-title m-t-40">Dirección</h3>
+                                        <h3 class="box-title m-t-40">Información adicional</h3>
                                         <hr>
                                         <div class="row">
-                                            <div class="col-sm-12 ">
+                                            <div class="col-sm-6 ">
                                                 <div class="form-group">
-                                                    <label>Calle</label>
+                                                    <label>Dirección completa</label>
                                                     <input type="text" class="form-control" name="calle" required>
                                                 </div>
                                             </div>
+                                                                                
                                         </div>
+
+                                        <h3 class="box-title m-t-40">Privilegios</h3>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-sm-3 ">
+                                                <div class="form-group">
+                                                    <label>Descuento</label>
+                                                    <input id="tch2" type="text" value="0" name="tch2" class=" form-control" data-bts-button-down-class="btn btn-secondary btn-outline" data-bts-button-up-class="btn btn-secondary btn-outline" required> 
+                                                    <small class="form-control-feedback">Ingresa algún descuento aplicado.</small>                                                     
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3 ">
+                                                <div class="form-group">
+                                                    <label>Descripción</label>
+                                                    <input type="text" class="form-control" name="descripcion_desc">
+                                                </div>
+                                            </div>                                            
+                                        </div>                                        
 
                                         <!--/row-->
                                         <div class="row">

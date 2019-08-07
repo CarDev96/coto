@@ -21,6 +21,9 @@ class Usuarios extends CI_Controller {
 	
 	public function __construct(){
 		parent::__construct();
+
+		$this->permisos = $this->backend_lib->control();
+  			
 		$this->load->model("Usuarios_model");
 		$this->load->model("Ingresos_model");
 		$this->load->model("Personal_model");
@@ -65,6 +68,26 @@ class Usuarios extends CI_Controller {
 
 		
 	}    
+
+    
+	public function edit(){
+		
+
+		
+      
+        $data = array(
+
+            'info_rol' => $this->Usuarios_model->getrol(),
+            'permisos' => $this->permisos,
+        );
+        
+        $this->load->view("layouts/header");
+		$this->load->view("layouts/aside");
+		$this->load->view("admin/usuarios/list_rol",$data);
+		$this->load->view("layouts/footer");
+
+		
+	}    	
 	
     public function add(){
         
@@ -307,7 +330,37 @@ class Usuarios extends CI_Controller {
 
             redirect(base_url() . "Administrador/Usuarios/perfil/$id_casa");
         }
-    } //fin  
+	} //fin  
+	
+
+    public function view_rol($id){
+        
+              
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+        
+        $data = array(
+            
+
+            
+            'info_a' => $this->Usuarios_model->getrol22($id),
+            
+            
+        
+        
+        );
+            
+            
+        
+		$this->load->view("admin/usuarios/view_rol",$data);
+        
+        
+        
+    }//fin function view   
+    	
 
 
 
@@ -577,6 +630,42 @@ class Usuarios extends CI_Controller {
         $config['height'] = 150;
         $this->load->library('image_lib', $config); 
         $this->image_lib->resize();
-    }       
+	}    
+	
+	public function update(){
+
+               
+		if(! $this->permisos->insercion){ 
+				
+			redirect(base_url()); return; 
+		
+		}
+	
+		$id_rol = $this->input->post("id_rol");
+	
+		$nom_rol = $this->input->post("nom_rol");
+		
+		$data = array(
+	
+	
+			"name_rol" => $nom_rol
+	
+	
+	
+		);
+	
+		if($this->Usuarios_model->update($data,$id_rol)== true)
+					  
+					  
+		redirect(base_url()."Administrador/Usuarios/edit");
+	  
+	  else
+				
+		  redirect(base_url()."Administrador/Usuarios/edit");
+		  
+		  
+		 
+	
+	   }	
 	
 }

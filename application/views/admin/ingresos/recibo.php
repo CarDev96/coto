@@ -61,7 +61,7 @@
                                                                                                                     $newDate = date("d-m-Y", strtotime($fechaf));
                                                                                                                     echo $newDate; ?></p>
 
-                                            <?php if($info_recibo->fecha_inicio <>'1970-01-01'):?>                                                                                                                    
+                                            <?php if($info_recibo->fecha_inicio <>'1969-12-31'):?>                                                                                                                    
                                             <p><b>Fecha de inicio de pago :</b> <i class="fa fa-calendar"></i> <?php $fechaf = $info_recibo->fecha_inicio;
                                                                                                                 $newDate = date("d-m-Y", strtotime($fechaf));
                                                                                                                 echo $newDate; ?></p>
@@ -77,7 +77,7 @@
                                                     <th class="text-center">Casa #</th>
                                                     <th class="text-center">Concepto</th>
                                                     <th class="text-center">Descripción</th>
-                                                    <?php if($info_recibo->fecha_inicio <>'1970-01-01'):?>
+                                                    <?php if($info_recibo->fecha_inicio <>'1969-12-31'):?>
                                                     
                                                     
                                                     
@@ -92,7 +92,7 @@
                                                 <td class="text-center"><?php echo $info_recibo->id_casa; ?></td>
                                                 <td class="text-center"><?php echo $info_recibo->name; ?></td>
                                                 <td class="text-center"><?php echo $info_recibo->descripcion_ingreso; ?></td>
-                                                <?php if($info_recibo->fecha_inicio <> '1970-01-01'):?>                                                
+                                                <?php if($info_recibo->fecha_inicio <> '1969-12-31'):?>                                                
                                                 <td class="text-center"><?php $fechaf = $info_recibo->fecha_inicio;
                                                                                                                 $newDate = date("d-m-Y", strtotime($fechaf));
                                                                                                                 echo $newDate; ?></td>

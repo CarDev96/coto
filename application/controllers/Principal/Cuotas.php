@@ -36,7 +36,7 @@ class Cuotas extends CI_Controller {
 
 		$this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/Ingresos/list_cuotas",$data);
+		$this->load->view("admin/ingresos/list_cuotas",$data);
 		$this->load->view("layouts/footer");
 
 	}//fin function index()

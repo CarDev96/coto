@@ -43,6 +43,8 @@ class Ingresos extends CI_Controller
         $data = array(
 
             'info_abonos' => $this->Ingresos_model->getabono(),
+
+            'info_liq' => $this->Ingresos_model->getabono2(),
             
             'permisos' => $this->permisos,             
 
@@ -177,6 +179,59 @@ class Ingresos extends CI_Controller
 
         $descripcion_ingreso = $this->input->post("descripcion_in");   //descripcion ingreso    
 
+        $desc_ap = $this->input->post("desc_ap");   //descripcion ingreso 
+        
+        $eliminado = 0;
+
+        if(is_null($desc_ap)){
+
+            $desc_ap2 = 0;
+
+
+
+        }else{
+
+            $desc_ap2 = $desc_ap;
+
+
+
+        }
+
+        $desc_adicional = $this->input->post("desc_adicional");   //descripcion ingreso    
+
+        if(is_null($desc_adicional)){
+
+            $desc_adicional2 = 0;
+
+
+
+        }else{
+
+            $desc_adicional2 = $desc_adicional;
+
+
+
+		}
+		
+		if($id_concepto_in == 3){
+
+			$monto_final = $ingreso;
+
+		}else{
+
+        if($desc_ap2 >$ingreso){
+
+            $monto_final = 0;
+
+        }else{
+
+            $monto_sumado = $desc_adicional2 + $desc_ap2;
+
+            $monto_final = $ingreso - $monto_sumado;
+
+		}
+		
+	}
         $fechaf = $fecha_ingreso;
 
 
@@ -210,7 +265,7 @@ class Ingresos extends CI_Controller
 
         $id_casa2 = $id_casa;
 
-        $ingreso_int = intVal($ingreso);
+        $ingreso_int = intVal($monto_final);
 
         $data = array(
 
@@ -218,17 +273,15 @@ class Ingresos extends CI_Controller
 
             'id_concepto_in' => $id_concepto_in,
 
-            'ingreso' => $ingreso,
+            'ingreso' => $monto_final,
 
             'fecha_ingreso' => $newDate,
 
             'fecha_inicio'  => $newDate2,
 
-            'descripcion_ingreso' => $descripcion_ingreso
+            'descripcion_ingreso' => $descripcion_ingreso,
 
-
-
-
+            'eliminado' => $eliminado,
 
 
 
@@ -238,11 +291,37 @@ class Ingresos extends CI_Controller
         if ($this->Ingresos_model->save($data, $id_casa2, $ingreso_int, $newDate2,$nombre_in)) {
 
 
+            $recibo = $this->Ingresos_model->getid();
+            
+            $data = array(
 
-            redirect(base_url() . "Principal/Ingresos");
+                'info_recibo' => $this->Ingresos_model->getrecibo($recibo->id_ingreso),
+
+
+            );
+  
+
+        $this->load->view("layouts/header");
+        $this->load->view("layouts/aside");
+        $this->load->view("admin/ingresos/recibo",$data);
+        $this->load->view("layouts/footer");
+
         } else {
 
-            redirect(base_url() . "Principal/Fraccionamientos");
+            $recibo = $this->Ingresos_model->getid();
+            
+            $data = array(
+
+                'info_recibo' => $this->Ingresos_model->getrecibo($recibo->id_ingreso),
+
+
+            );
+  
+
+        $this->load->view("layouts/header");
+        $this->load->view("layouts/aside");
+        $this->load->view("admin/ingresos/recibo",$data);
+        $this->load->view("layouts/footer");
         }
     } //fin 	
 
@@ -311,6 +390,35 @@ class Ingresos extends CI_Controller
         
         
     }//fin function view   
+
+    public function eliminar($id){
+        
+              
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+        
+        $data = array(
+            
+
+            
+            
+            'info_a' => $this->Ingresos_model->geti($id),
+            'info_motivo' => $this->Ingresos_model->getmoti($id),
+            
+        
+        
+        );
+            
+            
+        
+		$this->load->view("admin/ingresos/eliminar",$data);
+        
+        
+        
+    }//fin function view       
     
 	public function abona(){
 
@@ -377,6 +485,55 @@ class Ingresos extends CI_Controller
                 
           
                 
-    }//fin     
+    }//fin    
+    
+    
+
+
+	public function delete(){
+
+               
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+
+        $id_ingreso = $this->input->post("id_ingreso");
+
+        $usuario_elimina = $this->input->post("usuario_elimina");
+        
+		$motivo_elim = $this->input->post("motivo_elim");        
+
+        $monto_mes = $this->input->post("monto_mes");
+
+        $eliminado = 1;
+         
+        $fecha_eliminado = date("Y/m/d H:i:s");
+     
+ 
+        $data = array(
+
+
+            "eliminado" => $eliminado,
+            "motivo" => $motivo_elim,
+            "fecha_eliminado" => $fecha_eliminado,
+            "usuario_elimina" => $usuario_elimina
+
+        );
+      
+            if($this->Ingresos_model->delete($data,$id_ingreso) == true)
+                  
+                  
+                  redirect(base_url()."Principal/Ingresos");
+                
+                else
+                          
+                    redirect(base_url()."Principal/Ingresos");
+                    
+                
+          
+                
+    }//fin        
 
 }

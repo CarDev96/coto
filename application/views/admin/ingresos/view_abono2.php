@@ -28,7 +28,7 @@
 
     <div class="col-md-4">
         <div class="form-group">
-            <label class="control-label">ab:</label>
+            <label class="control-label">Abono:</label>
             <input type="text" id="lastName" name="aboni" class="form-control" >
             <small class="form-control-feedback">Cantidad para abonar al mes. </small> </div>
     </div>    
@@ -46,9 +46,9 @@
 
 
 <div class="form-actions pull-right">
-    <a class="btn btn-success" onclick="abon();"> <i class="fa fa-save"></i>abonar</a>
+    
     <button button type="button" class="btn btn-info waves-effect" id="btnactualizar" data-dismiss="modal"></i> Cerrar</button>
-    <button button type="submit" class="btn btn-info waves-effect"></i> a</button>
+    <button button type="submit" class="btn btn-info waves-effect"></i>Abonar</button>
 
 </div>
 

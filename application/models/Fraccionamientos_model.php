@@ -13,7 +13,7 @@ class Fraccionamientos_model extends CI_Model
   public function getInfo()
   {
 
-    $resultados = $this->db->query("select * from tb_casas where id_casa <> 0 && id_casa <> 10000;");
+    $resultados = $this->db->query("select * from tb_casas where id_casa <> 1 && id_casa <> 10000;");
     return $resultados->result();
   }
 
@@ -52,7 +52,7 @@ class Fraccionamientos_model extends CI_Model
   public function getInfop5($id)
   {
 
-    $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in where id_casa = $id and( a.id_concepto_in <> 1 and a.id_concepto_in <> 5) and a.id_concepto_in <>7;");
+    $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in where id_casa = $id and( a.id_concepto_in <> 1 and a.id_concepto_in <> 5) and a.id_concepto_in <>7 and eliminado <>1;");
 
     return $resultados->result();
   }
@@ -68,7 +68,7 @@ class Fraccionamientos_model extends CI_Model
   public function getsump($id)
   {
 
-    $resultados = $this->db->query("select sum(a.ingreso) as a from tb_ingreso as a inner join tb_suscrip as b on a.id_ingreso  = b.id_ingreso inner join tb_concepto_in as d on a.id_concepto_in = d.id_concep_in inner join tb_casas as c on a.id_casa = c.id_casa where a.id_casa = $id  and (d.id_concep_in != 1 and a.id_concepto_in != 5) and d.id_concep_in != 7;");
+    $resultados = $this->db->query("select sum(a.ingreso) as a from tb_ingreso as a inner join tb_suscrip as b on a.id_ingreso  = b.id_ingreso inner join tb_concepto_in as d on a.id_concepto_in = d.id_concep_in inner join tb_casas as c on a.id_casa = c.id_casa where a.id_casa = $id  and (d.id_concep_in != 1 and a.id_concepto_in != 5) and d.id_concep_in != 7 and eliminado <> 1;");
 
     return $resultados->row();
   }
@@ -78,7 +78,7 @@ class Fraccionamientos_model extends CI_Model
   public function getsump2($id)
   {
 
-    $resultados = $this->db->query("select sum(b.monto_abono) as a from tb_ingreso as a inner join tb_abonos as b on a.id_ingreso = b.id_ingreso inner join tb_concepto_in as c on a.id_concepto_in = c.id_concep_in where a.id_casa=$id;");
+    $resultados = $this->db->query("select sum(b.monto_abono) as a from tb_ingreso as a inner join tb_abonos as b on a.id_ingreso = b.id_ingreso inner join tb_concepto_in as c on a.id_concepto_in = c.id_concep_in where a.id_casa=$id and eliminado <> 1;");
 
     return $resultados->row();
   }
@@ -155,20 +155,14 @@ public function liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion
    
    
 
-   if($ingreso_int == 200){
+   
 
-    date_add($fecha_correspondiente,date_interval_create_from_date_string("1 MONTH"));
-   }
-   else{
+    date_add($date2,date_interval_create_from_date_string("1 MONTH"));
+ 
 
-   date_add($fecha_correspondiente,date_interval_create_from_date_string("1 YEAR"));            
+   $df2 = date_format($date2,"Y-m-d");
 
-
-   }
-
-   $df2 = date_format($fecha_correspondiente,"Y-m-d");
-
-   $resultado = $this->db->query("insert into tb_ingreso(ingreso,id_concepto_in,id_casa,fecha_ingreso,fecha_inicio)values($liquidacion,8,$id_casa,'$dia_ac','$fecha_correspondiente')");                     
+   $resultado = $this->db->query("insert into tb_ingreso(ingreso,id_concepto_in,id_casa,fecha_ingreso,fecha_inicio)values($liquidacion,1,$id_casa,'$dia_ac','$fecha_correspondiente')");                     
    
    $last_id=$this->db->insert_id(); 
 
@@ -180,7 +174,7 @@ public function liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion
 	
     
    
-    if($ingreso_int == 200){
+    
 
 
            
@@ -200,7 +194,6 @@ public function liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion
 
 
 
-  }
 
   
 

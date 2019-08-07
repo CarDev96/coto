@@ -27,7 +27,7 @@ class Ingresos_model extends CI_Model {
 
          $dia = date("d",strtotime($newDate2));         
 
-         if($ingreso_int == 200){
+         if($nombre_in == "Cuota mensual"){
 
          date_add($date,date_interval_create_from_date_string("1 MONTH"));
         }
@@ -53,7 +53,7 @@ class Ingresos_model extends CI_Model {
         }
         
 
-         if($ingreso_int == 200 && $nombre_in == "Cuota mensual"){
+         if($nombre_in == "Cuota mensual"){
 
 
            
@@ -75,7 +75,7 @@ class Ingresos_model extends CI_Model {
      
         }
 
-        if($ingreso_int == 2200){
+        if($nombre_in == "Cuota Anual"){
 
 
      
@@ -98,12 +98,25 @@ class Ingresos_model extends CI_Model {
         $resultados = $this->db->query("select * from tb_casas where id_casa <> 0 && id_casa <> 10000;");
         return $resultados->result();
     }
+
+
+    public function getid(){
+	 
+        $resultados = $this->db->query("select * from tb_ingreso order by id_ingreso desc limit 1;");
+        return $resultados->row();
+    }    
     
     public function getabono(){
 	 
         $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_abonos as b on a.id_ingreso = b.id_ingreso inner join tb_concepto_in as c on a.id_concepto_in = c.id_concep_in;");
         return $resultados->result();
-	}    
+    } 
+    
+    public function getabono2(){
+	 
+        $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_abonos as b on a.id_ingreso = b.id_ingreso inner join tb_concepto_in as c on a.id_concepto_in = c.id_concep_in;");
+        return $resultados->row();
+	}     
 
     public function getinfocuota(){
 	 
@@ -134,7 +147,20 @@ class Ingresos_model extends CI_Model {
 	 
                 $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in inner join tb_casas as d on a.id_casa = d.id_casa where a.id_ingreso=$id;");
                  return $resultados->row();
-                }              
+                }     
+                
+                
+                public function geti($id){
+	 
+                    $resultados = $this->db->query("select * from tb_ingreso where id_ingreso = $id");
+                     return $resultados->row();
+                    }       
+                    
+                    public function getmoti($id){
+	 
+                        $resultados = $this->db->query("select * from tb_motivo_elim;");
+                         return $resultados->result();
+                        }                           
             
             
 
@@ -159,13 +185,13 @@ public function getinfovarios(){
 
 public function getinfototal(){
 	 
-    $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in;");
+    $resultados = $this->db->query("select * from tb_ingreso as a inner join tb_concepto_in as b on a.id_concepto_in = b.id_concep_in where eliminado = 0;");
      return $resultados->result();
     }  
 
     public function getsumtotal(){
  
-        $resultados = $this->db->query("select sum(ingreso) as a from tb_ingreso;");
+        $resultados = $this->db->query("select sum(ingreso) as a from tb_ingreso where eliminado <> 1;");
          return $resultados->row();
         }  
 
@@ -221,5 +247,18 @@ public function getinfototal(){
       
       
       }       
+
+      public function delete($data,$id_ingreso){
+        
+
+       $this->db->where("id_ingreso",$id_ingreso);
+       return $this->db->update("tb_ingreso",$data);
+         
+   
+     
+       
+     
+     
+     }             
 
 }

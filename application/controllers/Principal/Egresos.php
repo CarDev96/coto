@@ -20,7 +20,8 @@ class Egresos extends CI_Controller {
         $data = array(
             
             'info_gastos' => $this->Egresos_model->getinfo(),
-            'sum_e' => $this->Egresos_model->getegreso(),
+			'sum_e' => $this->Egresos_model->getegreso(),
+			'permisos' => $this->permisos,     
              
 
 
@@ -103,7 +104,9 @@ class Egresos extends CI_Controller {
 		
         $descripcion_gasto = $this->input->post("descripcion_gasto"); //fecha_ingreso       
         
-        $newDate = date("Y-m-d", strtotime($fecha_gasto));
+		$newDate = date("Y-m-d", strtotime($fecha_gasto));
+		
+		$eliminado = 0;
         
        $data = array(
             
@@ -115,7 +118,9 @@ class Egresos extends CI_Controller {
            
             'fecha_egreso' => $newDate, 
 			
-			'archivos' => $recibo
+			'archivos' => $recibo,
+			
+			'eliminado' => $eliminado
  
 
                      
@@ -156,7 +161,84 @@ class Egresos extends CI_Controller {
         $config['height'] = 150;
         $this->load->library('image_lib', $config); 
         $this->image_lib->resize();
-    }      
+	}    
+
+    public function eliminar($id){
+        
+              
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+        
+        $data = array(
+            
+
+            
+            
+            'info_a' => $this->Egresos_model->geti($id),
+            'info_motivo' => $this->Egresos_model->getmoti($id),
+            
+        
+        
+        );
+            
+            
+        
+		$this->load->view("admin/gastos/eliminar",$data);
+        
+        
+        
+    }//fin function view       
+    	
+	
+	public function delete(){
+
+               
+        if(! $this->permisos->insercion){ 
+            
+            redirect(base_url()); return; 
+        
+        }
+
+        $id_egreso = $this->input->post("id_egreso");
+
+        $usuario_elimina = $this->input->post("usuario_elimina");
+        
+		$motivo_elim = $this->input->post("motivo_elim");        
+
+        $monto_mes = $this->input->post("monto_mes");
+
+        $eliminado = 1;
+         
+        $fecha_eliminado = date("Y/m/d H:i:s");
+     
+ 
+        $data = array(
+
+
+            "eliminado" => $eliminado,
+            "motivo" => $motivo_elim,
+            "fecha_eliminado" => $fecha_eliminado,
+            "usuario_elimina" => $usuario_elimina
+
+        );
+      
+            if($this->Egresos_model->delete($data,$id_egreso) == true)
+                  
+                  
+                  redirect(base_url()."Principal/Egresos");
+                
+                else
+                          
+                    redirect(base_url()."Principal/Egresos");
+                    
+                
+          
+                
+    }//fin        
+	
 
 }
 
