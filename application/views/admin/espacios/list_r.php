@@ -6,13 +6,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Lista de Egresos</h3>
+                    <h3 class="text-themecolor">Lista de Espacios Comunes</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                         
-                        <li class="breadcrumb-item active">Egresos Total</li>
+                        <li class="breadcrumb-item active">Espacios</li>
                     </ol>
                 </div>
         
@@ -33,44 +33,32 @@
                         <div class="card">
                             <div class="card-body">
                                 
-                                <h6 class="card-subtitle">Se muestra un listado de los egresos.</h6>
+                                <h6 class="card-subtitle">Se muestra un listado de los espacios comunes.</h6>
                                 <div class="table-responsive m-t-40">
                                 <table id="zero_config" class="table table-striped table-bordered" cellspacing="0" style="width:100%">
                                         <thead>
                                             <tr>
-                                            <th>Recibo oficial</th>
-                                                <th>Tipo de egreso</th>
-                                                <th>Descripción de egreso</th>
-                                                <th>Fecha de egreso</th>                                                   
-                                                <th>Monto</th>                                                  
+                                            <th>Foto</th>
+                                                <th>Nombre Espacio</th>
+                                                <th>Descripción espacio</th>
+                                                                                              
                                                 <?php if($permisos->insercion==1):?>                                                
-                                                <th>Eliminar</th>
+                                                <th>Reservar</th>
+
                                                 <?php endif;?>                                                 
 
                                             </tr>
                                         </thead>
 
-                                        <tfoot>
-                                            <tr>
-                                                <th>Total egresos</th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                
-												<th>$<?php echo $sum_e->b;?></th>
-                                                <?php if($permisos->insercion==1):?>                                                
-                                                <th></th>
-                                                <?php endif;?>  												
-                                            </tr>
-                                        </tfoot>                                        
+                                        
                                         <tbody>
-                                        <?php if(!empty($info_gastos)):?>
-                                    <?php foreach($info_gastos as $info_gastos):?>
+                                        <?php if(!empty($info_espacios)):?>
+                                    <?php foreach($info_espacios as $info_espacios):?>
                                         <tr>
                                           <td>
                                             
                            
-                                          <a href="<?=base_url()?>assets/images/gastos/<?php echo $info_gastos->archivos;?>" class="example-image-link" data-lightbox="example-1"><img src="<?=base_url()?>assets/images/gastos/thumbs/<?php echo $info_gastos->archivos;?>" class="img-responsive" style=" width: auto; height: auto;" >
+                                          <a href="<?=base_url()?>assets/images/espacios/<?php echo $info_espacios->foto_es;?>" class="example-image-link" data-lightbox="example-1"><img src="<?=base_url()?>assets/images/espacios/thumbs/<?php echo $info_espacios->foto_es;?>" class="img-responsive" style=" width: auto; height: auto;" >
 
 
                                             
@@ -79,15 +67,11 @@
                                           
                                           
                                           </td>
-                                            <td><?php echo $info_gastos->name_egreso;?></td>
+                                            <td><?php echo $info_espacios->name_es;?></td>
 
-                                            <td><?php echo $info_gastos->descripcion_egreso;?></td>                                           
+                                            <td><?php echo $info_espacios->descri_es;?></td>                                           
 
-                                            <td><?php echo $info_gastos->fecha_egreso;?></td>    
-                                            
-
-                                            <td>$<?php echo $info_gastos->monto_egreso;?></td>                                                    
-
+   
                                                
                                             
 											<?php if($permisos->insercion==1):?>
@@ -97,7 +81,7 @@
                                                             <div class="btn-group">
 
 
-                                                            <a  id="eliminar_ingreso" class="btn btn-danger btn-remove btn-sm btn-small swal-btn-warning" data-toggle="modal" data-target="#elim" onclick="eliminar2(<?php echo $info_gastos->id_egreso; ?>)"><i class="fa fa-remove"></i></a>
+															<a href="<?php echo base_url(); ?>Principal/Reservas/reservar/<?php echo $info_espacios->id_es; ?>" class="btn btn-primary btn-circle btn-small"><i class="fa fa-calendar"></i></a>
 
 
 
@@ -106,7 +90,9 @@
 
 
 
-                                                        </td>
+														</td>
+														
+                     												
                                                         <?php endif;?>                                               
                                             
                                           

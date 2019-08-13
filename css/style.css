@@ -19,6 +19,10 @@
     background: #fff
 }
 
+.clockpicker-popover {
+	z-index: 999999 !important;
+	}
+
 .preloader .cssload-speeding-wheel {
     position: absolute;
     top: calc(50% - 3.5px);

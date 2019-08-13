@@ -126,14 +126,14 @@
         								<table class="table table-hover">
         									<thead>
         										<tr>
-        											<th class="text-center">Gasto #</th>
-        											<th class="text-center">Tipo de gasto</th>
-        											<th class="text-center">Descripción gasto</th>
+        											<th class="text-center">Egreso #</th>
+        											<th class="text-center">Tipo de egreso</th>
+        											<th class="text-center">Descripción egreso</th>
 
 
 
 
-        											<th class="text-center">Fecha de gasto</th>
+        											<th class="text-center">Fecha de egreso</th>
 
 
         											<th class="text-center">Monto</th>
@@ -141,7 +141,7 @@
 											</thead>
 											<tfoot>
 											<tr>
-        											<th class="text-center">Total de gastos </th>
+        											<th class="text-center">Total de egresos </th>
         											<th class="text-center"></th>
         											<th class="text-center"></th>
 

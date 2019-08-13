@@ -18,7 +18,7 @@
     <link href="<?php echo base_url(); ?>assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/plugins/dropify/dist/css/dropify.min.css">
-
+	
     <link href="<?php echo base_url(); ?>assets/plugins/jquery-asColorPicker-master/css/asColorPicker.css" rel="stylesheet">        
 
     <link href="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
@@ -35,7 +35,7 @@
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/plugins/tablesaw-master/dist/tablesaw.css" rel="stylesheet">
-
+	<link href="<?php echo base_url(); ?>assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
 
     <link href="<?php echo base_url(); ?>css/style.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>css/buttons.dataTables.css" rel="stylesheet">
@@ -140,7 +140,7 @@
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <a href="<?php echo base_url();?>Administrador/Usuarios/perfil/<?php echo $this->session->userdata("id_casa") ?>" class="dropdown-item"><i class="ti-user"></i>Perfil</a>
+                                    <a href="<?php echo base_url();?>Principal/Perfil/perfil/<?php echo $this->session->userdata("id_casa") ?>" class="dropdown-item"><i class="ti-user"></i>Perfil</a>
 
 
 

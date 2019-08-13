@@ -110,9 +110,28 @@ class Avisos extends CI_Controller {
 
 		$fecha_retiro = $this->input->post("fecha_retiro"); //ingreso
 
+		$fecha_reunion = $this->input->post("fecha_reunion"); //ingreso
+
+		$tit_aviso = $this->input->post("tit_aviso"); //ingreso
+
+		$aviso_reunion = $this->input->post("aviso_reunion"); //ingreso
+
+		if(is_null($aviso_reunion)){
+
+			$aviso_reunion = "No";
+
+		}
+		else{
+
+			$aviso_reunion = "Si";
+
+		}
+
         $newDate = date("Y-m-d", strtotime($fecha_anuncio));
 
-        $newDate2 = date("Y-m-d", strtotime($fecha_retiro));
+		$newDate2 = date("Y-m-d", strtotime($fecha_retiro));
+		
+        $newDate3 = date("Y-m-d", strtotime($fecha_reunion));
    
         $data = array(
 
@@ -121,7 +140,13 @@ class Avisos extends CI_Controller {
 
             'fecha_retiro' => $newDate2,
 
-            'mensaje_anuncio' => $mensaje_anuncio
+			'mensaje_anuncio' => $mensaje_anuncio,
+			
+			'tit_aviso' => $tit_aviso,
+			
+			'aviso_reunion' => $aviso_reunion,
+			
+            'fecha_reunion' => $newDate3,
 
 		
 

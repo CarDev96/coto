@@ -319,6 +319,8 @@ class Fraccionamientos extends CI_Controller {
         $fecha_correspondiente = $this->input->post("fecha_correspondiente");
      
 		$liquidacion = $this->input->post("liquidacion");
+
+        $eliminado = 0;		
     
 
         $estatus = "Liquidado";
@@ -337,7 +339,7 @@ class Fraccionamientos extends CI_Controller {
                      ); 
         
       
-            if($this->Fraccionamientos_model->liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion,$ingreso_int,$id_ingreso) == true)
+            if($this->Fraccionamientos_model->liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion,$ingreso_int,$id_ingreso,$eliminado) == true)
                   
                   
                   redirect(base_url()."Principal/Fraccionamientos");

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Usuarios extends CI_Controller {
+class Perfil extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -30,223 +30,60 @@ class Usuarios extends CI_Controller {
 	}
 	
 	
-	
-	public function index()
-	{
-
-		
-		if(! $this->permisos->insercion){ 
-            
-            redirect(base_url()); return; 
-        
-		}
-        $data = array(
-
-            'info_user' => $this->Usuarios_model->getinfo(),
-            
-        );
-        
-        $this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/usuarios/list",$data);
-		$this->load->view("layouts/footer");
-
-		
-    }
-    
-	public function seguridad()
-	{
+    public function perfil($id){
 
 		if(! $this->permisos->insercion){ 
             
             redirect(base_url()); return; 
         
 		}
-      
-        $data = array(
+        
+      $data = array(
 
-            'info_user2' => $this->Usuarios_model->getinfo2(),
-            
-        );
+        'info_perfil' => $this->Usuarios_model->getperf($id),
+        'info_usuario' => $this->Usuarios_model->getinfou($id),
+
+
+      );
+     
         
         $this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/usuarios/list_s",$data);
+		$this->load->view("admin/usuarios/perfil",$data);
 		$this->load->view("layouts/footer");
-
-		
-	}    
-
+        
+        
+    } //fin function add() 
     
-	public function edit(){
-		
-        if(! $this->permisos->insercion){ 
+    public function perfil_guardia($id){
+
+		if(! $this->permisos->insercion){ 
             
             redirect(base_url()); return; 
         
 		}
-		
-      
+        
         $data = array(
-
-            'info_rol' => $this->Usuarios_model->getrol(),
-            'permisos' => $this->permisos,
+  
+          'info_perfil' => $this->Usuarios_model->getperf2($id),
+          'info_usuario' => $this->Usuarios_model->getinfou2($id),
+  
+  
         );
-        
-        $this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/usuarios/list_rol",$data);
-		$this->load->view("layouts/footer");
+       
+          
+          $this->load->view("layouts/header");
+          $this->load->view("layouts/aside");
+          $this->load->view("admin/usuarios/perfil_g",$data);
+          $this->load->view("layouts/footer");
+          
+          
+      } //fin function add()     
+  
 
-		
-	}    	
-	
-    public function add(){
-        
-        if(! $this->permisos->insercion){ 
-            
-            redirect(base_url()); return; 
-        
-		}	  
-		
-        $data = array(
-
-            'info_casas' => $this->Ingresos_model->getinfo(),
-            'info_rol' => $this->Usuarios_model->getrol(),
-            'info_rol2' => $this->Usuarios_model->getrol2(),
-        );
-        
-        $this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/usuarios/add",$data);
-		$this->load->view("layouts/footer");
-        
-        
-    } //fin function add()
-
-    public function add_s(){
-        
-	  
-        if(! $this->permisos->insercion){ 
-            
-            redirect(base_url()); return; 
-        
-		}
-
-        $data = array(
-
-            'info_guardias' => $this->Personal_model->getinfo(),
-            'info_rol' => $this->Usuarios_model->getrol(),
-            'info_rol2' => $this->Usuarios_model->getrol2(),
-        );
-        
-        $this->load->view("layouts/header");
-		$this->load->view("layouts/aside");
-		$this->load->view("admin/usuarios/add_s",$data);
-		$this->load->view("layouts/footer");
-        
-        
-    } //fin function add()    
-
-
-   
-    
-    public function nuevo()
-    {
-
-
-        $id_casa = $this->input->post("id_casa"); //id_casa
-
-        $username = $this->input->post("username"); //id_concepto_in
-
-        $pass = $this->input->post("pass"); //ingreso
-
-        $rol = $this->input->post("rol");
-
-        $estado = "1";
-
- 
-        $data = array(
-
-            'id_casa' => $id_casa,
-
-            'username' => $username,
-
-            'pass' => sha1($pass),
-
-            'id_rol' => $rol,
-
-            'estado' => $estado,
-
-
-        );
-
-
-        if ($this->Usuarios_model->save($data)) {
-
-
-
-            redirect(base_url() . "Administrador/Usuarios/add");
-        } else {
-
-            redirect(base_url() . "Administrador/Usuarios/add");
-        }
-    } //fin 
-
-    public function nuevo_s()
-    {
-
-        if(! $this->permisos->insercion){ 
-            
-            redirect(base_url()); return; 
-        
-		}		
-
-        $id_guardia = $this->input->post("id_guardia"); //id_casa
-
-        $username = $this->input->post("username"); //id_casa
-
-        
-
-        $pass = $this->input->post("pass"); //ingreso
-
-        $rol = 5;
-
-        $estado = "1";
-
- 
-        $data = array(
-
-            'id_guardia' => $id_guardia,
-
-            'username' => $username,
-
-            'pass' => sha1($pass),
-
-            'id_rol' => $rol,
-
-            'estado' => $estado,
-
-
-        );
-
-
-        if ($this->Usuarios_model->save($data)) {
-
-
-
-            redirect(base_url() . "Administrador/Usuarios/add_s");
-        } else {
-
-            redirect(base_url() . "Administrador/Usuarios/add_s");
-        }
-    } //fin     
-    
-    
     public function actualizar_p()
     {
 
-		
 
         $id_usuario = $this->input->post("id_usuario"); //id_casa
 
@@ -319,42 +156,13 @@ class Usuarios extends CI_Controller {
 
 
 
-            redirect(base_url() . "Administrador/Usuarios/perfil/$id_casa");
+            redirect(base_url() . "Principal/Perfil/perfil/$id_casa");
         } else {
 
-            redirect(base_url() . "Administrador/Usuarios/perfil/$id_casa");
+            redirect(base_url() . "Principal/Perfil/perfil/$id_casa");
         }
 	} //fin  
 	
-
-    public function view_rol($id){
-        
-              
-        if(! $this->permisos->insercion){ 
-            
-            redirect(base_url()); return; 
-        
-        }
-        
-        $data = array(
-            
-
-            
-            'info_a' => $this->Usuarios_model->getrol22($id),
-            
-            
-        
-        
-        );
-            
-            
-        
-		$this->load->view("admin/usuarios/view_rol",$data);
-        
-        
-        
-    }//fin function view   
-    	
 
 
 
@@ -433,10 +241,10 @@ class Usuarios extends CI_Controller {
 
 
 
-            redirect(base_url() . "Administrador/Usuarios/perfil/$id_casa");
+            redirect(base_url() . "Principal/Perfil/perfil/$id_casa");
         } else {
 
-            redirect(base_url() . "Administrador/Usuarios/perfil/$id_casa");
+            redirect(base_url() . "Principal/Perfil/perfil/$id_casa");
         }
     } //fin  
         
@@ -519,10 +327,10 @@ class Usuarios extends CI_Controller {
 
 
 
-            redirect(base_url() . "Administrador/Usuarios/perfil_guardia/$id_guardia");
+            redirect(base_url() . "Principal/Perfil/perfil_guardia/$id_guardia");
         } else {
 
-            redirect(base_url() . "Administrador/Usuarios/perfil_guardia/$id_guardia");
+            redirect(base_url() . "Principal/Perfil/perfil_guardia/$id_guardia");
         }
     } //fin  
 
@@ -603,10 +411,10 @@ class Usuarios extends CI_Controller {
 
 
 
-            redirect(base_url() . "Administrador/Usuarios/perfil_guardia/$id_guardia");
+            redirect(base_url() . "Principal/Perfil/perfil_guardia/$id_guardia");
         } else {
 
-            redirect(base_url() . "Administrador/Usuarios/perfil_guardia/$id_guardia");
+            redirect(base_url() . "Principal/Perfil/perfil_guardia/$id_guardia");
         }
     } //fin  
          
@@ -626,40 +434,5 @@ class Usuarios extends CI_Controller {
         $this->image_lib->resize();
 	}    
 	
-	public function update(){
 
-               
-		if(! $this->permisos->insercion){ 
-				
-			redirect(base_url()); return; 
-		
-		}
-	
-		$id_rol = $this->input->post("id_rol");
-	
-		$nom_rol = $this->input->post("nom_rol");
-		
-		$data = array(
-	
-	
-			"name_rol" => $nom_rol
-	
-	
-	
-		);
-	
-		if($this->Usuarios_model->update($data,$id_rol)== true)
-					  
-					  
-		redirect(base_url()."Administrador/Usuarios/edit");
-	  
-	  else
-				
-		  redirect(base_url()."Administrador/Usuarios/edit");
-		  
-		  
-		 
-	
-	   }	
-	
 }

@@ -73,7 +73,7 @@
                                 <div class="col-12">
                                     <h2 class="m-b-0"><i class="fa fa-arrow-down text-warning"></i></h2>
                                     <h3 class="">$<?php echo $sum_egresos->b ?></h3>
-                                    <h6 class="card-subtitle">Total de gastos</h6></div>
+                                    <h6 class="card-subtitle">Total de egresos</h6></div>
                             
                             </div>
                         </div>

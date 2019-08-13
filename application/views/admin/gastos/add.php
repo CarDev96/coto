@@ -6,13 +6,13 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Registro de Gastos</h3>
+                    <h3 class="text-themecolor">Registro de Egresos</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
 
-                        <li class="breadcrumb-item active">Nuevo Gasto</li>
+                        <li class="breadcrumb-item active">Nuevo Egreso</li>
                     </ol>
                 </div>
 
@@ -32,7 +32,7 @@
                     <div class="col-lg-12">
                         <div class="card card-outline-info">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white"> Registrar nuevo gasto</h4>
+                                <h4 class="m-b-0 text-white"> Registrar nuevo egreso</h4>
                             </div>
                             <div class="card-body">
                                 <form class="form-horizontal" role="form" method="post" action="<?php echo base_url(); ?>Principal/Egresos/nuevo" enctype="multipart/form-data">
@@ -107,7 +107,7 @@
 
                                             <div class="col-md-6">
                                                 <div class="form-group row">
-                                                    <label class="control-label text-right col-md-3">Fecha de gasto:</label>
+                                                    <label class="control-label text-right col-md-3">Fecha de egreso:</label>
                                                     <div class="col-md-9">
 
                                                         <input type="text" class="form-control" name="fecha_gasto" placeholder="" id="mdate">

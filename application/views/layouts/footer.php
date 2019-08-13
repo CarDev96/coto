@@ -75,7 +75,8 @@
 
 <script src="<?php echo base_url(); ?>assets/plugins/moment/moment.js"></script>
     
-    <!-- Clock Plugin JavaScript -->
+	<!-- Clock Plugin JavaScript -->
+	<script src="<?php echo base_url(); ?>assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
     
     <!-- Color Picker Plugin JavaScript -->
     <script src="<?php echo base_url(); ?>assets/plugins/jquery-asColorPicker-master/libs/jquery-asColor.js"></script>
@@ -90,12 +91,24 @@
 <!-- -->
 
 <script>
+
     // Colorpicker
     $(".colorpicker").asColorPicker();
     $(".complex-colorpicker").asColorPicker({
         mode: 'complex'
     });
 </script>
+
+<script>
+	$('.clockpicker').clockpicker({
+		donetext: 'Done',
+	}).find('input').change(function() {
+		console.log(this.value);
+	});
+
+    // For select 2
+    $(".select2").select2();	
+</script>  
 
 <script>
     $(document).ready(function() {
@@ -213,6 +226,31 @@
 <!------------------------------------>
 
 
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+    function ModalAsis(id) {
+        if (id != null) {
+            $.ajax({
+
+                url: base_url + "Principal/Reuniones/view_r/" + id,
+                type: "POST",
+                data: {
+                    'id_casa': id
+                },
+                success: function(respuesta) {
+                    $("#asistencia .modal-body").html(respuesta);
+                    
+
+                }
+            });
+        }
+    }
+</script>
+<!------------------------------------>
+
+
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
 
@@ -317,6 +355,36 @@
                 },
                 success: function(respuesta) {
                     $("#elim .modal-body").html(respuesta);
+
+
+
+
+
+
+                }
+            });
+        }
+    }
+</script>
+<!------------------------------------>
+
+<!------------------------------------>
+
+
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+
+    function rechazar(id) {
+        if (id != null) {
+            $.ajax({
+
+                url: base_url + "Administrador/Espacios/v_rechazar/" + id,
+                type: "POST",
+                data: {
+                    'id_reserva': id
+                },
+                success: function(respuesta) {
+                    $("#rechazar .modal-body").html(respuesta);
 
 
 
@@ -598,13 +666,47 @@
     });
 </script>
 
-<script>
-    $(document).ready(function() {
-        $(".dataTables_filter").removeAttr("top");
-    });
+<script type="text/javascript">
 
-    // For select 2
-    $(".select2").select2();
+var disableddates = ["8-3-2017", "12-11-2016", "8-25-2017", "8-20-2017"];
+
+function DisableSpecificDates(date) {
+
+	var m = date.getMonth();
+	var d = date.getDate();
+	var y = date.getFullYear();
+	var currentdate = (m + 1) + '-' + d + '-' + y ;
+
+	for (var i = 0; i < disableddates.length; i++) {
+		if ($.inArray(currentdate, disableddates) != -1 ) {
+			return [false];
+		} 
+	}
+
+	return disableddates;
+}
+
+$( function() {
+	$.datepicker.setDefaults($.datepicker.regional["es"]);
+	$( "#datepicker" ).datepicker({
+		dateFormat: 'yy-mm-dd',
+		changeMonth:true,
+		changeYear:true,
+		yearRange: "2006:2017", 
+		firstDay: 1,
+		minDate: new Date(006, 12, 1), /** AAAA,MM,DD Fecha inicio */
+		maxDate: new Date(2020, 11, 31), /** AAAA,MM,DD Fecha Fin */
+
+		monthNames: ['Enero', 'Febrero', 'Marzo',
+		'Abril', 'Mayo', 'Junio',
+		'Julio', 'Agosto', 'Septiembre',
+		'Octubre', 'Noviembre', 'Diciembre'],
+		monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun',
+		'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+		dayNamesMin: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+		beforeShowDay: DisableSpecificDates
+	});
+});
 </script>
 
 <script>
@@ -626,6 +728,15 @@
         cancelText: 'Cancelar',
         format: 'DD-MM-YYYY'
     });
+
+    $('#mdate3').bootstrapMaterialDatePicker({
+
+weekStart: 0,
+time: false,
+lang: 'es',
+cancelText: 'Cancelar',
+format: 'DD-MM-YYYY'
+});	
 </script>
 
 
@@ -793,7 +904,26 @@ $("#n_casa").val(opcion);
                 'imageFormat': 'The image format is not allowed ({{ value }} only).'
             }
 
-        });
+		});
+		
+        $('.lugar').dropify({
+
+messages: {
+	default: 'Arrastre una imagen del espacio común.',
+	replace: 'Arrastre una imagen para remplazar.',
+	remove: 'Eliminar',
+	error: 'Ups, algo ha sucedido.'
+},
+error: {
+	'fileSize': 'El archivo adjunto es demasiado grande ({{ value }} max).',
+	'minWidth': 'The image width is too small ({{ value }}}px min).',
+	'maxWidth': 'The image width is too big ({{ value }}}px max).',
+	'minHeight': 'The image height is too small ({{ value }}}px min).',
+	'maxHeight': 'The image height is too big ({{ value }}px max).',
+	'imageFormat': 'The image format is not allowed ({{ value }} only).'
+}
+
+});		
 
         $('.dropify2').dropify({
 
@@ -927,7 +1057,7 @@ $("#n_casa").val(opcion);
             parseTime: false,
             pointSize: 3,
             fillOpacity: 0,
-            labels: ['Ingresos', 'Gastos'],
+            labels: ['Ingresos', 'Egresos'],
             pointStrokeColors: ['#26c6da', '#ef5350'],
             behaveLikeLine: true,
             gridLineColor: '#e0e0e0',

@@ -139,7 +139,7 @@ class Fraccionamientos_model extends CI_Model
 
 
 
-public function liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion,$ingreso_int,$id_ingreso){
+public function liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion,$ingreso_int,$id_ingreso,$eliminado){
         
   $estatusm = "Pago Mensual";
 
@@ -162,7 +162,7 @@ public function liq($data,$id_casa,$id_abono,$fecha_correspondiente,$liquidacion
 
    $df2 = date_format($date2,"Y-m-d");
 
-   $resultado = $this->db->query("insert into tb_ingreso(ingreso,id_concepto_in,id_casa,fecha_ingreso,fecha_inicio)values($liquidacion,1,$id_casa,'$dia_ac','$fecha_correspondiente')");                     
+   $resultado = $this->db->query("insert into tb_ingreso(ingreso,id_concepto_in,id_casa,fecha_ingreso,fecha_inicio,eliminado)values($liquidacion,1,$id_casa,'$dia_ac','$fecha_correspondiente','$eliminado')");                     
    
    $last_id=$this->db->insert_id(); 
 
