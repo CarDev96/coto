@@ -1267,4 +1267,27 @@ $(function() {
     
 </script>   
 
+<script>
+
+$(function() {
+    "use strict";
+     
+
+    
+             <?php if ( $this->session->flashdata( 'success' ) ): ?>  
+           $.toast({
+            heading: 'Completado',
+            text: '<?php  echo $this->session->flashdata('success'); ?>',
+            position: 'top-right',
+            loaderBg:'#ff6849',
+            icon: 'success',
+            hideAfter: 3500
+            
+          });
+        <?php endif; ?>  
+});
+     
+    
+</script>   
+
 </html>

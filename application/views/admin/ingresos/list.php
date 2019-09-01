@@ -39,6 +39,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Id ingreso</th>
+                                                <th># Casa</th>
                                                 <th>Tipo de ingreso</th>
                                                 <th>Descripción de ingreso</th>
                                                 <th>Fecha de pago</th>
@@ -85,6 +86,7 @@
 
 
                                                         </td>
+                                                        <td><?php echo $info_total->id_casa; ?></td>
                                                         <td><?php echo $info_total->name; ?></td>
 
                                                         <td><?php echo $info_total->descripcion_ingreso; ?></td>

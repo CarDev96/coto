@@ -60,7 +60,7 @@
 
                 <?php else : ?>
                     <label>No
-                        <input type="checkbox" name="habitada" id="habitada" value="no"><span class="lever switch-col-red"></span>Si</label>
+                        <input type="checkbox" name="habitada" id="habitada" value="si"><span class="lever switch-col-red"></span>Si</label>
 
                 <?php endif; ?>
             </div>

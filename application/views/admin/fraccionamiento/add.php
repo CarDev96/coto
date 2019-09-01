@@ -6,7 +6,7 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">Registro de Habitaciones</h3>
+                    <h3 class="text-themecolor">Registro de Casas</h3>
                 </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
@@ -32,7 +32,11 @@
                     <div class="col-lg-12">
                         <div class="card card-outline-info">
                             <div class="card-header">
-                                <h4 class="m-b-0 text-white">Registrar Nueva Casa</h4>
+								<h4 class="m-b-0 text-white">Registrar Nueva Casa</h4>
+								<br>
+								<?php if($last):?>
+								<h6 class="m-b-0 text-white">última casa registrada: <?php echo $last->id_casa ?></h6>
+								<?php endif;?>
                             </div>
                             <div class="card-body">
                                 <form action="<?php echo base_url(); ?>Principal/Fraccionamientos/nuevo" method="post">
@@ -57,14 +61,14 @@
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label class="control-label">Teléfono</label>
-                                                    <input type="text" class="form-control international-inputmask" name="telefono" id="international-mask" required>
+                                                    <input type="text" class="form-control international-inputmask" name="telefono" id="international-mask">
                                                     <small class="form-control-feedback">Ejem. 3384219166.</small> </div>
                                             </div>
 
                                             <div class="col-sm-3">
                                                 <div class="form-group">
                                                     <label class="control-label">Correo Electrónico</label>
-                                                    <input type="email" id="firstName" class="form-control" placeholder="" name="correo_casa" required>
+                                                    <input type="email" id="firstName" class="form-control" placeholder="" name="correo_casa">
                                                     <small class="form-control-feedback">Ejem. a@gmail.com</small> </div>
                                             </div>                                            
                                         </div>

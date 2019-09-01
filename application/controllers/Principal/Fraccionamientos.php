@@ -81,11 +81,17 @@ class Fraccionamientos extends CI_Controller {
             
             redirect(base_url()); return; 
         
-        }
+		}
+		
+		$data = array(
+
+        'last' => $this->Fraccionamientos_model->get_last(),  			
+
+		);
         
         $this->load->view("layouts/header");
 		$this->load->view("layouts/aside");
-		$this->load->view("admin/fraccionamiento/add");
+		$this->load->view("admin/fraccionamiento/add",$data);
 		$this->load->view("layouts/footer");
         
         
@@ -148,7 +154,28 @@ class Fraccionamientos extends CI_Controller {
 
 
 
-        }
+		}
+		
+        if(is_null($habitada)){
+
+            $habitada_f = "No";
+
+
+
+        }else{
+
+            $habitada_f = $habitada;
+
+
+
+		}
+		
+        if($this->Fraccionamientos_model->get_house($numero_casa)){
+            
+            $this->session->set_flashdata( 'error_msg', 'Número de casa ya registrado' );            
+            redirect(base_url()."Principal/Fraccionamientos/add");
+
+        }		
         
            
        $data = array(
@@ -157,7 +184,7 @@ class Fraccionamientos extends CI_Controller {
         
             'responsable' => $propietario, 
            
-            'habitada' => $habitada, 
+            'habitada' => $habitada_f, 
            
 			'direccion' => $direccion, 
 			
@@ -189,8 +216,8 @@ class Fraccionamientos extends CI_Controller {
         if( $this ->Fraccionamientos_model->save($data)){
             
              //  $this->session->set_flashdata('Add', 'Invitacion Agregada Correctamente');
-                  
-            redirect(base_url()."Principal/Fraccionamientos");
+			 $this->session->set_flashdata( 'success', 'Casa dada de alta exitosamente' );                              
+            redirect(base_url()."Principal/Fraccionamientos/add");
         }
         else{
                   //   $this->session->set_flashdata('Add', 'Invitacion Agregada Correctamente');
@@ -245,7 +272,21 @@ class Fraccionamientos extends CI_Controller {
 
 
 
-        }
+		}
+		
+        if(is_null($habitada)){
+
+            $habitada_f = "No";
+
+
+
+        }else{
+
+            $habitada_f = $habitada;
+
+
+
+        }		
              
        $data = array(
             
@@ -253,7 +294,7 @@ class Fraccionamientos extends CI_Controller {
         
             'responsable' => $propietario, 
            
-            'habitada' => $habitada, 
+            'habitada' => $habitada_f, 
            
 			'direccion' => $direccion, 
 			
