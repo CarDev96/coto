@@ -95,7 +95,7 @@ class Ingresos_model extends CI_Model {
 	 	
     public function getinfo(){
 	 
-        $resultados = $this->db->query("select * from tb_casas where id_casa <> 0 && id_casa <> 10000;");
+        $resultados = $this->db->query("select * from tb_casas where id_casa <> 0 && id_casa <> 1;");
         return $resultados->result();
     }
 

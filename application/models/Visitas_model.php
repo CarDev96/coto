@@ -30,7 +30,13 @@ class Visitas_model extends CI_Model {
 	 
         $resultados = $this->db->query("select * from tb_visitas as a inner join tb_cat_vi as b on a.id_tipo_v = b.id_tipo_v inner join tb_tipo_visita as c on a.id_tipo_vi = c.id_tipo_vi inner join tb_casas as d on a.id_casa = d.id_casa;");
         return $resultados->result();
-    }        
+	}    
+	
+    public function getinfo7(){
+	 
+        $resultados = $this->db->query("select * from tb_visitas as a inner join tb_cat_vi as b on a.id_tipo_v = b.id_tipo_v inner join tb_tipo_visita as c on a.id_tipo_vi = c.id_tipo_vi where a.id_casa = 0;");
+        return $resultados->result();
+    }    	
 
     public function getmarca(){
 	 

@@ -148,7 +148,10 @@
                                     <li><a href="<?php echo base_url(); ?>Auth/logout"><i class="fa fa-power-off"></i> Cerrar sesión</a></li>
                                 </ul>
                             </div>
-                        </li>
+						</li>
+                        <li class="nav-item dropdown">
+						<button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>					
+                        </li>						
                     </ul>
                 </div>
             </nav>

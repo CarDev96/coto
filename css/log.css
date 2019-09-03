@@ -1,167 +1,186 @@
-@charset "utf-8";
+
+.input-group-text2{
+  
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 0.375rem 0.75rem;
+	margin-bottom: 0;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	text-align: center;
+	white-space: nowrap;
+	background-color: #e9ecef00;
+	
+	
 
 
-@import url//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
-
-
-
-div.main {
-    background: #0264d6;
-    background: -moz-radial-gradient(center, ellipse cover, #0264d6 1%, #1c2b5a 100%);
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,#0264d6), color-stop(100%,#1c2b5a));
-    background: -webkit-radial-gradient(center, ellipse cover, #0264d6 1%,#1c2b5a 100%);
-    background: -o-radial-gradient(center, ellipse cover, #0264d6 1%,#1c2b5a 100%);
-    background: -ms-radial-gradient(center, ellipse cover, #0264d6 1%,#1c2b5a 100%);
-    background: radial-gradient(ellipse at center, #00897b 1%,#1a5d4bdb 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0264d6', endColorstr='#1c2b5a',GradientType=1 );
-    height: calc(100vh);
-    width: 100%;
 }
 
-[class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
-}
+#group_icon{
 
-/* ---------- GENERAL ---------- */
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 0.375rem 0.75rem;
+	margin-bottom: 0;
+	font-weight: 400;
+	line-height: 1.5;
+	color: #495057;
+	text-align: center;
+	white-space: nowrap;
+	background-color: #e9ecef00;
+	
+	
 
-* {
-  box-sizing: border-box;
-    margin:0px auto;
-
-  &:before,
-  &:after {
-    box-sizing: border-box;
-  }
 
 }
 
 body {
-   
-    color: #606468;
-  font: 87.5%/1.5em 'Open Sans', sans-serif;
-  margin: 0;
+	/* background: #ff7f32; */
+	
+	background: linear-gradient(to right, #0288D1, #4FC3F7);
+}
+.btn{
+	
+	height: 45px;
+	
 }
 
-a {
-	color: #eee;
-	text-decoration: none;
+#log-in-brand-icon{
+	
+		display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 140px;  
+	
 }
 
-a:hover {
-	text-decoration: underline;
+#particles-js{
+	
+	position: fixed;    
+	height: 100vh;
+	width: 100%;
+	
 }
 
-input {
-	border: none;
-	font-family: 'Open Sans', Arial, sans-serif;
-	font-size: 14px;
-	line-height: 1.5em;
-	padding: 0;
-	-webkit-appearance: none;
+.panel {
+	margin-bottom: 23px;
+	background-color: floralwhite;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.05);
 }
 
-p {
-	line-height: 1.5em;
+.panel-body {
+	padding: 15px;
 }
 
-.clearfix {
-  *zoom: 1;
-
-  &:before,
-  &:after {
-    content: ' ';
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
-
+.text-justify {
+	text-align: justify;
 }
 
-.container {
-  left: 50%;
-  position: fixed;
-  top: 50%;
-  transform: translate(-50%, -50%);
+.card-signin {
+border: 0;
+border-radius: 1rem;
+box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
 }
 
-/* ---------- LOGIN ---------- */
-
-#login form{
-	width: 250px;
-}
-#login, .logo{
-    display:inline-block;
-    width:40%;
-}
-#login{
-border-right:1px solid #fff;
-  padding: 0px 22px;
-  width: 59%;
-}
-.logo{
-color:#fff;
-font-size:50px;
-  line-height: 125px;
+.card-signin .card-title {
+margin-bottom: 2rem;
+font-weight: 300;
+font-size: 1.5rem;
 }
 
-#login form span.fa {
-	background-color: #fff;
-	border-radius: 3px 0px 0px 3px;
-	color: #000;
-	display: block;
-	float: left;
-	height: 50px;
-    font-size:24px;
-	line-height: 50px;
-	text-align: center;
-	width: 50px;
+.card-signin .card-body {
+padding: 2rem;
 }
 
-#login form input {
-	height: 50px;
-}
-fieldset{
-    padding:0;
-    border:0;
-    margin: 0;
-
-}
-#login form input[type="text"], input[type="password"] {
-	background-color: #fff;
-	border-radius: 0px 3px 3px 0px;
-	color: #000;
-	margin-bottom: 1em;
-	padding: 0 16px;
-	width: 200px;
+.form-signin {
+width: 100%;
 }
 
-#login form input[type="submit"] {
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
-  background-color: #000000;
-  color: #eee;
-  font-weight: bold;
-  /* margin-bottom: 2em; */
-  text-transform: uppercase;
-  padding: 5px 10px;
-  height: 30px;
+.form-signin .btn {
+font-size: 80%;
+border-radius: 5rem;
+letter-spacing: .1rem;
+font-weight: bold;
+padding: 1rem;
+transition: all 0.2s;
 }
 
-#login form input[type="submit"]:hover {
-	background-color: #d44179;
+.form-label-group {
+position: relative;
+margin-bottom: 1rem;
 }
 
-#login > p {
-	text-align: center;
+.form-label-group input {
+height: auto;
+border-radius: 2rem;
 }
 
-#login > p span {
-	padding-left: 5px;
+.form-label-group>input,
+.form-label-group>label {
+padding: var(--input-padding-y) var(--input-padding-x);
 }
-.middle {
-  display: flex;
-  width: 600px;
+
+.form-label-group>label {
+position: absolute;
+top: 0;
+left: 0;
+display: block;
+width: 100%;
+margin-bottom: 0;
+/* Override default `<label>` margin */
+line-height: 1.5;
+color: #495057;
+border: 1px solid transparent;
+border-radius: .25rem;
+transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+color: transparent;
+}
+
+.form-label-group input::placeholder {
+color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+padding-bottom: calc(var(--input-padding-y) / 3);
+}
+
+.form-label-group input:not(:placeholder-shown)~label {
+padding-top: calc(var(--input-padding-y) / 3);
+padding-bottom: calc(var(--input-padding-y) / 3);
+font-size: 12px;
+color: #777;
+}
+
+.btn-google {
+color: white;
+background-color: #ea4335;
+}
+
+.btn-facebook {
+color: white;
+background-color: #3b5998;
 }

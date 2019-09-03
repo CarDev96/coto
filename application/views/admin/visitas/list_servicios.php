@@ -47,7 +47,6 @@
                                                 <th>Color vehículo</th>
                                                 <th>Acompañantes:</th>
                                                 <th>Tipo de visita:</th>
-                                                <th>Notificar a residente:</th>
                                                 <th>Código de acceso:</th>
                                                 <th>Foto automóvil:</th>
                                                 <th>Foto INE:</th>
@@ -91,8 +90,6 @@
 
                                                         <td><?php echo $info_visita->name_v; ?></td>
 
-
-                                                        <td><a href="<?= base_url() ?>Principal/visitas/enviarwhats2/<?php echo $info_visita->telefono; ?>" target="_blank"><?php echo $info_visita->telefono; ?></a></td>
 
 														<td><?php echo $info_visita->codigo_a; ?></a></td>
 

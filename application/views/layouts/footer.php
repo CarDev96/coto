@@ -1,3 +1,24 @@
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Seleccionar color <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                            <ul id="themecolors" class="m-t-20">
+                                <li class="d-block m-t-30"><b>With Dark sidebar</b></li>
+                                <li><a href="javascript:void(0)" data-theme="green-dark" class="green-dark-theme">8</a></li>
+                                <li><a href="javascript:void(0)" data-theme="red-dark" class="red-dark-theme">9</a></li>
+                                <li><a href="javascript:void(0)" data-theme="blue-dark" class="blue-dark-theme">10</a></li>
+                                <li><a href="javascript:void(0)" data-theme="purple-dark" class="purple-dark-theme">11</a></li>
+                                <li><a href="javascript:void(0)" data-theme="megna-dark" class="megna-dark-theme ">12</a></li>
+                            </ul>
+                         
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
 <footer class="footer">
     © 2019 Coto del Valle by Network Level Systems
 </footer>
@@ -50,7 +71,7 @@
 <!-- Style switcher -->
 <script src="<?php echo base_url(); ?>assets/plugins/toast-master/js/jquery.toast.js"></script>
 <!-- ============================================================== -->
-<script src="<?php echo base_url(); ?>assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
 <script src="<?php echo base_url(); ?>assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/dropify/dist/js/dropify.min.js"></script>
 <!-- This is data table -->
@@ -942,7 +963,45 @@ error: {
                 'imageFormat': 'The image format is not allowed ({{ value }} only).'
             }
 
-        });
+		});
+		
+        $('.dropify3').dropify({
+
+messages: {
+	default: 'Arrastre una imagen que servira como foto del automóvil.',
+	replace: 'Arrastre una imagen para remplazar.',
+	remove: 'Eliminar',
+	error: 'Ups, algo ha sucedido.'
+},
+error: {
+	'fileSize': 'El archivo adjunto es demasiado grande ({{ value }} max).',
+	'minWidth': 'The image width is too small ({{ value }}}px min).',
+	'maxWidth': 'The image width is too big ({{ value }}}px max).',
+	'minHeight': 'The image height is too small ({{ value }}}px min).',
+	'maxHeight': 'The image height is too big ({{ value }}px max).',
+	'imageFormat': 'The image format is not allowed ({{ value }} only).'
+}
+
+});	
+
+$('.dropify4').dropify({
+
+messages: {
+	default: 'Arrastre una imagen que servira como foto de INE.',
+	replace: 'Arrastre una imagen para remplazar.',
+	remove: 'Eliminar',
+	error: 'Ups, algo ha sucedido.'
+},
+error: {
+	'fileSize': 'El archivo adjunto es demasiado grande ({{ value }} max).',
+	'minWidth': 'The image width is too small ({{ value }}}px min).',
+	'maxWidth': 'The image width is too big ({{ value }}}px max).',
+	'minHeight': 'The image height is too small ({{ value }}}px min).',
+	'maxHeight': 'The image height is too big ({{ value }}px max).',
+	'imageFormat': 'The image format is not allowed ({{ value }} only).'
+}
+
+});
 
 
         // Used events
@@ -1288,6 +1347,64 @@ $(function() {
 });
      
     
-</script>   
+</script> 
+
+<script>
+
+// Theme color settings
+$(document).ready(function(){
+function store(name, val) {
+    if (typeof (Storage) !== "undefined") {
+      localStorage.setItem(name, val);
+    } else {
+      window.alert('Please use a modern browser to properly view this template!');
+    }
+  }
+ $("*[data-theme]").click(function(e){
+      e.preventDefault();
+        var currentStyle = $(this).attr('data-theme');
+        store('theme', currentStyle);
+        $('#theme').attr({href: '<?php echo base_url(); ?>css/colors/'+currentStyle+'.css'})
+    });
+
+    var currentTheme =  localStorage.getItem('theme');
+    if(currentTheme)
+    {
+      $('#theme').attr({href: '<?php echo base_url(); ?>css/colors/'+currentTheme+'.css'});
+    }
+    // color selector
+    $('#themecolors').on('click', 'a', function(){
+        $('#themecolors li a').removeClass('working');
+        $(this).addClass('working')
+      });
+
+});
+ function get(name) {
+    
+  }
+/*
+$(document).ready(function(){
+    $("*[data-theme]").click(function(e){
+      e.preventDefault();
+        var currentStyle = $(this).attr('data-theme');
+        store('theme', currentStyle);
+        $('#theme').attr({href: 'css/colors/'+currentStyle+'.css'})
+    });
+
+    var currentTheme = get('theme');
+    if(currentTheme)
+    {
+      $('#theme').attr({href: 'css/colors/'+currentTheme+'.css'});
+    }
+    // color selector
+$('#themecolors').on('click', 'a', function(){
+        $('#themecolors li a').removeClass('working');
+        $(this).addClass('working')
+      });
+});*/
+
+     
+    
+</script> 
 
 </html>

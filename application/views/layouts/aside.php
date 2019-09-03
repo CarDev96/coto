@@ -129,7 +129,7 @@
         						<?php endif; ?>
 
         						<?php if ($this->session->userdata("rol") == 5) : ?>
-        							<li><a href="<?php echo base_url(); ?>Principal/Visitas/guardia">Lista Visitas </a></li>
+        							<li><a href="<?php echo base_url(); ?>Principal/Visitas/guardia">Menú </a></li>
         						<?php else : ?>
         							<li><a href="<?php echo base_url(); ?>Principal/Visitas/historial/<?php echo $this->session->userdata("id_casa") ?>">Lista Visitas </a></li>
 
